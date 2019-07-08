@@ -1,0 +1,18 @@
+
+nav {
+    background-color: white !important;
+    height: 64px !important;
+    box-shadow: none !important;
+}
+
+html, body {
+    font-family: 'Raleway', sans-serif;
+}
+
+nav * {
+    color : black;
+}
+
+nav ul li a {
+    color : black;
+}
