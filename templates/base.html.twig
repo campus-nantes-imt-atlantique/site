@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}IMT Nantes Campus - Campus{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
@@ -10,8 +10,13 @@
         {% endblock %}
     </head>
     <body>
-        {{ block('nav', 'index/nav.html.twig') }}
-
+        <header>
+            <img class="header-background" src="{{ asset('img/header-background.png') }}" alt="">
+            <div class="header-foreground">
+                {{ block('nav', 'index/nav.html.twig') }}
+            </div>
+        </header>
+    
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/materialize.min.js') }}"></script>
