@@ -6,6 +6,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
             <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
@@ -20,6 +21,10 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/materialize.min.js') }}"></script>
+            <script src="{{ asset('js/aos.js') }}"></script>
+            <script>
+                AOS.init();
+            </script>
         {% endblock %}
     </body>
 </html>

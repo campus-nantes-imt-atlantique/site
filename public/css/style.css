@@ -1,8 +1,99 @@
+/*                                                    COMMON                                        */
 
 html, body {
     font-family: 'Raleway', sans-serif;
     padding: 0;
     margin: 0;
+    background-color: #F7F7F7;
+    min-height: 100vh;
+}
+
+
+.padding-10 {
+    padding-top: 10px;
+}
+.padding-20 {
+    padding-top: 20px;
+}
+.padding-30 {
+    padding-top: 30px;
+}
+.padding-40 {
+    padding-top: 40px;
+}
+
+.margin-10 {
+    margin-top: 10px;
+}
+.margin-20 {
+    margin-top: 20px;
+}
+.margin-30 {
+    margin-top: 30px;
+}
+.margin-40 {
+    margin-top: 40px;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.cardContainer {
+    display: inline-block;
+    background-color: white;
+    position: relative;
+    border-radius: 5px;
+    min-height: 100px;
+    min-width: 100px;
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+    -moz-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.16);
+}
+
+.roundedGreenButton, .roundedBlueButton {
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 10px;
+    text-align: center;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    height: 45px !important;
+    min-width: 150px !important;
+    border-radius: 25px;
+    border: none;
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.10);
+    -moz-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.10);
+    transition: box-shadow 0.3s ease-in-out;
+    font-weight: bold;
+}
+.roundedGreenButton:hover, .roundedBlueButton:hover {
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0);
+    -moz-box-shadow: 0 4px 10px 0 rgba(0,0,0,0);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.roundedGreenButton {
+    background-image: radial-gradient(#B2CD3F, rgba(179,205,65,0.6));
+    color: white;
+}
+
+.roundedBlueButton {
+    background-image: radial-gradient(#00BBD6, rgba(0,184,210,0.2));
+    color: white;
+}
+
+/*                                                      NAV                                           */
+nav * {
+    color : white;
+}
+
+nav ul li a {
+    color : white;
 }
 
 nav {
@@ -34,10 +125,8 @@ header {
     margin-left: 20px;
 }
 
-nav * {
-    color : white;
-}
+/*                                                          INDEX                                         */
 
-nav ul li a {
-    color : white;
+.siteSection {
+    width: 200px;
 }
