@@ -34,6 +34,9 @@ html, body {
 .margin-40 {
     margin-top: 40px;
 }
+.margin-60 {
+    margin-top: 60px;
+}
 
 .title {
     font-weight: bold;
@@ -129,4 +132,13 @@ header {
 
 .siteSection {
     width: 200px;
+}
+
+footer {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+footer .icons *{
+    padding: 10px;
 }

@@ -17,8 +17,20 @@
                 {{ block('nav', 'index/nav.html.twig') }}
             </div>
         </header>
-    
+
+
         {% block body %}{% endblock %}
+        
+        <footer class="margin-60">
+            <div class="center icons">
+                <img src="{{ asset('img/facebook.png') }}" alt="">
+                <img src="{{ asset('img/instagram.png') }}" alt="">
+                <img src="{{ asset('img/twitter.png') }}" alt="">
+            </div>
+            <div class="center">
+                Copyright © 2019 | Site web réalisé par les étudiants de l’IMT Atlantique Nantes
+            </div>
+        </footer>
         {% block javascripts %}
             <script src="{{ asset('js/materialize.min.js') }}"></script>
             <script src="{{ asset('js/aos.js') }}"></script>
