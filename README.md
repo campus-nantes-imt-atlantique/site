@@ -20,7 +20,7 @@ Voici un tutoriel complet pour comprendre git flow. En effet, pour organiser le 
 on ne peut pas tous travailler sur la même branche (master) mais il faut une branche pour chaque nouvelle 
 fonctionnalité. Pour résumer rapidement git flow :
  
-- **master** : Est la branche réservée pour les versions en productions. La dernière version taguée en master est celle qui
+- **master** : Est la branche réservée pour les versions en production. La dernière version taguée en master est celle qui
 est présente publiquement sur le web. (Vous n'aurez pas à utiliser la master)
 - **develop** : Est une branche qui contient une version du site stable sur laquelle nous nous basons pour les développement. 
 - **feature** : Les branches appelées feature sont nommées feature/nom-de-la-fonctionnalite et sont tout simplement les nouvelles 
