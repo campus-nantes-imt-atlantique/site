@@ -1,0 +1,22 @@
+index:
+  school_website: "Site de l'école"
+  contact_us: "Nous contacter"
+  section:
+    title: "Les différentes sections présentes sur le site"
+    consult_page: "Consulter la page"
+    bde:
+      title: "Le BDE"
+      description: "Informations, boutique, \nintégration, réservation\ndes salles MDE etc."
+    bds:
+      title: "Le BDS"
+      description: "Informations, responsables\n des sports,réservation\ndu gymnase etc."
+    bda:
+      title: "Le BDA"
+      description: "Informations, \nintégration, réservation\nds livres etc."
+    je:
+      title: "La JE"
+      description: "Informations, boutique,\nIntégration, réservation\ndes salles MDE etc."
+  nav:
+    title: "Bienvenue sur le site\n du campus de Nantes"
+    description: "Vous retrouverez sur ce site des informations ainsi que des fonctionnalités permettant de faciliter la vie sur le campus."
+copyright: "Site web réalisé par les étudiants de l’IMT Atlantique Nantes"
