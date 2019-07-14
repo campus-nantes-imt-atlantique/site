@@ -1,4 +1,4 @@
-<
+
 # Site Campus
 
 ### Traductions 
@@ -31,5 +31,4 @@ Ensuite, un autre développeur va consulter votre pull request sur github et va 
 
 Vous n'avez pas le droit de push en master ni en develop. Le seul moyen d'ajouter une fonctionnalité au site est de créer une feature avec git flow, de push sa feature sur 
 github, de faire une pull request et qu'un autre développeur face une review sur votre pull request pour accepter ou non de merge la feature en develop. 
-
 
