@@ -2,56 +2,55 @@
 
 {% block title %}IMT Nantes Campus - Accueil{% endblock %}
 
+{% block header %}
+    <div class="navTitle margin-30">{{ 'index.nav.title' | trans| nl2br }}<br /></div>
+    <div class="navDescription margin-30">{{ 'index.nav.description' | trans }}</div>
+    <a href="{{ path("contact") }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton margin-30">{{ 'index.contact_us' | trans }}</div></a>
+    <a target="_blank" href="https://www.imt-atlantique.fr/{{ app.request.locale }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton">{{ 'index.school_website' | trans }}</div></a>
+{% endblock %}
+
 {% block body %}
     <div class="container">
-        <div class="title margin-20">{% trans %}Les différentes sections présentes sur le site{% endtrans %}</div>
+        <div class="title margin-20">{% trans %}index.section.title{% endtrans %}</div>
 
         <div class="row margin-40">
             <div class="col s12 m6 l3 center margin-10">
                 <div class="cardContainer siteSection" data-aos="fade-right">
-                    <div class="title padding-20">Le BDE</div>
+                    <div class="title padding-20">{{ 'index.section.bde.title' | trans }}</div>
                     <div class="margin-20">
-                        Informations, boutique,<br />
-                        Intégration, réservation<br />
-                        des salles MDE etc.<br />
+                        {{ 'index.section.bde.description' | trans | nl2br }}
                     </div>
-                    <div class="roundedGreenButton center margin-20">{{ 'index.consult_page' | trans }}</div>
+                    <a href="{{ path('bde_index') }}"><div class="roundedGreenButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
                     <div class="margin-20"></div>
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
                 <div class="cardContainer siteSection"  data-aos="fade-up">
-                    <div class="title padding-20">Le BDA</div>
+                    <div class="title padding-20">{{ 'index.section.bda.title' | trans }}</div>
                     <div class="margin-20">
-                        Informations, boutique,<br />
-                        Intégration, réservation<br />
-                        des salles MDE etc.<br />
+                        {{ 'index.section.bda.description' | trans | nl2br }}
                     </div>
-                    <div class="roundedBlueButton center margin-20">{{ 'index.consult_page' | trans }}</div>
+                    <a href="{{ path('bda_index') }}"><div class="roundedBlueButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
                     <div class="margin-20"></div>
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
                 <div class="cardContainer siteSection"  data-aos="fade-up">
-                    <div class="title padding-20">Le BDS</div>
+                    <div class="title padding-20">{{ 'index.section.bds.title' | trans }}</div>
                     <div class="margin-20">
-                        Informations, boutique,<br />
-                        Intégration, réservation<br />
-                        des salles MDE etc.<br />
+                        {{ 'index.section.bds.description' | trans | nl2br }}
                     </div>
-                    <div class="roundedGreenButton center margin-20">{{ 'index.consult_page' | trans }}</div>
+                    <a href="{{ path('bds_index') }}"><div class="roundedGreenButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
                     <div class="margin-20"></div>
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
                 <div class="cardContainer siteSection"  data-aos="fade-left">
-                    <div class="title padding-20">La JE</div>
+                    <div class="title padding-20">{{ 'index.section.je.title' | trans }}</div>
                     <div class="margin-20">
-                        Informations, boutique,<br />
-                        Intégration, réservation<br />
-                        des salles MDE etc.<br />
+                        {{ 'index.section.je.description' | trans| nl2br  }}
                     </div>
-                    <div class="roundedBlueButton center margin-20">{{ 'index.consult_page' | trans }}</div>
+                    <a href="{{ path('je_index') }}"><div class="roundedBlueButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
                     <div class="margin-20"></div>
                 </div>
             </div>

@@ -1,0 +1,22 @@
+index:
+  school_website: "School website"
+  contact_us: "Contact us"
+  section:
+    title: "Different sections on the website"
+    consult_page: "Consult page"
+    bde:
+      title: "The BDE"
+      description: "Information, shop, \nintegration, MDE room\nreservation..."
+    bds:
+      title: "The BDS"
+      description: "Information,\n sport leaders, gymnasium\n booking ..."
+    bda:
+      title: "The BDA"
+      description: "Information, \n integration,\n booking books ..."
+    je:
+      title: "The JE"
+      description: "Information,\nproject information\n...."
+  nav:
+    title1: "Welcome to the Nantes campus\nof IMT ATlantique website"
+    description: "On the website, you will find some convenient information, and some useful tools for facilitating student's life"
+copyright: "Website developed by IMT Atlantique students"
