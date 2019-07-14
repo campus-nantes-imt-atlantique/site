@@ -1,16 +1,19 @@
 
 # Site Campus
 
-### Traductions 
-
-Toutes les chaines de caractères ne doivent pas être dans le code directement mais dans 
-le dossier /translations. Pour chaque chaîne de caractère on associe un mot clé. 
-
+## Astuces 
 
 ### Logiciel 
 
 1) SourceTree pour utiliser git sans les lignes de commandes mais avec une interface graphique. 
 1) PhpStorm est un bon IDE pour développer en symfony (Vous pouvez avoir une license étudiante sur le site).  
+
+## Bonnes pratiques
+
+### Traductions 
+
+Toutes les chaines de caractères ne doivent pas être dans le code directement mais dans 
+le dossier /translations. Pour chaque chaîne de caractère on associe un mot clé. 
 
 ### Git Flow 
 
