@@ -93,6 +93,7 @@ html, body {
     color: white;
 }
 
+
 /*                                                      NAV                                           */
 nav * {
     color : white;
@@ -106,6 +107,7 @@ nav {
     background-color: transparent !important;
     height: 64px !important;
     box-shadow: none !important;
+    background-color: rebeccapurple;
 }
 
 nav ul a:hover {
@@ -160,6 +162,7 @@ header {
 
 .siteSection {
     width: 200px;
+    min-height: 230px;
 }
 
 
