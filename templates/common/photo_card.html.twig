@@ -1,0 +1,11 @@
+{% block photo_card %}
+    <div class="cardContainer photoCard center">
+        <div class="photoCardImg" style="background-image: url({{ img_src }});" alt=""></div>
+        <div class="photoCardTitle">
+            {{ title }}
+        </div>
+        <div class="photoCardDescription">
+            {{ description }}
+        </div>
+    </div>
+{% endblock %}

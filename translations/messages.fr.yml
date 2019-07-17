@@ -1,3 +1,9 @@
+nav:
+  bde: "Bureau des étudiants"
+  bds: "Bureau des sports"
+  bda: "Bureau des arts"
+  je: "Junior entreprise"
+  contact: "Contact"
 index:
   school_website: "Site de l'école"
   contact_us: "Nous contacter"
@@ -19,4 +25,17 @@ index:
   nav:
     title: "Bienvenue sur le site\n du campus de Nantes"
     description: "Vous retrouverez sur ce site des informations ainsi que des fonctionnalités permettant de faciliter la vie sur le campus."
+bds:
+  bds_title: "Bureau des sports"
+  bds_description: "Dans cette section du site, vous pouvez obtenir des informations sur le sport sur le campus, réserver du matériel, réserver\n le gymnase, faire des demandes au BDS etc."
+  sports:
+    football: "Football"
+    tennis: "Tennis"
+  nav:
+    information: "Informations sur le BDS"
+    leaders: "Responsables des sports"
+    sports_planning: "Planning des sports"
+    gymnasium_booking: "Réservation du gymnase"
+    stuff_booking: "Réservation du matériel"
+    make_demand: "Faire une demande"
 copyright: "Site web réalisé par les étudiants de l’IMT Atlantique Nantes"
