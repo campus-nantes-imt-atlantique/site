@@ -16,4 +16,30 @@ class BDSIndexController extends AbstractController
             'controller_name' => 'BDSIndexController',
         ]);
     }
+
+    /**
+     * @Route({
+     *     "en": "/bds/leaders",
+     *     "fr": "/bds/responsables"
+     * }, name="bds_leaders")
+     */
+    public function leaders()
+    {
+        return $this->render('bds/leaders.html.twig', [
+            'controller_name' => 'BDSIndexController',
+        ]);
+    }
+
+    /**
+     * @Route({
+     *     "en": "/bds/planning",
+     *     "fr": "/bds/planning"
+     * }, name="bds_planning")
+     */
+    public function planning()
+    {
+        return $this->render('bds/planning.html.twig', [
+            'controller_name' => 'BDSIndexController',
+        ]);
+    }
 }

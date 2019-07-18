@@ -38,4 +38,12 @@ bds:
     gymnasium_booking: "Réservation du gymnase"
     stuff_booking: "Réservation du matériel"
     make_demand: "Faire une demande"
+days:
+  monday: "Lundi"
+  thuesday: "Mardi"
+  wednesday: "Mercredi"
+  thursday: "Jeudi"
+  friday: "Vendredi"
+  saturday: "Samedi"
+  sunday: "Dimanche"
 copyright: "Site web réalisé par les étudiants de l’IMT Atlantique Nantes"

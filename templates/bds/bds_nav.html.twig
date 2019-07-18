@@ -1,9 +1,9 @@
 {% block bds_nav %}
-    <div class=" cardContainer section_nav"  data-aos="fade-right">
+    <div class=" cardContainer section_nav" >
         <div class="section_nav_title">Navigation</div>
         <a href="{{ path('bds_index') }}">{{ 'bds.nav.information' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
-        <a href="{{ path('bds_index') }}">{{ 'bds.nav.leaders' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
-        <a href="{{ path('bds_index') }}">{{ 'bds.nav.sports_planning' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('bds_leaders') }}">{{ 'bds.nav.leaders' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('bds_planning') }}">{{ 'bds.nav.sports_planning' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bds_index') }}">{{ 'bds.nav.gymnasium_booking' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bds_index') }}">{{ 'bds.nav.stuff_booking' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('contact') }}">{{ 'bds.nav.make_demand' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
