@@ -1,0 +1,7 @@
+app_logout:
+  path: /logout
+  methods: GET
+
+administration:
+  path: /admin
+  methods: GET
