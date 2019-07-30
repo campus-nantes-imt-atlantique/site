@@ -21,6 +21,10 @@ Lancer son serveur avec un accès réseau depuis un téléphone par exemple
 
 `php bin/console server:run 0.0.0.0`
 
+Penser à bien avoir un serveur mysql de lancé avec Wamp ou docker.
+
+Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7`
+
 ## Astuces 
 
 ### Logiciel 
