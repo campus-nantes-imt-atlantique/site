@@ -225,6 +225,9 @@ header {
     margin-right: -10px;
 }
 
+.disable_link {
+    opacity: 0.3;
+}
 /*                                                          INDEX                                         */
 
 .siteSection {
@@ -303,3 +306,4 @@ footer .icons *{
 .bdsDescription {
     text-align: justify;
 }
+

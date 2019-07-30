@@ -21,6 +21,11 @@ class Sport
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $leaders;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,17 @@ class Sport
     {
         $this->name = $name;
 
+        return $this;
+    }
+
+    public function getLeaders(): ?array
+    {
+        return $this->leaders;
+    }
+
+    public function setLeaders(array $leaders): self
+    {
+        $this->leaders = $leaders;
         return $this;
     }
 }

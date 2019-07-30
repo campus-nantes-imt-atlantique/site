@@ -14,12 +14,12 @@
         <div class="title">{{ 'bds.nav.leaders' | trans }}</div>
         <div class="margin-60"></div>
         <div class="container">
-            {% for sport,leaderNames in leaders %}
-                <div class="subtitle" data-aos="fade-up">{{ sport }}</div>
+            {% for sport in sports %}
+                <div class="subtitle" data-aos="fade-up">{{ sport.name }}</div>
                 <div class="margin-20"></div>
                 <div class="row" data-aos="fade-up">
-                    {% for leaderName in leaderNames %}
-                        <div class="col {{ leaderNames | length == 2 ? 's6' : 's6 offset-s3' }} center">
+                    {% for leaderName in sport.leaders %}
+                        <div class="col {{ sport.leaders | length == 2 ? 's6' : 's6 offset-s3' }} center">
                             {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : leaderName,'description' :  'email@gmail.com'} %}
                                 {{ block('photo_card', 'common/photo_card.html.twig') }}
                             {% endwith %}
