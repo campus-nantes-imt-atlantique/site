@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        - App\Entity\Sport
+        - App\Entity\User
+
+    site_name: 'IMT Campus Manager'
+    design:
+        brand_color: 'rgba(0,184,210,1)'
+
+    user:
+        display_name: true
+        display_avatar: true
+        name_property_path: 'email'

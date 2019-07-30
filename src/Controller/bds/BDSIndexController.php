@@ -2,6 +2,8 @@
 
 namespace App\Controller\bds;
 
+use App\Entity\Sport;
+use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -25,8 +27,10 @@ class BDSIndexController extends AbstractController
      */
     public function leaders()
     {
+        $sports = $this->getDoctrine()->getRepository(Sport::class)->findAll();
         return $this->render('bds/leaders.html.twig', [
             'controller_name' => 'BDSIndexController',
+            'sports' => $sports
         ]);
     }
 
