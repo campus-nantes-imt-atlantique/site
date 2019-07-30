@@ -1,6 +1,18 @@
 
 # Site Campus
 
+## Installation du projet 
+
+Avec composer.phar ou composer si installé sur pc pour installer les dépendances 
+`composer.phar install`
+Créer la base de données 
+`php bin/console doctrine:database:create`
+`php bin/console doctrine:migrations:migrate`
+Lancer le serveur
+`php bin/console server:run`
+Lancer son serveur avec un accès réseau depuis un téléphone par exemple 
+`php bin/console server:run 0.0.0.0`
+
 ## Astuces 
 
 ### Logiciel 
