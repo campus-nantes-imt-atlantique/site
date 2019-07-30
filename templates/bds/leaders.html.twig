@@ -9,15 +9,15 @@
 
 {% block body %}
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
-    <div class="section-content"  data-aos="fade-up">
+    <div class="section-content">
         <div class="tinyDivider"></div>
         <div class="title">{{ 'bds.nav.leaders' | trans }}</div>
-        <div class="margin-30"></div>
+        <div class="margin-60"></div>
         <div class="container">
             {% for sport,leaderNames in leaders %}
-                <div class="subtitle">{{ sport }}</div>
+                <div class="subtitle" data-aos="fade-up">{{ sport }}</div>
                 <div class="margin-20"></div>
-                <div class="row">
+                <div class="row" data-aos="fade-up">
                     {% for leaderName in leaderNames %}
                         <div class="col {{ leaderNames | length == 2 ? 's6' : 's6 offset-s3' }} center">
                             {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : leaderName,'description' :  'email@gmail.com'} %}
@@ -28,38 +28,6 @@
                 </div>
                 <div class="margin-60"></div>
             {% endfor %}
-            <div class="subtitle">{{ 'bds.sports.football' | trans }}</div>
-            <div class="margin-20"></div>
-            <div class="row">
-                <div class="col s6 center">
-                    {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : 'JB','description' :  'email@gmail.com'} %}
-                        {{ block('photo_card', 'common/photo_card.html.twig') }}
-                    {% endwith %}
-                </div>
-                <div class="col s6 center">
-
-                    {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : 'JB','description' :  'email@gmail.com'} %}
-                        {{ block('photo_card', 'common/photo_card.html.twig') }}
-                    {% endwith %}
-                </div>
-            </div>
-            <div class="margin-60"></div>
-            <div class="subtitle">{{ 'bds.sports.tennis' | trans }}</div>
-            <div class="margin-20"></div>
-            <div class="row">
-                <div class="col s6 center">
-                    {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : 'JB','description' :  'email@gmail.com'} %}
-                        {{ block('photo_card', 'common/photo_card.html.twig') }}
-                    {% endwith %}
-                </div>
-                <div class="col s6 center">
-
-                    {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : 'JB','description' :  'email@gmail.com'} %}
-                        {{ block('photo_card', 'common/photo_card.html.twig') }}
-                    {% endwith %}
-                </div>
-            </div>
-            <div class="margin-60"></div>
         </div>
     </div>
 {% endblock %}
