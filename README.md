@@ -3,7 +3,7 @@
 
 ## Installation du projet 
 
-Avec composer.phar ou composer si installé sur pc pour installer les dépendances 
+Avec composer.phar ou composer si installé sur votre pc pour installer les dépendances 
 
 `composer.phar install`
 
@@ -13,7 +13,7 @@ Créer la base de données
 
 `php bin/console doctrine:migrations:migrate`
 
-Charger les données dans la base ( les fixture )
+Charger les données dans la base ( les fixtures )
 
 `php bin/console doctrine:fixtures:load`
 
