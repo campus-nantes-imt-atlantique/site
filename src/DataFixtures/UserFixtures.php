@@ -22,12 +22,16 @@ class UserFixtures extends Fixture
 
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            'root'
+            'admin'
         ));
 
         $user->setRoles(["ROLE_ADMIN"]);
 
-        $user->setEmail('root@imt.fr');
+        $user->setEmail('admin@imt.fr');
+
+        $user->setUsername('admin');
+
+        $user->setEnabled(true);
 
         $manager->persist($user);
 

@@ -66,7 +66,7 @@ body {
     box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
 }
 
-.roundedGreenButton, .roundedBlueButton, .roundedWhiteButton {
+.roundedGreenButton, .roundedBlueButton, .roundedWhiteButton, .roundedBorderedWhiteButton, .roundedBorderedBlackButton{
     display: inline-block;
     cursor: pointer;
     padding-top: 10px;
@@ -83,10 +83,36 @@ body {
     transition: transform 0.3s ease-in-out;
     font-weight: bold;
 }
-.roundedGreenButton:hover, .roundedBlueButton:hover, .roundedWhiteButton:hover {
+
+.roundedGreenButton:hover, .roundedBlueButton:hover, .roundedWhiteButton:hover,.roundedBorderedWhiteButton:hover,.roundedBorderedBlackButton:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
 }
+
+.roundedBorderedWhiteButton {
+    display: block;
+    background-color: white;
+    color: #0C2340;
+    border: 1px solid #0C2340;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    padding-top: 0px;
+}
+
+.roundedBorderedBlackButton {
+    display: block;
+    background-color: #0C2340;
+    color: white;
+    border: 1px solid #0C2340;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    padding-top: 0px;
+}
+
 
 .roundedWhiteButton {
     background-color: white;
@@ -164,9 +190,6 @@ header {
     position: relative;
 }
 
-.content {
-}
-
 
 .header-background {
     width: 100%;
@@ -228,6 +251,25 @@ header {
 .disable_link {
     opacity: 0.3;
 }
+
+[type="checkbox"].reset-checkbox,
+[type="checkbox"].reset-checkbox:checked,
+[type="checkbox"].reset-checkbox:not(checked) {
+    opacity: 1;
+    position: relative;
+}
+
+[type="checkbox"].reset-checkbox+span::before,
+[type="checkbox"].reset-checkbox+span::after,
+[type="checkbox"].reset-checkbox:checked+span::before,
+[type="checkbox"].reset-checkbox:checked+span::after {
+    display: none;
+}
+
+[type="checkbox"].reset-checkbox+span:not(.lever) {
+    padding-left: 10px;
+}
+
 /*                                                          INDEX                                         */
 
 .siteSection {
@@ -238,12 +280,10 @@ header {
 
 body {
     margin: 0;
-    padding-bottom: 6rem;
     min-height: 100vh;
 }
 
 footer {
-
     clear: both;
     font-size: 0.8em;
     padding-bottom: 10px;
@@ -254,12 +294,17 @@ footer {
     text-align: center;
 }
 
-footer .icons *{
+footer .icons * {
     padding: 10px;
 }
 
 .headerButton {
     margin-right: 40px;
+}
+
+.content {
+
+    padding-bottom: 8rem;
 }
 
 /*                                                          BDS                                          */
@@ -307,3 +352,51 @@ footer .icons *{
     text-align: justify;
 }
 
+
+/*                                                          LOGIN                                          */
+
+
+body .loginContainer {
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+
+.loginBackgroundImage {
+    background-image: url("../img/background-imt.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.loginFormContainer {
+    background-color: white;
+    height: 100vh;
+    position: relative;
+}
+
+.loginFormContainer .footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.loginContainer .logoImt {
+    margin: auto;
+    display: block;
+}
+.loginContainer .title {
+    font-weight: 800;
+    font-size: 1.4em;
+    color: #0C2340;
+}
+
+.loginContainer .textField {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #0C2340;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}

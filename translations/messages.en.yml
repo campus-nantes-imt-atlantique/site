@@ -25,7 +25,8 @@ index:
   nav:
     title1: "Welcome to the Nantes campus\nof IMT ATlantique website"
     description: "On the website, you will find some convenient information, and some useful tools for facilitating student's life"
-
+login:
+  connectionToYourAccount: "Connection to your account"
 bds:
   bds_title: "Sport office (BDS)"
   bds_description: "In this section, you will find out useful information about campus sports, sport stuff booking,\n gymnasium booking, form for making demands to the BDS etc."

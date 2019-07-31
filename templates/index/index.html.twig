@@ -5,11 +5,11 @@
 {% block header %}
     <div class="navTitle margin-30">{{ 'index.nav.title' | trans| nl2br }}<br /></div>
     <div class="navDescription margin-30">{{ 'index.nav.description' | trans }}</div>
-    <a href="{{ path("contact") }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton margin-30">{{ 'index.contact_us' | trans }}</div></a>
-    <a target="_blank" href="https://www.imt-atlantique.fr/{{ app.request.locale }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton">{{ 'index.school_website' | trans }}</div></a>
+    <a href="{{ path("contact") }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton margin-20">{{ 'index.contact_us' | trans }}</div></a>
+    <a target="_blank" href="https://www.imt-atlantique.fr/{{ app.request.locale }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton  margin-20">{{ 'index.school_website' | trans }}</div></a>
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <div class="container">
         <div class="margin-40"></div>
         <div class="tinyDivider"></div>

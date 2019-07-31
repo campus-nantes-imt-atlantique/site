@@ -12,41 +12,48 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <div class="header-foreground" style="background-image: url({{ asset('img/header-background.svg') }})">
-                {{ block('nav', 'index/nav.html.twig') }}
-                <div class="container">
-                    {% block header %}{% endblock %}
+        {% block body %}
+            <header>
+                <div class="header-foreground" style="background-image: url({{ asset('img/header-background.svg') }})">
+                    {{ block('nav', 'index/nav.html.twig') }}
+                    <div class="container">
+                        {% block header %}{% endblock %}
+                    </div>
                 </div>
+            </header>
+
+            <div class="content">
+                {% block content %}
+
+                {% endblock %}
             </div>
-        </header>
 
-        <div class="content">
-            {% block body %}{% endblock %}
-        </div>
-
-        {% block javascripts %}
-            <script src="{{ asset('js/materialize.min.js') }}"></script>
-            <script src="{{ asset('js/aos.js') }}"></script>
-            <script>
-                AOS.init({
-                    once: true,
-                });
-            </script>
+            {% block javascripts %}
+                <script src="{{ asset('js/materialize.min.js') }}"></script>
+                <script src="{{ asset('js/aos.js') }}"></script>
+                <script>
+                    AOS.init({
+                        once: true,
+                    });
+                </script>
+            {% endblock %}
         {% endblock %}
     </body>
 
-    <footer class="margin-60">
-        <div class="center icons">
-            <img src="{{ asset('img/facebook.png') }}" alt="">
-            <img src="{{ asset('img/instagram.png') }}" alt="">
-            <img src="{{ asset('img/twitter.png') }}" alt="">
-        </div>
-        <div class="center">
-            Copyright © 2019 | {{ 'copyright' | trans   }}
-        </div>
-        <div class="center">
-            <a href="{{ path('administration') }}">Administration</a>
-        </div>
-    </footer>
+
+    {% block footer %}
+        <footer class="margin-60">
+            <div class="center icons">
+                <img src="{{ asset('img/facebook.png') }}" alt="">
+                <img src="{{ asset('img/instagram.png') }}" alt="">
+                <img src="{{ asset('img/twitter.png') }}" alt="">
+            </div>
+            <div class="center">
+                Copyright © 2019 | {{ 'copyright' | trans   }}
+            </div>
+            <div class="center">
+                <a href="{{ path('administration') }}">Administration</a>
+            </div>
+        </footer>
+    {% endblock %}
 </html>

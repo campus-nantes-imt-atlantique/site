@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="loginContainer">
+        <div class="row">
+            <div class="col l4 m12 s12 loginFormContainer">
+                <div class="margin-60"></div>
+                <img class="logoImt" width="250" src="{{ asset('img/imt-logo-blue.svg') }}" alt="">
+                <div class="margin-60"></div>
+                <div class="title">
+                    {{ 'login.connectionToYourAccount' | trans  }}
+                </div>
+                <div class="margin-60"></div>
+                <div class="container">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+                <footer class="footer">
+                    <div class="center icons">
+                        <img src="{{ asset('img/facebook.png') }}" alt="">
+                        <img src="{{ asset('img/instagram.png') }}" alt="">
+                        <img src="{{ asset('img/twitter.png') }}" alt="">
+                    </div>
+                    <div class="center">
+                        Copyright © 2019 | {{ 'copyright' | trans   }}
+                    </div>
+                </footer>
+            </div>
+            <div class="col l8 loginBackgroundImage hide-on-med-and-down">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

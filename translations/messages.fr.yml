@@ -25,6 +25,8 @@ index:
   nav:
     title: "Bienvenue sur le site\n du campus de Nantes"
     description: "Vous retrouverez sur ce site des informations ainsi que des fonctionnalités permettant de faciliter la vie sur le campus."
+login:
+  connectionToYourAccount: "Connexion à votre compte"
 bds:
   bds_title: "Bureau des sports"
   bds_description: "Dans cette section du site, vous pouvez obtenir des informations sur le sport sur le campus, réserver du matériel, réserver\n le gymnase, faire des demandes au BDS etc."
@@ -46,4 +48,4 @@ days:
   friday: "Vendredi"
   saturday: "Samedi"
   sunday: "Dimanche"
-copyright: "Site web réalisé par les étudiants de l’IMT Atlantique Nantes"
+copyright: "IMT Atlantique Campus Nantes"
