@@ -31,7 +31,7 @@ Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7
 
 ## Bundles utilisés
 
-EasyAdminBundle : Permet de créer une interface d'administration des entitiés doctrine pour permettre aux personnes non développeur de mettre à jour le site depuis la page http://localhost:8000/admin (Ou en cliquant dans le lien du footer). 
+EasyAdminBundle : Permet de créer une interface d'administration des entitiés doctrine pour permettre aux administrateurs non développeurs du site de mettre à jour les données du site depuis la page http://localhost:8000/admin (Ou en cliquant dans le lien du footer). 
 [Documentation EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html).
 
 FOSUserBundle : Permet de gérer la création d'utilisateur, la connexion, l'inscription avec envoi de mail etc. ([Documentation FOSUserBundle](https://symfony.com/doc/current/bundles/FOSUserBundle/index.html)).
