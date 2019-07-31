@@ -13,6 +13,10 @@ Créer la base de données
 
 `php bin/console doctrine:migrations:migrate`
 
+Charger les données dans la base ( les fixture )
+
+`php bin/console doctrine:fixtures:load`
+
 Lancer le serveur
 
 `php bin/console server:run`
