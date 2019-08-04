@@ -2,9 +2,11 @@
 
 namespace App\Controller\bds;
 
+use App\Entity\BDSContent;
 use App\Entity\Sport;
 use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BDSIndexController extends AbstractController
@@ -12,10 +14,12 @@ class BDSIndexController extends AbstractController
     /**
      * @Route("/bds", name="bds_index")
      */
-    public function index()
+    public function index(Request $request)
     {
+        $description = $this->getDoctrine()->getRepository(BDSContent::class)->findContentByKeyAndLang("description", $request->getLocale());
         return $this->render('bds/index.html.twig', [
             'controller_name' => 'BDSIndexController',
+            "description" => $description
         ]);
     }
 

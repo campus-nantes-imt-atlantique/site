@@ -1,11 +1,27 @@
 easy_admin:
     entities:
-        - App\Entity\Sport
-        - App\Entity\User
+        BDS:
+            class: App\Entity\BDSContent
+            label: 'Divers'
+        Sports:
+            class: App\Entity\Sport
+            label: "Sports de l'école"
+        User:
+            class: App\Entity\User
 
-    site_name: 'IMT Campus Manager'
+    site_name: 'Administration du site IMT Campus'
     design:
         brand_color: 'rgba(0,184,210,1)'
+        menu:
+            - { label: 'Gestion des bureaux' }
+#            - label: 'BDE'
+#              children: ['YourEntity']
+            - label: 'BDS'
+              children: ['Sports', 'BDS']
+#            - label: 'BDA'
+#              children: ['YourEntity']
+            - { label: 'Administration' }
+            - User
 
     user:
         display_name: true
