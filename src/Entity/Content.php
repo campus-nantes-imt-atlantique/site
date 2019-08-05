@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\BDSContentRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ContentRepository")
  */
-class BDSContent
+class Content
 {
     /**
      * @ORM\Id()
@@ -30,6 +30,13 @@ class BDSContent
      * @ORM\Column(type="text")
      */
     private $content_en;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Section")
+     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+     */
+    private $section;
 
     public function getId(): ?int
     {
@@ -69,5 +76,15 @@ class BDSContent
         $this->content_fr = $content_fr;
 
         return $this;
+    }
+
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    public function setSection($section): void
+    {
+        $this->section = $section;
     }
 }

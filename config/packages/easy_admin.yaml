@@ -1,11 +1,16 @@
 easy_admin:
     entities:
         BDS:
-            class: App\Entity\BDSContent
+            class: App\Entity\Content
             label: 'Divers'
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
+            list:
+                fields: ['name','sameLineSport','leaders']
+        SportPlanning:
+            class: App\Entity\SportPlanning
+            label: "Planning des sports"
         User:
             class: App\Entity\User
 
@@ -17,7 +22,7 @@ easy_admin:
 #            - label: 'BDE'
 #              children: ['YourEntity']
             - label: 'BDS'
-              children: ['Sports', 'BDS']
+              children: ['Sports', 'SportPlanning', 'BDS']
 #            - label: 'BDA'
 #              children: ['YourEntity']
             - { label: 'Administration' }

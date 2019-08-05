@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\BDSContent;
+use App\Entity\Content;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method BDSContent|null find($id, $lockMode = null, $lockVersion = null)
- * @method BDSContent|null findOneBy(array $criteria, array $orderBy = null)
- * @method BDSContent[]    findAll()
- * @method BDSContent[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Content|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Content|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Content[]    findAll()
+ * @method Content[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BDSContentRepository extends ServiceEntityRepository
+class ContentRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, BDSContent::class);
+        parent::__construct($registry, Content::class);
     }
 
     // /**

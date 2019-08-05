@@ -26,6 +26,25 @@ class Sport
      */
     private $leaders;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Sport")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sameLineSport;
+
+    /**
+     * Sport constructor.
+     * @param $name
+     * @param $leaders
+     * @param $sameLineSport
+     */
+    public function __construct($name, $leaders, $sameLineSport)
+    {
+        $this->name = $name;
+        $this->leaders = $leaders;
+        $this->sameLineSport = $sameLineSport;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,5 +71,19 @@ class Sport
     {
         $this->leaders = $leaders;
         return $this;
+    }
+
+    public function __toString() {
+        return $this->name;
+    }
+
+    public function getSameLineSport()
+    {
+        return $this->sameLineSport;
+    }
+
+    public function setSameLineSport($sameLineSport): void
+    {
+        $this->sameLineSport = $sameLineSport;
     }
 }
