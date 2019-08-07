@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,12 +24,18 @@ class Section
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Pole", mappedBy="section")
+     */
+    private $poles;
+
+    /**
      * Section constructor.
      * @param $name
      */
     public function __construct($name)
     {
         $this->name = $name;
+        $this->poles = new ArrayCollection();
     }
 
 
@@ -50,5 +58,36 @@ class Section
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Pole[]
+     */
+    public function getPoles(): Collection
+    {
+        return $this->poles;
+    }
+
+    public function addPole(Pole $pole): self
+    {
+        if (!$this->poles->contains($pole)) {
+            $this->poles[] = $pole;
+            $pole->setSection($this);
+        }
+
+        return $this;
+    }
+
+    public function removePole(Pole $pole): self
+    {
+        if ($this->poles->contains($pole)) {
+            $this->poles->removeElement($pole);
+            // set the owning side to null (unless already changed)
+            if ($pole->getSection() === $this) {
+                $pole->setSection(null);
+            }
+        }
+
+        return $this;
     }
 }

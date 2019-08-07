@@ -16,9 +16,12 @@
         <div class="margin-40"></div>
         <div class="container">
             <p class="bdsDescription">
-                {{ description }}
+                {{ description  | nl2br }}
             </p>
         <div class="tinyDivider"></div>
         </div>
+        <div class="margin-40"></div>
+        <div class="title">{{ 'members' | trans }}</div>
+        <div class="margin-40"></div>
     </div>
 {% endblock %}
