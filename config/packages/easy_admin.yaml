@@ -20,6 +20,10 @@ easy_admin:
         Poles:
             class: App\Entity\Pole
             label: "Poles"
+            form:
+                fields:
+                    - 'name'
+                    - 'section'
         User:
             class: App\Entity\User
 

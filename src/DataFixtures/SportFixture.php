@@ -23,7 +23,7 @@ class SportFixture extends Fixture
         $manager->persist($sport);
         $sport = new Sport("Basket M",["Clément André" , " Abdessamad Ghilane"],null);
         $manager->persist($sport);
-        $sport = new Sport("Danse",["Anna Rogova"],$sport);
+        $sport = new Sport("Danse",["Anna Rogova"],null);
         $manager->persist($sport);
         $sport = new Sport("Hip-Hop",["?"],$sport);
         $manager->persist($sport);
