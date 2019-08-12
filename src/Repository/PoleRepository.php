@@ -22,19 +22,17 @@ class PoleRepository extends ServiceEntityRepository
     // /**
     //  * @return Pole[] Returns an array of Pole objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findBySectionName($sectionName)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('m')
+            ->join('m.section','s')
+            ->andWhere('s.name = :sectionName')
+            ->setParameter('sectionName', $sectionName)
+            ->orderBy('m.id', 'ASC')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Pole

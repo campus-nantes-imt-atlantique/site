@@ -16,18 +16,15 @@ easy_admin:
             label: "Bureaux"
         Member:
             class: App\Entity\Member
-            label: "Membres"
+            label: "Membres des bureaux"
         Poles:
             class: App\Entity\Pole
-            label: "Poles"
-            form:
-                fields:
-                    - 'name'
-                    - 'section'
+            label: "Les pôles"
         User:
             class: App\Entity\User
+            label: "Utilisateurs"
 
-    site_name: 'Administration du site IMT Campus'
+    site_name: 'Administration du site IMT Campus Nantes'
     design:
         brand_color: 'rgba(0,184,210,1)'
         menu:

@@ -28,17 +28,6 @@ class Section
      */
     private $poles;
 
-    /**
-     * Section constructor.
-     * @param $name
-     */
-    public function __construct($name)
-    {
-        $this->name = $name;
-        $this->poles = new ArrayCollection();
-    }
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -61,9 +50,9 @@ class Section
     }
 
     /**
-     * @return Collection|Pole[]
+     * @return Pole[]
      */
-    public function getPoles(): Collection
+    public function getPoles()
     {
         return $this->poles;
     }

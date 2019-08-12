@@ -54,13 +54,15 @@ body {
 }
 
 .cardContainer {
-    display: inline-block;
     background-color: white;
+    margin: auto;
     position: relative;
+    display: block;
     border-radius: 10px;
     min-height: 100px;
     color: #0C2340;
     min-width: 100px;
+    padding-bottom: 10px;
     -webkit-box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
     box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
@@ -163,6 +165,16 @@ body {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.poleMembers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.poleMembers > div {
+    margin: 20px;
 }
 
 /*                                                      NAV                                           */
@@ -362,7 +374,6 @@ body .loginContainer {
 }
 
 
-
 .loginBackgroundImage {
     background-image: url("../img/background-imt.png");
     background-repeat: no-repeat;
@@ -374,6 +385,11 @@ body .loginContainer {
     background-color: white;
     height: 100vh;
     position: relative;
+}
+
+.loginForms {
+    margin-top: 45vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-50%);
 }
 
 .loginFormContainer .footer {

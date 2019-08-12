@@ -3,25 +3,41 @@
 {% block title %}BDS{% endblock %}
 
 {% block header %}
-    <div class="navTitle margin-30">{{ 'bds.bds_title' | trans | nl2br }}<br /></div>
+    <div class="navTitle margin-30">{{ 'bds.bds_title' | trans | nl2br }}<br/></div>
     <div class="navDescription margin-30">{{ 'bds.bds_description' | trans| nl2br }}</div>
 {% endblock %}
 
 {% block content %}
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
-    <div class="section-content"  data-aos="fade-up">
+    <div class="section-content" data-aos="fade-up">
 
+    <div class="tinyDivider"></div>
+    <div class="title">{{ 'bds.nav.information' | trans }}</div>
+    <div class="margin-40"></div>
+    <div class="container">
+        <p class="bdsDescription">
+            {{ description  | nl2br }}
+        </p>
         <div class="tinyDivider"></div>
-        <div class="title">{{ 'bds.nav.information' | trans }}</div>
-        <div class="margin-40"></div>
-        <div class="container">
-            <p class="bdsDescription">
-                {{ description  | nl2br }}
-            </p>
-        <div class="tinyDivider"></div>
-        </div>
-        <div class="margin-40"></div>
-        <div class="title">{{ 'members' | trans }}</div>
+    </div>
+    <div class="margin-40"></div>
+    <div class="title">{{ 'members' | trans }}</div>
+    <div class="margin-40"></div>
+
+    <div class="container">
+        {% for pole in poles %}
+            <div class="subtitle" data-aos="fade-up">{{ pole.name }}</div>
+            <div class="margin-20"></div>
+            <div class="poleMembers" data-aos="fade-up">
+                {% for member in pole.members %}
+                    <div>
+                        {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : member.firstName ~ ' ' ~ member.lastName, 'description':'' } %}
+                            {{ block('photo_card', 'common/photo_card.html.twig') }}
+                        {% endwith %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
         <div class="margin-40"></div>
     </div>
 {% endblock %}

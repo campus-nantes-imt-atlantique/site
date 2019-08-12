@@ -28,9 +28,13 @@ class Member
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Pole", inversedBy="members")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $pole;
+
+    public function __construct()
+    {}
+
 
     public function getId(): ?int
     {
@@ -71,5 +75,9 @@ class Member
         $this->pole = $pole;
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 }

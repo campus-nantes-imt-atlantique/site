@@ -16,19 +16,23 @@ class SectionFixture extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $bdsSection = new Section("BDS");
+        $bdsSection = new Section();
+        $bdsSection->setName("BDS");
         $manager->persist($bdsSection);
         $this->addReference(self::BDS_SECTION_REFERENCE, $bdsSection);
 
-        $bdaSection = new Section("BDA");
+        $bdaSection = new Section();
+        $bdaSection->setName("BDA");
         $manager->persist($bdaSection);
         $this->addReference(self::BDA_SECTION_REFERENCE, $bdaSection);
 
-        $bdeSection = new Section("BDE");
+        $bdeSection = new Section();
+        $bdeSection->setName("BDA");
         $manager->persist($bdeSection);
         $this->addReference(self::BDE_SECTION_REFERENCE, $bdeSection);
 
-        $jeSection = new Section("JE");
+        $jeSection = new Section();
+        $jeSection->setName("BDA");
         $manager->persist($jeSection);
         $this->addReference(self::JE_SECTION_REFERENCE, $jeSection);
 

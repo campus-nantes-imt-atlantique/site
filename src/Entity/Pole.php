@@ -23,6 +23,7 @@ class Pole
      */
     private $name;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Member", mappedBy="pole")
      */
@@ -101,4 +102,5 @@ class Pole
 
         return $this;
     }
+    
 }

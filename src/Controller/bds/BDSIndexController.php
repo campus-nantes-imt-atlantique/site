@@ -3,6 +3,8 @@
 namespace App\Controller\bds;
 
 use App\Entity\Content;
+use App\Entity\Member;
+use App\Entity\Pole;
 use App\Entity\Sport;
 use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,9 +20,11 @@ class BDSIndexController extends AbstractController
     public function index(Request $request)
     {
         $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
+        $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDS");
         return $this->render('bds/index.html.twig', [
             'controller_name' => 'BDSIndexController',
-            "description" => $description
+            "description" => $description,
+            "poles" => $poles
         ]);
     }
 
