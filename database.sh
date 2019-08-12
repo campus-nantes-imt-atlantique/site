@@ -8,4 +8,4 @@ echo "Creation du schema"
 php bin/console doctrine:schema:create
 
 echo "Load fixtures"
-echo "yes\n" | php bin/console doctrine:fixtures:load
+php bin/console doctrine:fixtures:load
