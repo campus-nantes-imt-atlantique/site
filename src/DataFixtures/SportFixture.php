@@ -8,6 +8,13 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class SportFixture extends Fixture
 {
+
+
+    public const TENNIS_SPORT = 'tennis-sport';
+    public const FOOT_M_SPORT = 'foot-m-sport';
+    public const FOOT_F_SPORT = 'foot-f-sport';
+    public const BADMINTON_SPORT = 'badminton-sport';
+
     public function load(ObjectManager $manager)
     {
 
@@ -16,6 +23,7 @@ class SportFixture extends Fixture
         $sport = new Sport("Athlétisme cross",["Adrien Delbroeuve"],$sport);
         $manager->persist($sport);
         $sport = new Sport("Badminton",["Adrien Delbroeuve"],null);
+        $this->addReference(SportFixture::BADMINTON_SPORT,$sport);
         $manager->persist($sport);
         $sport = new Sport("Escalade",["Ismaël Benkirane"],$sport);
         $manager->persist($sport);
@@ -32,8 +40,10 @@ class SportFixture extends Fixture
         $sport = new Sport("Fitness",["Anna Rogova"],$sport);
         $manager->persist($sport);
         $sport = new Sport("Foot F",["Manon Geniesse" , "Maeliss Guibert"],null);
+        $this->addReference(SportFixture::FOOT_F_SPORT,$sport);
         $manager->persist($sport);
         $sport = new Sport("Foot M", ["Nicolas Chauveau" , "Ilias Amal"],null);
+        $this->addReference(SportFixture::FOOT_M_SPORT,$sport);
         $manager->persist($sport);
         $sport = new Sport("Golf",["Stanislas Roger" , "Mathieu Cazes"],null);
         $manager->persist($sport);
@@ -48,6 +58,7 @@ class SportFixture extends Fixture
         $sport = new Sport("Boxe",["Thomas Herbelin"],null);
         $manager->persist($sport);
         $sport = new Sport("Tennis",["Baptiste Guimard"],$sport);
+        $this->addReference(SportFixture::TENNIS_SPORT,$sport);
         $manager->persist($sport);
         $sport = new Sport("Natation",["Mathieu Cazes"],null);
         $manager->persist($sport);

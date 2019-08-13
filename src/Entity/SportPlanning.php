@@ -38,6 +38,11 @@ class SportPlanning
      */
     private $color;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $day;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,5 +91,17 @@ class SportPlanning
     public function setSport($sport): void
     {
         $this->sport = $sport;
+    }
+
+    public function getDay(): ?string
+    {
+        return $this->day;
+    }
+
+    public function setDay(string $day): self
+    {
+        $this->day = $day;
+
+        return $this;
     }
 }
