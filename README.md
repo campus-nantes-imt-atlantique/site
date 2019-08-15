@@ -40,6 +40,9 @@ EasyAdminBundle : Permet de créer une interface d'administration des entitiés 
 [Documentation EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html).
 Comme indiqué dans la documentation, pour modifier les paramètres du Bundle ou ajouter vos entités il faut se diriger dans config/packages/easy_admin.yaml
 
+login:    `admin`
+password: `admin`
+
 FOSUserBundle : Permet de gérer la création d'utilisateur, la connexion, l'inscription etc. ([Documentation FOSUserBundle](https://symfony.com/doc/current/bundles/FOSUserBundle/index.html)).
 
 ## Astuces 
