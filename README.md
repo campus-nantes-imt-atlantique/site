@@ -9,11 +9,14 @@ Avec composer.phar ou composer si installé sur votre pc pour installer les dép
 
 Créer la base de données 
 
+`php bin/console doctrine:database:drop --force`
+
 `php bin/console doctrine:database:create`
 
-`php bin/console doctrine:migrations:migrate`
+Création du schema
+`php bin/console doctrine:schema:create`
 
-Charger les données dans la base ( les fixtures )
+Charger les données dans la base (les fixtures)
 
 `php bin/console doctrine:fixtures:load` - Entrer yes
 
