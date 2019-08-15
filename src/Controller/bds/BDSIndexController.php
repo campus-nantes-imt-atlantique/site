@@ -6,6 +6,8 @@ use App\Entity\Content;
 use App\Entity\Member;
 use App\Entity\Pole;
 use App\Entity\Sport;
+use App\Entity\SportPlanning;
+use App\Repository\SportPlanningRepository;
 use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -66,6 +68,10 @@ class BDSIndexController extends AbstractController
      */
     public function planning()
     {
+        $mondaySports = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy(
+            ['day' => 'Keyboard'],
+            ['price' => 'ASC']
+        );
         return $this->render('bds/planning.html.twig', [
             'controller_name' => 'BDSIndexController',
         ]);

@@ -39,9 +39,10 @@ class SportPlanning
     private $color;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Day", inversedBy="sportPlannings")
      */
     private $day;
+
 
     public function getId(): ?int
     {
@@ -93,15 +94,16 @@ class SportPlanning
         $this->sport = $sport;
     }
 
-    public function getDay(): ?string
+    public function getDay(): ?Day
     {
         return $this->day;
     }
 
-    public function setDay(string $day): self
+    public function setDay(?Day $day): self
     {
         $this->day = $day;
 
         return $this;
     }
+
 }

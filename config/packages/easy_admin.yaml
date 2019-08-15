@@ -1,4 +1,6 @@
 easy_admin:
+    formats:
+      date: 'D'
     entities:
         BDS:
             class: App\Entity\Content
