@@ -17,6 +17,7 @@
             <div class="cardContainer planningTable">
                 <table border="1" width="100%">
                     <thead>
+
                     <tr>
                         <th class="firstTd"></th>
                         <th class="center" colspan="4">17h</th>
@@ -28,6 +29,19 @@
                     </tr>
                     </thead>
                     <tbody>
+{#                        {% for sportsCalendarLine in mondaySports %}#}
+{#                            {% for sport in sportsCalendarLine %}#}
+{#                                {{ sport | minutesBlocNumber(30) }}#}
+{#                            {% endfor %}#}
+{#                        {% endfor %}#}
+                        {% for i in 0..mondaySports|length %}
+                            <tr class="{% i == 0 ? "innerTr" : "" %}">
+
+                                {% for i in 0..mondaySports|length %}
+
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
                         <tr class="innerTr">
                             <td rowspan="2" class="firstTd center">{{ 'days.monday' | trans }}</td>
                             <td class="center"></td>

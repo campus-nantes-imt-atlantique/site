@@ -19,22 +19,19 @@ class SportPlanningRepository extends ServiceEntityRepository
         parent::__construct($registry, SportPlanning::class);
     }
 
-    // /**
-    //  * @return SportPlanning[] Returns an array of SportPlanning objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByEnglishDay($englishDay)
     {
+        $englishDay = ucwords($englishDay);
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+            ->join("s.day","d")
+            ->andWhere('d.name_en = :day')
+            ->setParameter('day', $englishDay)
+            ->orderBy('s.start', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?SportPlanning

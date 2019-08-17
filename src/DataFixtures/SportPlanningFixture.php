@@ -24,6 +24,14 @@ class SportPlanningFixture extends Fixture implements DependentFixtureInterface
         $manager->persist($sportPlanning);
 
         $sportPlanning = new SportPlanning();
+        $sportPlanning->setStart(DateTime::createFromFormat('H:i:s', '19:00:00'));
+        $sportPlanning->setEnd(DateTime::createFromFormat('H:i:s', '20:30:00'));
+        $sportPlanning->setColor('#D15E5E');
+        $sportPlanning->setDay($this->getReference(DayFixture::MONDAY_REFERENCE));
+        $sportPlanning->setSport($this->getReference(SportFixture::BADMINTON_SPORT));
+        $manager->persist($sportPlanning);
+
+        $sportPlanning = new SportPlanning();
         $sportPlanning->setStart(DateTime::createFromFormat('H:i:s', '20:00:00'));
         $sportPlanning->setEnd(DateTime::createFromFormat('H:i:s', '22:00:00'));
         $sportPlanning->setColor('#5E79D1');
@@ -31,13 +39,6 @@ class SportPlanningFixture extends Fixture implements DependentFixtureInterface
         $sportPlanning->setSport($this->getReference(SportFixture::FOOT_M_SPORT));
         $manager->persist($sportPlanning);
 
-        $sportPlanning = new SportPlanning();
-        $sportPlanning->setStart(DateTime::createFromFormat('H:i:s', '19:00:00'));
-        $sportPlanning->setEnd(DateTime::createFromFormat('H:i:s', '20:30:00'));
-        $sportPlanning->setColor('#D15E5E');
-        $sportPlanning->setDay($this->getReference(DayFixture::MONDAY_REFERENCE));
-        $sportPlanning->setSport($this->getReference(SportFixture::BADMINTON_SPORT));
-        $manager->persist($sportPlanning);
 
         $manager->flush();
     }

@@ -68,12 +68,40 @@ class BDSIndexController extends AbstractController
      */
     public function planning()
     {
-        $mondaySports = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy(
-            ['day' => 'Keyboard'],
-            ['price' => 'ASC']
-        );
+        $mondaySportsResult = array();
+        $mondaySports = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay("Monday");
+        $shift = 0;
+        $start = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['start' => 'ASC'])[0]->getStart()->format("H:i");
+        $end = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['end' => 'DESC'])[0]->getEnd()->format("H:i");
+        echo $start;
+        echo $end;
+        foreach ($mondaySports as $mondaySport) {
+            if( count($mondaySportsResult) == $shift ) {
+                $mondaySportsResult[$shift] = array();
+                array_push($mondaySportsResult[$shift], $mondaySport);
+                continue;
+            }
+            $sportAlreadyPushed = false;
+            for ($i = 0 ; $i < $shift; $i++) {
+                if ($mondaySport->getStart() >= $mondaySportsResult[$i][count($mondaySportsResult[$i]) - 1]->getEnd() ) {
+                    array_push($mondaySportsResult[$i], $mondaySport);
+                    $sportAlreadyPushed = true;
+                    break;
+                }
+            }
+            if (!$sportAlreadyPushed) {
+                $shift++;
+                $mondaySportsResult[$shift] = array();
+                array_push($mondaySportsResult[$shift], $mondaySport);
+            }
+        }
+
+
         return $this->render('bds/planning.html.twig', [
             'controller_name' => 'BDSIndexController',
+            'mondaySports' => $mondaySportsResult
         ]);
     }
+
+
 }
