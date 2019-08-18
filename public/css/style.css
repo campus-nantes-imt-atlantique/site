@@ -321,12 +321,15 @@ footer .icons * {
 
 /*                                                          BDS                                          */
 
+.planningTable {
+    padding: 0px;
+}
 .planningTable table {
     table-layout:fixed;
 }
 
 .planningTable td {
-    padding: 0px;
+    padding: 2px;
     padding-top: 8px;
     padding-bottom: 8px;
     height: 30px;

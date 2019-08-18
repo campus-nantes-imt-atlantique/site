@@ -26,7 +26,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {% set counter = 0 %}
                         {% for i in 0..mondaySports|length-1 %}
                             <tr class="{{  ((i == 0) or (i == 1)) ? "innerTr" : "" }}">
                                 {% if i == 0 %}
@@ -34,9 +33,8 @@
                                     <td colspan="2" class="center">
                                 {% endif %}
                                 {% set offsetJ = 0 %}
+                                {% set counter = 0 %}
                                 {% for j in 0..minutesNumber/minutesInterval %}
-                                        {{ mondaySports[i][counter].start|toMinutesSince(startDate) }}{{ j*minutesInterval }}<br/>
-{#                                        {{ mondaySports[0][1].start|toMinutesSince(startDate) }}#}
                                     {% if mondaySports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
                                         <td colspan="{{ mondaySports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
                                             <div class="sportReservation">
@@ -49,8 +47,7 @@
                                             </div>
                                         </td>
                                         {% set offsetJ = mondaySports[i][counter] | minutesBlocNumber(minutesInterval) %}
-                                        {% if  counter + 1 < mondaySports[i] | length %}
-                                            {{ "counter++" ~ i }}
+                                        {% if  (counter + 1) < (mondaySports[i] | length) %}
                                             {% set counter = counter + 1 %}
                                         {% endif %}
                                     {% elseif offsetJ == 0 %}
