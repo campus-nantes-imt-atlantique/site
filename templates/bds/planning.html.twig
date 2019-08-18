@@ -21,22 +21,11 @@
                     <tr>
                         <th class="firstTd"></th>
                         {% for j in 0..minutesNumber/60 %}
-                            <th class="center" colspan="{{ 60 / minutesInterval }}">17h</th>
+                            <th class="center" colspan="{{ 60 / minutesInterval }}">{{ startDate | date_modify("+#{j} hour") | date("H:i") }}</th>
                         {% endfor %}
-                        {#<th class="center" colspan="4">17h</th>#}
-                        {#<th class="center" colspan="4">18h</th>#}
-                        {#<th class="center" colspan="4">19h</th>#}
-                        {#<th class="center" colspan="4">20h</th>#}
-                        {#<th class="center" colspan="4">21h</th>#}
-                        {#<th class="center" colspan="4">22h</th>#}
                     </tr>
                     </thead>
                     <tbody>
-{#                        {% for sportsCalendarLine in mondaySports %}#}
-{#                            {% for sport in sportsCalendarLine %}#}
-{#                                {{ sport | minutesBlocNumber(30) }}#}
-{#                            {% endfor %}#}
-{#                        {% endfor %}#}
                         {% set counter = 0 %}
                         {% for i in 0..mondaySports|length-1 %}
                             <tr class="{{  ((i == 0) or (i == 1)) ? "innerTr" : "" }}">
@@ -46,8 +35,8 @@
                                 {% endif %}
                                 {% set offsetJ = 0 %}
                                 {% for j in 0..minutesNumber/minutesInterval %}
-                                        {#{{ mondaySports[i][counter].start|toMinutesSince(startDate) }}#}
-                                        {{ mondaySports[0][1].start|toMinutesSince(startDate) }}
+                                        {{ mondaySports[i][counter].start|toMinutesSince(startDate) }}{{ j*minutesInterval }}<br/>
+{#                                        {{ mondaySports[0][1].start|toMinutesSince(startDate) }}#}
                                     {% if mondaySports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
                                         <td colspan="{{ mondaySports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
                                             <div class="sportReservation">
@@ -62,7 +51,7 @@
                                         {% set offsetJ = mondaySports[i][counter] | minutesBlocNumber(minutesInterval) %}
                                         {% if  counter + 1 < mondaySports[i] | length %}
                                             {{ "counter++" ~ i }}
-                                            {#{% set counter = counter + 1 %}#}
+                                            {% set counter = counter + 1 %}
                                         {% endif %}
                                     {% elseif offsetJ == 0 %}
                                         <td class="center"></td>
