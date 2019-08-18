@@ -2,6 +2,7 @@
 
 namespace App\Controller\bds;
 
+use App\DataFixtures\SportPlanningFixture;
 use App\Entity\Content;
 use App\Entity\Member;
 use App\Entity\Pole;
@@ -10,6 +11,7 @@ use App\Entity\SportPlanning;
 use App\Repository\SportPlanningRepository;
 use App\Repository\SportRepository;
 use App\Utils\DateUtils;
+use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,40 +71,57 @@ class BDSIndexController extends AbstractController
      */
     public function planning(DateUtils $dateUtils)
     {
-        $mondaySportsResult = array();
-        $mondaySports = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay("Monday");
-        $shift = 0;
+        $weekDays = array("Monday","Tuesday","Wednesday","Thurday","Friday","Saturday","Sunday");
         $start = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['start' => 'ASC'])[0]->getStart();
         $end = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['end' => 'DESC'])[0]->getEnd();
         $minutesNumber = $dateUtils->getMinutesInterval($end,$start);
-        foreach ($mondaySports as $mondaySport) {
-            if( count($mondaySportsResult) == $shift ) {
-                $mondaySportsResult[$shift] = array();
-                array_push($mondaySportsResult[$shift], $mondaySport);
+        $sportsPerDays = array();
+        foreach ($weekDays as $weekDayName) {
+            $weekDay = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName);
+            $sportsPerDays[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDay);
+        }
+        return $this->render('bds/planning.html.twig', [
+            'controller_name' => 'BDSIndexController',
+            'sportsPerDays' => $sportsPerDays,
+            'minutesNumber' => $minutesNumber,
+            'minutesNumberInOneHour' => 60,
+            'minutesInterval' => 15,
+            'startDate'  => $start,
+            'endDate' => $end
+        ]);
+    }
+
+    /**
+     * @param $sports
+     * @param array $sportsResult
+     * @param int $shift
+     * @return array
+     */
+    public function sortPlanningWithoutConflicts($sports): array
+    {
+        $sportsResult = array();
+        $shift = 0;
+        foreach ($sports as $sport) {
+            if (count($sportsResult) == $shift) {
+                $sportsResult[$shift] = array();
+                array_push($sportsResult[$shift], $sport);
                 continue;
             }
             $sportAlreadyPushed = false;
-            for ($i = 0 ; $i < $shift; $i++) {
-                if ($mondaySport->getStart() >= $mondaySportsResult[$i][count($mondaySportsResult[$i]) - 1]->getEnd() ) {
-                    array_push($mondaySportsResult[$i], $mondaySport);
+            for ($i = 0; $i < $shift; $i++) {
+                if ($sport->getStart() >= $sportsResult[$i][count($sportsResult[$i]) - 1]->getEnd()) {
+                    array_push($sportsResult[$i], $sport);
                     $sportAlreadyPushed = true;
                     break;
                 }
             }
             if (!$sportAlreadyPushed) {
                 $shift++;
-                $mondaySportsResult[$shift] = array();
-                array_push($mondaySportsResult[$shift], $mondaySport);
+                $sportsResult[$shift] = array();
+                array_push($sportsResult[$shift], $sport);
             }
         }
-        return $this->render('bds/planning.html.twig', [
-            'controller_name' => 'BDSIndexController',
-            'mondaySports' => $mondaySportsResult,
-            'minutesNumber' => $minutesNumber,
-            'minutesInterval' => 15,
-            'startDate'  => $start,
-            'endDate' => $end
-        ]);
+        return $sportsResult;
     }
 
 

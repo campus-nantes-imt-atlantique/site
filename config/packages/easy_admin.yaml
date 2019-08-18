@@ -9,7 +9,7 @@ easy_admin:
             class: App\Entity\Sport
             label: "Sports de l'école"
             list:
-                fields: ['name','sameLineSport','leaders']
+                fields: ['name','sameLineSport','leaders','color']
         SportPlanning:
             class: App\Entity\SportPlanning
             label: "Planning des sports"

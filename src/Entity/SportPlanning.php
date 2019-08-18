@@ -34,11 +34,6 @@ class SportPlanning
     private $sport;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $color;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Day", inversedBy="sportPlannings")
      */
     private $day;
@@ -72,18 +67,6 @@ class SportPlanning
 
         return $this;
     }
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): self
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
     public function getSport()
     {
         return $this->sport;

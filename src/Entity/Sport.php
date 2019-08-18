@@ -33,6 +33,11 @@ class Sport
     private $sameLineSport;
 
     /**
+     * @ORM\Column(type="string", length=7)
+     */
+    private $color;
+
+    /**
      * Sport constructor.
      * @param $name
      * @param $leaders
@@ -85,5 +90,17 @@ class Sport
     public function setSameLineSport($sameLineSport): void
     {
         $this->sameLineSport = $sameLineSport;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
     }
 }
