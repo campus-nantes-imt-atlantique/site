@@ -1,6 +1,7 @@
 <?php
 namespace App\Twig;
 
+use App\Utils\DateUtils;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -10,19 +11,25 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('minutesBlocNumber', [$this, 'minutesBlocNumber']),
+            new TwigFilter('toMinutesSince', [$this, 'toMinutesSince']),
+            new TwigFilter('toMinutes', [$this, 'toMinutes']),
         ];
     }
 
     public function minutesBlocNumber(\App\Entity\SportPlanning $sportPlanning,int $minutesInterval)
     {
-        $startDateTime = $sportPlanning->getStart()->format("H:i");
-        $endDateTime = $sportPlanning->getEnd()->format("H:i");
+        $dateUtils = new DateUtils();
+        return $dateUtils->getMinutesInterval($sportPlanning->getEnd(),$sportPlanning->getStart()) / $minutesInterval;
+    }
 
-        sscanf($startDateTime,"%d:%d", $startHours, $startMinutes);
-        sscanf($endDateTime,"%d:%d", $endHours, $endMinutes);
-
-        $startMinutes = intval($startHours) * 60 + intval($startMinutes);
-        $endMinutes = intval($endHours) * 60 + intval($endMinutes);
-        return ($endMinutes - $startMinutes) / $minutesInterval;
+    public function toMinutesSince(\DateTime $dateTime,\DateTime $since)
+    {
+        $dateUtils = new DateUtils();
+        return $dateUtils->getMinutes($dateTime) - $dateUtils->getMinutes($since);
+    }
+    public function toMinutes(\DateTime $dateTime)
+    {
+        $dateUtils = new DateUtils();
+        return $dateUtils->getMinutes($dateTime) ;
     }
 }

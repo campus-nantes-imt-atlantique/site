@@ -20,12 +20,15 @@
 
                     <tr>
                         <th class="firstTd"></th>
-                        <th class="center" colspan="4">17h</th>
-                        <th class="center" colspan="4">18h</th>
-                        <th class="center" colspan="4">19h</th>
-                        <th class="center" colspan="4">20h</th>
-                        <th class="center" colspan="4">21h</th>
-                        <th class="center" colspan="4">22h</th>
+                        {% for j in 0..minutesNumber/60 %}
+                            <th class="center" colspan="{{ 60 / minutesInterval }}">17h</th>
+                        {% endfor %}
+                        {#<th class="center" colspan="4">17h</th>#}
+                        {#<th class="center" colspan="4">18h</th>#}
+                        {#<th class="center" colspan="4">19h</th>#}
+                        {#<th class="center" colspan="4">20h</th>#}
+                        {#<th class="center" colspan="4">21h</th>#}
+                        {#<th class="center" colspan="4">22h</th>#}
                     </tr>
                     </thead>
                     <tbody>
@@ -34,104 +37,131 @@
 {#                                {{ sport | minutesBlocNumber(30) }}#}
 {#                            {% endfor %}#}
 {#                        {% endfor %}#}
-                        {% for i in 0..mondaySports|length %}
-                            <tr class="{% i == 0 ? "innerTr" : "" %}">
-
-                                {% for i in 0..mondaySports|length %}
-
+                        {% set counter = 0 %}
+                        {% for i in 0..mondaySports|length-1 %}
+                            <tr class="{{  ((i == 0) or (i == 1)) ? "innerTr" : "" }}">
+                                {% if i == 0 %}
+                                    <td rowspan="{{ mondaySports|length }}" class="firstTd center">{{ 'days.monday' | trans }}</td>
+                                    <td colspan="2" class="center">
+                                {% endif %}
+                                {% set offsetJ = 0 %}
+                                {% for j in 0..minutesNumber/minutesInterval %}
+                                        {#{{ mondaySports[i][counter].start|toMinutesSince(startDate) }}#}
+                                        {{ mondaySports[0][1].start|toMinutesSince(startDate) }}
+                                    {% if mondaySports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
+                                        <td colspan="{{ mondaySports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
+                                            <div class="sportReservation">
+                                                <div class="sportReservationSportName">
+                                                    {{ mondaySports[i][counter].sport.name }}
+                                                </div>
+                                                <div class="sportReservationTime">
+                                                    {{ mondaySports[i][counter].start | date("H:i") }} - {{mondaySports[i][counter].end| date("H:i") }}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {% set offsetJ = mondaySports[i][counter] | minutesBlocNumber(minutesInterval) %}
+                                        {% if  counter + 1 < mondaySports[i] | length %}
+                                            {{ "counter++" ~ i }}
+                                            {#{% set counter = counter + 1 %}#}
+                                        {% endif %}
+                                    {% elseif offsetJ == 0 %}
+                                        <td class="center"></td>
+                                    {% else %}
+                                        {% set offsetJ = offsetJ - 1 %}
+                                    {% endif %}
                                 {% endfor %}
                             </tr>
                         {% endfor %}
-                        <tr class="innerTr">
-                            <td rowspan="2" class="firstTd center">{{ 'days.monday' | trans }}</td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="6" class="center">
-                                <div class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        TENNIS
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        17h30 - 18h30
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
-                        <tr>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="8" class="center">
-                                <div style="background-color: #5E79D1 " class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        FOOTBALL
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        19h00 - 21h00
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
-                        <tr class="innerTr">
-                            <td rowspan="2" class="firstTd center">{{ 'days.thuesday' | trans }}</td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="6" class="center">
-                                <div style="background-color: #D15EB2" class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        TIR A L'ARC
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        18h30 - 20h
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
+                        {#<tr class="innerTr">#}
+                            {#<td rowspan="2" class="firstTd center">{{ 'days.monday' | trans }}</td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td colspan="6" class="center">#}
+                                {#<div class="sportReservation">#}
+                                    {#<div class="sportReservationSportName">#}
+                                        {#TENNIS#}
+                                    {#</div>#}
+                                    {#<div class="sportReservationTime">#}
+                                        {#17h30 - 18h30#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td colspan="8" class="center">#}
+                                {#<div style="background-color: #5E79D1 " class="sportReservation">#}
+                                    {#<div class="sportReservationSportName">#}
+                                        {#FOOTBALL#}
+                                    {#</div>#}
+                                    {#<div class="sportReservationTime">#}
+                                        {#19h00 - 21h00#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                        {#</tr>#}
+                        {#<tr class="innerTr">#}
+                            {#<td rowspan="2" class="firstTd center">{{ 'days.thuesday' | trans }}</td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td colspan="6" class="center">#}
+                                {#<div style="background-color: #D15EB2" class="sportReservation">#}
+                                    {#<div class="sportReservationSportName">#}
+                                        {#TIR A L'ARC#}
+                                    {#</div>#}
+                                    {#<div class="sportReservationTime">#}
+                                        {#18h30 - 20h#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                            {#<td class="center"></td>#}
+                        {#</tr>#}
                     </tbody>
                 </table>
             </div>

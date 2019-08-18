@@ -326,7 +326,9 @@ footer .icons * {
 }
 
 .planningTable td {
-    padding: 8px;
+    padding: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     height: 30px;
 }
 
