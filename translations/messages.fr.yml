@@ -1,5 +1,5 @@
 nav:
-  bde: "Bureau des étudiants"
+  bde: "Bureau des élèves"
   bds: "Bureau des sports"
   bda: "Bureau des arts"
   je: "Junior entreprise"
@@ -40,6 +40,13 @@ bds:
     gymnasium_booking: "Réservation du gymnase"
     stuff_booking: "Réservation du matériel"
     make_demand: "Faire une demande"
+bde:
+  bde_title: "Bureau des élèves"
+  bde_description: "Bienvenue sur la page du BDE"
+  nav:
+    information: "Informations sur le BDE"
+    events: "Événements"
+    make_demand: "Faire une demande"
 days:
   monday: "Lundi"
   thuesday: "Mardi"
@@ -51,3 +58,4 @@ days:
 copyright: "IMT Atlantique Campus Nantes"
 and: "et"
 members: "Membres"
+events_to_come: "Événements à venir"

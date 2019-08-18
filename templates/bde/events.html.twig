@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BDE{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'bde.bde_title' | trans | nl2br }}<br /></div>
+    <div class="navDescription margin-30">{{ 'bde.bde_description' | trans| nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    {{ block('bde_nav','bde/bde_nav.html.twig') }}
+    <div class="section-content">
+        <div class="title">{{ 'events_to_come' | trans }}</div>
+        <div class="margin-20"></div>
+
+        <div class="container">
+            {% if events|length == 0 %}
+                <div class="tinyDivider"></div>
+                    <div class="margin-20"></div>
+                    <p class="subtitle">
+                        Aucun événement à venir...
+                    </p>
+                    <div class="margin-20"></div>
+            {% else %}
+                {% for event in events %}
+                    <div class="tinyDivider"></div>
+                    <div class="margin-20"></div>
+                    <div class="event" data-aos="fade-up">
+
+                                {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : event.getName(lang), 'description':event.getDescription(lang), 'date':event.getDayMonth(lang), 'schedule':event.getSchedule(lang) } %}
+                                    {{ block('event_card', 'common/event_card.html.twig') }}
+                                {% endwith %}
+
+                    </div>
+                    <div class="margin-20"></div>
+                {% endfor %}
+            {% endif %}
+            <div class="margin-40"></div>
+        </div>
+
+    </div>
+{% endblock %}

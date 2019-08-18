@@ -1,6 +1,4 @@
 easy_admin:
-    formats:
-      date: 'D'
     entities:
         BDS:
             class: App\Entity\Content
@@ -25,19 +23,29 @@ easy_admin:
         User:
             class: App\Entity\User
             label: "Utilisateurs"
+        Event:
+            class: App\Entity\Event
+            label: "Événements"
+        TypeProductBar:
+            class: App\Entity\TypeProductBar
+            label: "Catégories de produits"
+        ProductBar:
+            class: App\Entity\ProductBar
+            label: "Produits en vente"
 
     site_name: 'Administration du site IMT Campus Nantes'
     design:
         brand_color: 'rgba(0,184,210,1)'
         menu:
             - { label: 'Gestion des bureaux' }
-#            - label: 'BDE'
-#              children: ['YourEntity']
+            - label: 'BDE'
+              children: ['ProductBar', 'TypeProductBar']
             - label: 'BDS'
               children: ['Sports', 'SportPlanning', 'BDS']
 #            - label: 'BDA'
 #              children: ['YourEntity']
             - Sections
+            - Event
             - Poles
             - Member
             - { label: 'Administration' }
