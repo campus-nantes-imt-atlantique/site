@@ -6,7 +6,7 @@ use App\Entity\Content;
 use App\Entity\Member;
 use App\Entity\Pole;
 use App\Entity\Event;
-use App\Repository\SportRepository;
+use App\Entity\BarProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +25,24 @@ class BDEIndexController extends AbstractController
             'controller_name' => 'BDEIndexController',
             "description" => $description,
             "poles" => $poles
+        ]);
+    }
+
+    /**
+     * @Route({
+     *     "en": "/bde/bar",
+     *     "fr": "/bde/traq"
+     * }, name="bde_bar")
+     */
+    public function bar(Request $request)
+    {
+        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
+        $producttypes = $this->getDoctrine()->getRepository(BarProductType::class)->findAll();
+        return $this->render('bde/bar.html.twig', [
+            'controller_name' => 'BDEIndexController',
+            "description" => $description,
+            "lang" => $request->getLocale(),
+            "product_types" => $producttypes
         ]);
     }
 

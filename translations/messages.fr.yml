@@ -43,10 +43,12 @@ bds:
 bde:
   bde_title: "Bureau des élèves"
   bde_description: "Bienvenue sur la page du BDE"
+  bar: "Le Traq'"
   nav:
     information: "Informations sur le BDE"
     events: "Événements"
     make_demand: "Faire une demande"
+    bar: "Le Traq'"
 days:
   monday: "Lundi"
   thuesday: "Mardi"

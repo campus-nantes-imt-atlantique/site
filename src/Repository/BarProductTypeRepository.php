@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\TypeProductBar;
+use App\Entity\BarProductType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method TypeProductBar|null find($id, $lockMode = null, $lockVersion = null)
- * @method TypeProductBar|null findOneBy(array $criteria, array $orderBy = null)
- * @method TypeProductBar[]    findAll()
- * @method TypeProductBar[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method BarProductType|null find($id, $lockMode = null, $lockVersion = null)
+ * @method BarProductType|null findOneBy(array $criteria, array $orderBy = null)
+ * @method BarProductType[]    findAll()
+ * @method BarProductType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypeProductBarRepository extends ServiceEntityRepository
+class BarProductTypeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, TypeProductBar::class);
+        parent::__construct($registry, BarProductType::class);
     }
 
     // /**
-    //  * @return TypeProductBar[] Returns an array of TypeProductBar objects
+    //  * @return BarProductType[] Returns an array of BarProductType objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TypeProductBarRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TypeProductBar
+    public function findOneBySomeField($value): ?BarProductType
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

@@ -27,10 +27,10 @@ easy_admin:
             class: App\Entity\Event
             label: "Événements"
         TypeProductBar:
-            class: App\Entity\TypeProductBar
+            class: App\Entity\BarProductType
             label: "Catégories de produits"
         ProductBar:
-            class: App\Entity\ProductBar
+            class: App\Entity\BarProduct
             label: "Produits en vente"
 
     site_name: 'Administration du site IMT Campus Nantes'

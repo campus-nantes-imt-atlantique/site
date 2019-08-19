@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductBarRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BarProductRepository")
  */
-class ProductBar
+class BarProduct
 {
     /**
      * @ORM\Id()
@@ -27,12 +27,12 @@ class ProductBar
     private $name_en;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description_fr;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description_en;
 
@@ -42,10 +42,15 @@ class ProductBar
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeProductBar")
+     * @ORM\ManyToOne(targetEntity="App\Entity\BarProductType")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $available;
 
     public function getId(): ?int
     {
@@ -75,6 +80,15 @@ class ProductBar
 
         return $this;
     }
+    
+    public function getName(string $lang): ?string
+    {
+        if($lang=='fr'){
+            return $this->name_fr;
+        }else{
+            return $this->name_en;
+        }
+    }
 
     public function getDescriptionFr(): ?string
     {
@@ -99,10 +113,24 @@ class ProductBar
 
         return $this;
     }
+    
+    public function getDescription(string $lang): ?string
+    {
+        if($lang=='fr'){
+            return $this->description_fr;
+        }else{
+            return $this->description_en;
+        }
+    }
 
     public function getPrice(): ?float
     {
         return $this->price;
+    }
+
+    public function getFormatedPrice(): ?string
+    {
+        return number_format($this->price, 2,',',' ').' €';
     }
 
     public function setPrice(float $price): self
@@ -112,15 +140,30 @@ class ProductBar
         return $this;
     }
 
-    public function getType(): ?TypeProductBar
+    public function getType(): ?BarProductType
     {
         return $this->type;
     }
 
-    public function setType(?TypeProductBar $type): self
+    public function setType(?BarProductType $type): self
     {
         $this->type = $type;
 
         return $this;
+    }
+
+    public function getAvailable(): ?bool
+    {
+        return $this->available;
+    }
+
+    public function setAvailable(bool $available): self
+    {
+        $this->avaible = $available;
+
+        return $this;
+    }
+    public function __toString() {
+        return $this->name_en;
     }
 }

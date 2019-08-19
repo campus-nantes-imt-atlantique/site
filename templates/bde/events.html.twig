@@ -25,12 +25,13 @@
                 {% for event in events %}
                     <div class="tinyDivider"></div>
                     <div class="margin-20"></div>
-                    <div class="event" data-aos="fade-up">
+                    <div class="blockCards" data-aos="fade-up">
+                        <div class="cardContainer largeCard center">
 
-                                {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : event.getName(lang), 'description':event.getDescription(lang), 'date':event.getDayMonth(lang), 'schedule':event.getSchedule(lang) } %}
-                                    {{ block('event_card', 'common/event_card.html.twig') }}
+                                {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : event.getName(lang), 'description':event.getDescription(lang), 'subtitle1':event.getDayMonth(lang), 'subtitle2':event.getSchedule(lang) } %}
+                                    {{ block('large_card', 'common/large_card.html.twig') }}
                                 {% endwith %}
-
+                        </div>
                     </div>
                     <div class="margin-20"></div>
                 {% endfor %}
