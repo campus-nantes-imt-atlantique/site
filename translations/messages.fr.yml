@@ -21,7 +21,7 @@ index:
       description: "Informations, \nintégration, réservation\nds livres etc."
     je:
       title: "La JE"
-      description: "Informations, boutique,\nIntégration, réservation\ndes salles MDE etc."
+      description: "Informations,\n recrutement et missions à pourvoir"
   nav:
     title: "Bienvenue sur le site\n du campus de Nantes"
     description: "Vous retrouverez sur ce site des informations ainsi que des fonctionnalités permettant de faciliter la vie sur le campus."
@@ -40,6 +40,17 @@ bds:
     gymnasium_booking: "Réservation du gymnase"
     stuff_booking: "Réservation du matériel"
     make_demand: "Faire une demande"
+je:
+  je_title: "Junior Atlantique"
+  je_description: "Cette page te permet d'en savoir plus sur le mouvement Junior Entreprise,
+                    te renseigner sur les missions à pourvoir\n et nous rejoindre pour pouvoir y participer"
+  missions:
+
+  nav:
+    information: "Informations sur la Junior Entreprise"
+    deroulement_etude: "Déroulement d'une étude"
+    nous_rejoindre: "Nous rejoindre"
+    missions: "Missions"
 days:
   monday: "Lundi"
   thuesday: "Mardi"

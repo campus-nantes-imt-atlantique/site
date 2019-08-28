@@ -1,0 +1,9 @@
+{% block je_nav %}
+    <div class=" cardContainer section_nav" >
+        <div class="section_nav_title">Navigation</div>
+        <a href="{{ path('je_index') }}">{{ 'je.nav.information' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('je_etude') }}">{{ 'je.nav.deroulement_etude' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('je_contact') }}">{{ 'je.nav.nous_rejoindre' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a class="disable_link" href="{{ path('je_missions') }}">{{ 'je.nav.missions' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+    </div>
+{% endblock %}

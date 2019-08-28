@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}JE{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'je.je_title' | trans | nl2br }}<br/></div>
+    <div class="navDescription margin-30">{{ 'je.je_description' | trans| nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    {{ block('je_nav','je/je_nav.html.twig') }}
+    <div class="section-content" data-aos="fade-up">
+
+    <div class="tinyDivider"></div>
+    <div class="title">{{ 'je.nav.nous_rejoindre' | trans }}</div>
+
+{% endblock %}
