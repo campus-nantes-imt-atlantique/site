@@ -40,6 +40,15 @@ bds:
     gymnasium_booking: "Gymnasium booking"
     stuff_booking: "Stuff booking"
     make_demand: "Make a demand"
+bde:
+  bde_title: "Student office"
+  bde_description: "Welcome to the BDE section."
+  bar: "Le Traquenard (bar)"
+  nav:
+    information: "Information about the student office"
+    events: "Events"
+    make_demand: "Make a demand"
+    bar: "Bar"
 days:
   monday: "Monday"
   thuesday: "Thuesday"
@@ -51,3 +60,4 @@ days:
 copyright: "Website developed by IMT Atlantique students"
 and: "and"
 members: "Members"
+events_to_come: "Events to come"
