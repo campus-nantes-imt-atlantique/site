@@ -1,2 +1,10 @@
 swiftmailer:
-    disable_delivery: true
+    disable_delivery: false
+    url: '%env(MAILER_URL)%'
+    transport: gmail
+    auth_mode: login
+    port: 465
+    host: smtp.gmail.com
+    username: campus.imt.atlantique@gmail.com
+    password: fQFHEJHsw7L2
+    spool: { type: 'memory' }

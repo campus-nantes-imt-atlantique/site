@@ -416,3 +416,13 @@ body .loginContainer {
     border-radius: 5px;
     color: white;
 }
+
+.form {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 500px ;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -4,9 +4,11 @@ nav:
   bda: "Bureau des arts"
   je: "Junior entreprise"
   contact: "Contact"
+  campus : "Informations sur le campus"
 index:
   school_website: "Site de l'école"
   contact_us: "Nous contacter"
+  campus : "Informations sur le campus"
   section:
     title: "Les différentes sections présentes sur le site"
     consult_page: "Consulter la page"
