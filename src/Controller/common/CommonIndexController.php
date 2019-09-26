@@ -34,8 +34,6 @@ class CommonIndexController extends AbstractController
 
                 $enquiry = $form->getData();
 
-                var_dump($enquiry);
-
                 $message = (new \Swift_Message())
                     ->setSubject($enquiry->getOffice() ." ". $enquiry->getSubject())
                     ->setFrom($enquiry->getEmail())
