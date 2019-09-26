@@ -20,7 +20,7 @@
                     {% for i in 0..sports|length-1 %}
                         <tr class="{{  (i == 0 and sports | length > 1) ? "innerTr" : "" }}"  type="{{ day }}">
                             {% if i == 0 %}
-                                <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center">{{ day }}</td>
+                                <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center">{{ day | trans  }}</td>
                             {% endif %}
                             <td colspan="2" class="center"></td>
                             {% set offsetJ = 0 %}

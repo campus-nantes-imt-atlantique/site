@@ -59,6 +59,8 @@ days:
   friday: "Vendredi"
   saturday: "Samedi"
   sunday: "Dimanche"
+events:
+  no_events_to_come: "Aucun événement à venir..."
 copyright: "IMT Atlantique Campus Nantes"
 and: "et"
 members: "Membres"

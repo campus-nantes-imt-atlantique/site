@@ -12,7 +12,6 @@ class CommonIndexController extends AbstractController
      */
     public function contact()
     {
-
         return $this->render('common/contact.html.twig', [
             'controller_name' => 'CommonIndexController',
         ]);

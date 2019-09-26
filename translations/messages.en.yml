@@ -53,12 +53,14 @@ bde:
     bar: "Bar"
 days:
   monday: "Monday"
-  thuesday: "Thuesday"
+  tuesday: "Tuesday"
   wednesday: "Wednesday"
   thursday: "Thursday"
   friday: "Friday"
   saturday: "Saturday"
   sunday: "Sunday"
+events:
+  no_events_to_come: "No events to come..."
 copyright: "Website developed by IMT Atlantique students"
 and: "and"
 members: "Members"

@@ -19,11 +19,13 @@ class BDEIndexController extends AbstractController
      */
     public function index(Request $request)
     {
+        $navDescription = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale());
         $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description","BDE", $request->getLocale());
         $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDE");
         return $this->render('bde/index.html.twig', [
             'controller_name' => 'BDEIndexController',
             "description" => $description,
+            "navigation_description" => $navDescription,
             "poles" => $poles
         ]);
     }

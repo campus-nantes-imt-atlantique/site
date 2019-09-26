@@ -4,7 +4,7 @@
 
 {% block header %}
     <div class="navTitle margin-30">{{ 'bds.bds_title' | trans | nl2br }}<br/></div>
-    <div class="navDescription margin-30">{{ 'bds.bds_description' | trans| nl2br }}</div>
+    <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@
             <div class="margin-20"></div>
             <div class="poleMembers" data-aos="fade-up">
                 {% for member in pole.members %}
-                    <div>
+                    <div class="poleMember">
                         {% with {'img_src':  asset(members_path ~ '/' ~  member.image),'title' : member.firstName ~ ' ' ~ member.lastName, 'description':'' } %}
                             {{ block('photo_card', 'common/photo_card.html.twig') }}
                         {% endwith %}
