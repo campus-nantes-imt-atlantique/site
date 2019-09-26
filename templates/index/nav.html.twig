@@ -2,6 +2,7 @@
 
     <nav>
         <div class="nav-wrapper">
+            <div data-target="slide-out" class="sidenav-trigger hide-on-large-only"><img style="cursor: pointer;" src="{{ asset("img/feather/menu.svg") }}" alt=""></div>
             <a href="{{ path('index') }}" class="brand-logo"><img width="100" src="{{ asset('img/imt-logo-white.svg') }}" alt=""></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{ path('bde_index') }}">{{ 'nav.bde' | trans  }}</a></li>
@@ -13,5 +14,6 @@
 
             </ul>
         </div>
+
     </nav>
 {% endblock %}

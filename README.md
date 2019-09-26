@@ -35,7 +35,7 @@ Penser à bien avoir un serveur mysql de lancé avec Wamp ou docker.
 Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7`
 
 ## Bundles utilisés
-
+ 
 EasyAdminBundle : Permet de créer une interface d'administration des entitiés doctrine pour permettre aux administrateurs non développeurs du site de mettre à jour les données du site depuis la page http://localhost:8000/admin (Ou en cliquant dans le lien du footer). 
 [Documentation EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html).
 Comme indiqué dans la documentation, pour modifier les paramètres du Bundle ou ajouter vos entités il faut se diriger dans config/packages/easy_admin.yaml

@@ -5,6 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.locales: en|fr|
+    app.path.leaders: '/img/leaders'
+    app.path.events: '/img/events'
+    app.path.bar_products: '/img/bar_products'
+    app.path.members: '/img/members'
 
 services:
     # default configuration for services in *this* file

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,15 +24,25 @@ class Sport
     private $name;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $leaders;
-
-    /**
      * @ORM\OneToOne(targetEntity="Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
     private $sameLineSport;
+
+    /**
+     * @ORM\Column(type="string", length=7)
+     */
+    private $color;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Leader", mappedBy="sport")
+     */
+    private $leaders;
+
+    public function __construct()
+    {
+        $this->leaders = new ArrayCollection();
+    }
 
     /**
      * Sport constructor.
@@ -38,11 +50,13 @@ class Sport
      * @param $leaders
      * @param $sameLineSport
      */
-    public function __construct($name, $leaders, $sameLineSport)
+    public static function withValues($name, $leaders, $sameLineSport)
     {
-        $this->name = $name;
-        $this->leaders = $leaders;
-        $this->sameLineSport = $sameLineSport;
+        $instance = new self();
+        $instance->name = $name;
+        $instance->leaders = $leaders;
+        $instance->sameLineSport = $sameLineSport;
+        return $instance;
     }
 
     public function getId(): ?int
@@ -62,17 +76,6 @@ class Sport
         return $this;
     }
 
-    public function getLeaders(): ?array
-    {
-        return $this->leaders;
-    }
-
-    public function setLeaders(array $leaders): self
-    {
-        $this->leaders = $leaders;
-        return $this;
-    }
-
     public function __toString() {
         return $this->name;
     }
@@ -85,5 +88,53 @@ class Sport
     public function setSameLineSport($sameLineSport): void
     {
         $this->sameLineSport = $sameLineSport;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Leader[]
+     */
+    public function getLeaders(): Collection
+    {
+        return $this->leaders;
+    }
+
+    public function setLeaders(?Collection $leaders)
+    {
+        $this->leaders = $leaders;
+    }
+
+    public function addLeader(Leader $leader): self
+    {
+        if (!$this->leaders->contains($leader)) {
+            $this->leaders[] = $leader;
+            $leader->setSport($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeader(Leader $leader): self
+    {
+        if ($this->leaders->contains($leader)) {
+            $this->leaders->removeElement($leader);
+            // set the owning side to null (unless already changed)
+            if ($leader->getSport() === $this) {
+                $leader->setSport(null);
+            }
+        }
+
+        return $this;
     }
 }

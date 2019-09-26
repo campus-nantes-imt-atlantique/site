@@ -11,116 +11,32 @@
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
     <div class="section-content"  data-aos="fade-up">
         <div class="tinyDivider"></div>
-        <div class="title">{{ 'bds.nav.sports_planning' | trans }}</div>
+        <div class="title">{{ 'bds.nav.evening_sports_planning' | trans }}</div>
         <div class="margin-30"></div>
-        <div class="container">
-            <div class="cardContainer planningTable">
-                <table border="1" width="100%">
-                    <thead>
-                    <tr>
-                        <th class="firstTd"></th>
-                        <th class="center" colspan="4">17h</th>
-                        <th class="center" colspan="4">18h</th>
-                        <th class="center" colspan="4">19h</th>
-                        <th class="center" colspan="4">20h</th>
-                        <th class="center" colspan="4">21h</th>
-                        <th class="center" colspan="4">22h</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="innerTr">
-                            <td rowspan="2" class="firstTd center">{{ 'days.monday' | trans }}</td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="6" class="center">
-                                <div class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        TENNIS
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        17h30 - 18h30
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
-                        <tr>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="8" class="center">
-                                <div style="background-color: #5E79D1 " class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        FOOTBALL
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        19h00 - 21h00
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
-                        <tr class="innerTr">
-                            <td rowspan="2" class="firstTd center">{{ 'days.thuesday' | trans }}</td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td colspan="6" class="center">
-                                <div style="background-color: #D15EB2" class="sportReservation">
-                                    <div class="sportReservationSportName">
-                                        TIR A L'ARC
-                                    </div>
-                                    <div class="sportReservationTime">
-                                        18h30 - 20h
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                            <td class="center"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="tiny-container">
+            {% with {
+                'sportsPerDays': sportsPerDaysEveningPlanning,
+                'startDate': eveningPlanningStartDate,
+                'endDate': eveningPlanningEndDate,
+                'minutesNumber': eveningPlanningMinutesNumber,
+                'minutesInterval': minutesInterval,
+                } %}
+                {{ block('daily_planning', 'common/daily_planning.html.twig') }}
+            {% endwith %}
+        </div>
+        <div class="tinyDivider"></div>
+        <div class="title">{{ 'bds.nav.day_sports_planning' | trans }}</div>
+        <div class="margin-30"></div>
+        <div class="tiny-container">
+            {% with {
+                'sportsPerDays': sportsPerDaysDayPlanning,
+                'startDate': dayPlanningStartDate,
+                'endDate': dayPlanningEndDate,
+                'minutesNumber': dayPlanningMinutesNumber,
+                'minutesInterval': minutesInterval,
+                } %}
+                {{ block('daily_planning', 'common/daily_planning.html.twig') }}
+            {% endwith %}
         </div>
     </div>
 {% endblock %}

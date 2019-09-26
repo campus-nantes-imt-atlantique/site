@@ -27,12 +27,12 @@ class SectionFixture extends Fixture
         $this->addReference(self::BDA_SECTION_REFERENCE, $bdaSection);
 
         $bdeSection = new Section();
-        $bdeSection->setName("BDA");
+        $bdeSection->setName("BDE");
         $manager->persist($bdeSection);
         $this->addReference(self::BDE_SECTION_REFERENCE, $bdeSection);
 
         $jeSection = new Section();
-        $jeSection->setName("BDA");
+        $jeSection->setName("JE");
         $manager->persist($jeSection);
         $this->addReference(self::JE_SECTION_REFERENCE, $jeSection);
 

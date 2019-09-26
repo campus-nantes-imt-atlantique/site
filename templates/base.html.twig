@@ -22,6 +22,8 @@
                 </div>
             </header>
 
+            {{ block('mobile_nav','index/mobile_nav.html.twig') }}
+
             <div class="content">
                 {% block content %}
 
@@ -34,6 +36,11 @@
                 <script>
                     AOS.init({
                         once: true,
+                    });
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var elems = document.querySelectorAll('.sidenav');
+                        var instances = M.Sidenav.init(elems);
                     });
                 </script>
             {% endblock %}

@@ -9,7 +9,7 @@
 
 {% block content %}
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
-    <div class="section-content">
+    <div class="section-content center">
         <div class="tinyDivider"></div>
         <div class="title">{{ 'bds.nav.leaders' | trans }}</div>
         <div class="margin-60"></div>
@@ -18,9 +18,9 @@
                 <div class="subtitle" data-aos="fade-up">{{ sport.name }}</div>
                 <div class="margin-20"></div>
                 <div class="row" data-aos="fade-up">
-                    {% for leaderName in sport.leaders %}
+                    {% for leader in sport.leaders %}
                         <div class="col {{ sport.leaders | length == 2 ? 's6' : 's6 offset-s3' }} center">
-                            {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : leaderName,'description' :  'email@gmail.com'} %}
+                            {% with {'img_src':  asset(leaders_path  ~ '/' ~  leader.image),'title' : leader, 'description' :  ''} %}
                                 {{ block('photo_card', 'common/photo_card.html.twig') }}
                             {% endwith %}
                         </div>

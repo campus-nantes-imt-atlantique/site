@@ -1,0 +1,9 @@
+{% block bde_nav %}
+    <div class="cardContainer section_nav hide-on-med-and-down" >
+        <div class="section_nav_title">Navigation</div>
+        <a href="{{ path('bde_index') }}">{{ 'bde.nav.information' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('bde_events') }}">{{ 'bde.nav.events' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a href="{{ path('bde_bar') }}">{{ 'bde.nav.bar' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        <a class="disable_link">{{ 'bde.nav.make_demand' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+    </div>
+{% endblock %}

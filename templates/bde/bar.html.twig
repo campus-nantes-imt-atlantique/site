@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BDE{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'bde.bde_title' | trans | nl2br }}<br /></div>
+    <div class="navDescription margin-30">{{ 'bde.bde_description' | trans| nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    {{ block('bde_nav','bde/bde_nav.html.twig') }}
+    <div class="section-content">
+        <div class="title">{{ 'bde.bar' | trans }}</div>
+        <div class="margin-20"></div>
+        <div class="tinyDivider"></div>
+
+        <div class="container">
+            
+            {% for product_type in product_types %}
+                {% if not product_type.availableProducts.empty %}
+                    <div class="subtitle">{{ product_type.name(lang) }} </div>
+                    <div class="margin-20"></div>
+                    <div class="blockCards" data-aos="fade-up">
+                        
+                {% for product in product_type.availableProducts %}
+                        <div class="cardContainer smallCard center">
+                                {% with {'img_src':  asset(bar_products_path ~ '/' ~ product.image),'title' : product.getName(lang), 'description':product.getDescription(lang), 'subtitle':product.getFormatedPrice()} %}
+                                    {{ block('small_card', 'common/small_card.html.twig') }}
+                                {% endwith %}
+                        </div>
+                {% endfor %}
+                    </div>
+                    <div class="margin-20"></div>
+                {% endif %}
+            {% endfor %}
+            <div class="margin-40"></div>
+        </div>
+
+    </div>
+{% endblock %}

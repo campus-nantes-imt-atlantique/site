@@ -27,10 +27,14 @@ class CommonIndexController extends AbstractController
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
+            echo $form->isSubmitted();
+            echo $form->isValid();
             if ($form->isSubmitted() && $form->isValid()) {
+                echo "la";
 
                 $enquiry = $form->getData();
 
+                var_dump($enquiry);
 
                 $message = (new \Swift_Message())
                     ->setSubject($enquiry->getOffice() ." ". $enquiry->getSubject())
@@ -49,6 +53,8 @@ class CommonIndexController extends AbstractController
                 $mailerconfirmation->send($messageconfirmation);
 
                 return $this->redirectToRoute('index');
+            } else {
+
             }
         }
         return $this->render('common/contact.html.twig',  array(
