@@ -24,7 +24,7 @@
                         
                 {% for product in product_type.availableProducts %}
                         <div class="cardContainer smallCard center">
-                                {% with {'img_src':  asset('img/profile_picture_example.jpg'),'title' : product.getName(lang), 'description':product.getDescription(lang), 'subtitle':product.getFormatedPrice()} %}
+                                {% with {'img_src':  asset(bar_products_path ~ '/' ~ product.image),'title' : product.getName(lang), 'description':product.getDescription(lang), 'subtitle':product.getFormatedPrice()} %}
                                     {{ block('small_card', 'common/small_card.html.twig') }}
                                 {% endwith %}
                         </div>

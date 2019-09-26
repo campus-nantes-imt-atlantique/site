@@ -11,6 +11,8 @@ use App\Entity\SportPlanning;
 use App\Repository\SportPlanningRepository;
 use App\Repository\SportRepository;
 use App\Utils\DateUtils;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -19,12 +21,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BDSIndexController extends AbstractController
 {
+
+
     /**
      * @Route("/bds", name="bds_index")
      */
     public function index(Request $request)
     {
-        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
+        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description","BDS", $request->getLocale());
         $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDS");
         return $this->render('bds/index.html.twig', [
             'controller_name' => 'BDSIndexController',
@@ -45,7 +49,9 @@ class BDSIndexController extends AbstractController
         $sports = array();
         foreach ($allSports as $sport) {
             if ($sport->getSameLineSport() != null) {
-                $mergedLeaders = array_merge($sport->getLeaders(), $sport->getSameLineSport()->getLeaders());
+                $mergedLeaders = new ArrayCollection(
+                    array_merge($sport->getLeaders()->toArray(), $sport->getSameLineSport()->getLeaders()->toArray())
+                );
                 $newSportName = $sport->getName() . " " . $translator->trans('and') . " " . $sport->getSameLineSport()->getName();
                 if ($sports[$sport->getSameLineSport()->getName()] != null) {
                     unset($sports[$sport->getSameLineSport()->getName()]);
@@ -63,6 +69,11 @@ class BDSIndexController extends AbstractController
         ]);
     }
 
+    public const EVENING_PLANNING_START_DATE = '16:00:00';
+    public const EVENING_PLANNING_END_DATE = '23:59:59';
+    public const DAY_PLANNING_START_DATE = '08:00:00';
+    public const DAY_PLANNING_END_DATE = '16:00:00';
+
     /**
      * @Route({
      *     "en": "/bds/planning",
@@ -72,22 +83,35 @@ class BDSIndexController extends AbstractController
     public function planning(DateUtils $dateUtils)
     {
         $weekDays = array("Monday","Tuesday","Wednesday","Thurday","Friday","Saturday","Sunday");
-        $start = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['start' => 'ASC'])[0]->getStart();
-        $end = $this->getDoctrine()->getRepository(SportPlanning::class)->findBy([], ['end' => 'DESC'])[0]->getEnd();
-        $minutesNumber = $dateUtils->getMinutesInterval($end,$start);
-        $sportsPerDays = array();
+
+        $eveningPlanningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_START_DATE);
+        $eveningPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_END_DATE);
+        $eveningPlanningMinutesNumber = $dateUtils->getMinutesInterval($eveningPlanningEnd,$eveningPlanningStart);
+
+        $dayPlanningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::DAY_PLANNING_START_DATE);
+        $dayPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::DAY_PLANNING_END_DATE);
+        $dayPlanningMinutesNumber = $dateUtils->getMinutesInterval($dayPlanningEnd,$dayPlanningStart);
+
+        $sportsPerDaysEveningPlanning = array();
+        $sportsPerDaysDayPlanning = array();
+
         foreach ($weekDays as $weekDayName) {
-            $weekDay = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName);
-            $sportsPerDays[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDay);
+            $weekDayEveningPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName, BDSIndexController::EVENING_PLANNING_START_DATE,BDSIndexController::EVENING_PLANNING_END_DATE);
+            $weekDayDayPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName, BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE);
+            $sportsPerDaysEveningPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayEveningPlanning);
+            $sportsPerDaysDayPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayDayPlanning);
         }
         return $this->render('bds/planning.html.twig', [
             'controller_name' => 'BDSIndexController',
-            'sportsPerDays' => $sportsPerDays,
-            'minutesNumber' => $minutesNumber,
-            'minutesNumberInOneHour' => 60,
-            'minutesInterval' => 15,
-            'startDate'  => $start,
-            'endDate' => $end
+            'sportsPerDaysEveningPlanning' => $sportsPerDaysEveningPlanning,
+            'sportsPerDaysDayPlanning' => $sportsPerDaysDayPlanning,
+            'eveningPlanningMinutesNumber' => $eveningPlanningMinutesNumber,
+            'dayPlanningMinutesNumber' => $dayPlanningMinutesNumber,
+            'eveningPlanningStartDate'  => $eveningPlanningStart,
+            'eveningPlanningEndDate' => $eveningPlanningEnd,
+            'dayPlanningStartDate'  => $dayPlanningStart,
+            'dayPlanningEndDate' => $dayPlanningEnd,
+            'minutesInterval' => 15
         ]);
     }
 

@@ -37,6 +37,8 @@ bds:
     information: "Informations sur le BDS"
     leaders: "Responsables des sports"
     sports_planning: "Planning des sports"
+    evening_sports_planning: "Planning des sports en soirée"
+    day_sports_planning: "Planning des sports en journée"
     gymnasium_booking: "Réservation du gymnase"
     stuff_booking: "Réservation du matériel"
     make_demand: "Faire une demande"

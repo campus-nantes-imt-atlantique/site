@@ -1,0 +1,23 @@
+{% block mobile_nav %}
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+                    <img width="100" src="{{ asset('img/imt-logo-blue.svg') }}">
+            </div>
+        </li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">BDE</a></li>
+        <li><a class="waves-effect" href="{{ path('bde_index') }}">{{ 'bde.nav.information' | trans }}</a></li>
+        <li><a class="waves-effect" href="{{ path('bde_events') }}">{{ 'bde.nav.events' | trans }}</a></li>
+        <li><a class="waves-effect" href="{{ path('bde_bar') }}">{{ 'bde.nav.bar' | trans }}</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">BDS</a></li>
+        <li><a class="waves-effect" href="{{ path('bds_index') }}">{{ 'bds.nav.information' | trans }}</a></li>
+        <li><a class="waves-effect" href="{{ path('bds_leaders') }}">{{ 'bds.nav.leaders' | trans }}</a></li>
+        <li><a class="waves-effect" href="{{ path('bds_planning') }}">{{ 'bds.nav.sports_planning' | trans }}</a></li>
+        <li><a class="waves-effect" href="{{ path('contact') }}">{{ 'bds.nav.make_demand' | trans }}</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">BDA</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">JE</a></li>
+    </ul>
+{% endblock %}

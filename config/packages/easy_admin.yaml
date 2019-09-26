@@ -1,8 +1,8 @@
 easy_admin:
     entities:
-        BDS:
+        Content:
             class: App\Entity\Content
-            label: 'Divers'
+            label: "Divers"
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
@@ -11,12 +11,40 @@ easy_admin:
         SportPlanning:
             class: App\Entity\SportPlanning
             label: "Planning des sports"
+        Leader:
+            class: App\Entity\Leader
+            label: "Responsables des sports"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.leaders%' }
+                    - { property: 'firstName' }
+                    - { property: 'lastName' }
+                    - { property: 'sport' }
+            form:
+                fields:
+                    - { property: 'firstName' }
+                    - { property: 'lastName' }
+                    - { property: 'sport' }
+                    - { property: 'sport' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
         Sections:
             class: App\Entity\Section
             label: "Bureaux"
         Member:
             class: App\Entity\Member
             label: "Membres des bureaux"
+            list:
+                fields:
+                    - { property: 'firstName' }
+                    - { property: 'lastName' }
+                    - { property: 'pole' }
+                    - { property: 'image',  type: 'image', base_path: '/img/members' }
+            form:
+                fields:
+                    - { property: 'firstName' }
+                    - { property: 'lastName' }
+                    - { property: 'pole' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
         Poles:
             class: App\Entity\Pole
             label: "Les pôles"
@@ -26,12 +54,51 @@ easy_admin:
         Event:
             class: App\Entity\Event
             label: "Événements"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.events%' }
+                    - { property: 'name_fr' }
+                    - { property: 'description_fr' }
+                    - { property: 'date' }
+                    - { property: 'section' }
+            form:
+                fields:
+                    - { property: 'name_fr' }
+                    - { property: 'name_en' }
+                    - { property: 'description_fr' }
+                    - { property: 'description_en' }
+                    - { property: 'date' }
+                    - { property: 'section' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+
         TypeProductBar:
             class: App\Entity\BarProductType
             label: "Catégories de produits"
-        ProductBar:
+            form:
+                fields:
+                    - { property: 'name_en' }
+                    - { property: 'name_fr' }
+        BarProduct:
             class: App\Entity\BarProduct
             label: "Produits en vente"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.bar_products%' }
+                    - { property: 'name_fr' }
+                    - { property: 'price' }
+                    - { property: 'type' }
+                    - { property: 'isAvailable' }
+            show:
+                fields:
+                    - { property: 'imageFile', type: 'image', base_path: '%app.path.bar_products%' }
+            form:
+                fields:
+                    - { property: 'name_en' }
+                    - { property: 'name_fr' }
+                    - { property: 'price' }
+                    - { property: 'type' }
+                    - { property: 'isAvailable' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
 
     site_name: 'Administration du site IMT Campus Nantes'
     design:
@@ -39,12 +106,13 @@ easy_admin:
         menu:
             - { label: 'Gestion des bureaux' }
             - label: 'BDE'
-              children: ['ProductBar', 'TypeProductBar']
+              children: ['BarProduct', 'TypeProductBar']
             - label: 'BDS'
-              children: ['Sports', 'SportPlanning', 'BDS']
+              children: ['Sports', 'SportPlanning', 'Leader']
 #            - label: 'BDA'
 #              children: ['YourEntity']
             - Sections
+            - Content
             - Event
             - Poles
             - Member

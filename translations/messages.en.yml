@@ -37,6 +37,8 @@ bds:
     information: "BDS Information"
     leaders: "Sport leaders"
     sports_planning: "Sport planning"
+    day_sports_planning: "Sport planning during the day"
+    evening_sports_planning: "Sport planning in the evening"
     gymnasium_booking: "Gymnasium booking"
     stuff_booking: "Stuff booking"
     make_demand: "Make a demand"

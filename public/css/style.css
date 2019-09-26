@@ -55,7 +55,6 @@ body {
 
 .cardContainer {
     background-color: white;
-    margin: auto;
     position: relative;
     display: block;
     border-radius: 10px;
@@ -131,9 +130,10 @@ body {
     color: white;
 }
 
-.section-content {
-    margin-top: 50px;
-    margin-left: 320px;
+
+.tiny-container {
+    margin-right: 60px;
+    margin-left: 60px;
 }
 
 .tinyDivider {
@@ -236,11 +236,22 @@ header {
 
 }
 
+.content {
+    margin-top: 50px;
+    padding-bottom: 8rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.section-content {
+    width: 100%;
+}
+
 .section_nav {
-    position: absolute;
-    margin-left: 40px;
-    width: 250px;
+    width: 300px;
     padding: 10px;
+    margin-left: 20px;
 }
 .section_nav a {
     color: #0C2340;
@@ -382,6 +393,7 @@ header {
 .siteSection {
     width: 200px;
     min-height: 230px;
+    margin: auto;
 }
 
 
@@ -409,31 +421,33 @@ footer .icons * {
     margin-right: 40px;
 }
 
-.content {
-
-    padding-bottom: 8rem;
-}
 
 /*                                                          BDS                                          */
 
 .planningTable {
     padding: 0px;
+    overflow: auto;
+    width: 70vw;
+    margin: auto;
 }
 .planningTable table {
     table-layout:fixed;
 }
 
 .planningTable td {
-    padding: 8px 2px;
-    height: 30px;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .planningTable .firstTd {
     border-right: 1px solid rgba(0,0,0,0.2) !important;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .planningTable th {
-    width: 5vw !important;
+    width: 120px !important;
     height: 70px;
 }
 
@@ -445,7 +459,10 @@ footer .icons * {
     color: white;
     border-radius: 35px;
     background-color: #159BD7;
-    padding: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .sportReservationSportName {
@@ -473,7 +490,7 @@ body .loginContainer {
 
 
 .loginBackgroundImage {
-    background-image: url("../img/background-imt.png");
+    background-image: url("../img/header-background.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

@@ -2,3 +2,8 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+      leaders_path: '%app.path.leaders%'
+      members_path: '%app.path.members%'
+      bar_products_path: '%app.path.bar_products%'
+      events_path: '%app.path.events%'

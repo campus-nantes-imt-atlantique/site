@@ -36,17 +36,23 @@ class ContentRepository extends ServiceEntityRepository
     }
     */
 
-    public function findContentByKeyAndLang($value, $lang): ?string
+    public function findContentByKeyAndLang($value, $sectionName, $lang): ?string
     {
-         $bdsContent = $this->createQueryBuilder('c')
+         $content = $this->createQueryBuilder('c')
+                ->join('c.section','s')
+                ->andWhere('s.name = :sectionName')
                 ->andWhere('c.content_key = :val')
                 ->setParameter('val', $value)
+                ->setParameter('sectionName', $sectionName)
                 ->getQuery()
                 ->getOneOrNullResult();
+         if ($content == null ) {
+             return "";
+         }
          if ($lang == 'fr') {
-             return $bdsContent->getContentFr();
+             return $content->getContentFr();
          } else {
-             return $bdsContent->getContentEn();
+             return $content->getContentEn();
          }
     }
 }

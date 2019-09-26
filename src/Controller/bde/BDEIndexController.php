@@ -19,7 +19,7 @@ class BDEIndexController extends AbstractController
      */
     public function index(Request $request)
     {
-        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
+        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description","BDE", $request->getLocale());
         $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDE");
         return $this->render('bde/index.html.twig', [
             'controller_name' => 'BDEIndexController',
@@ -36,11 +36,9 @@ class BDEIndexController extends AbstractController
      */
     public function bar(Request $request)
     {
-        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
         $producttypes = $this->getDoctrine()->getRepository(BarProductType::class)->findAll();
         return $this->render('bde/bar.html.twig', [
             'controller_name' => 'BDEIndexController',
-            "description" => $description,
             "lang" => $request->getLocale(),
             "product_types" => $producttypes
         ]);
@@ -54,11 +52,9 @@ class BDEIndexController extends AbstractController
      */
     public function events(Request $request)
     {
-        $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description", $request->getLocale());
         $events = $this->getDoctrine()->getRepository(Event::class)->findEventsToComeBySectionName("BDE");
         return $this->render('bde/events.html.twig', [
             'controller_name' => 'BDEIndexController',
-            "description" => $description,
             "lang" => $request->getLocale(),
             "events" => $events
         ]);

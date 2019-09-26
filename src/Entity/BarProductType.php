@@ -78,7 +78,7 @@ class BarProductType
     /**
      * @return Collection|Product[]
      */
-    public function getProducts(): Collection
+    public function getProducts()
     {
         return $this->products;
     }
@@ -86,11 +86,11 @@ class BarProductType
     /**
      * @return Collection|Product[]
      */
-    public function getAvailableProducts(): Collection
+    public function getAvailableProducts()
     {
         $availableProducts=clone $this->products;
         foreach($availableProducts as $product){
-            if(!$product->getAvailable()){
+            if(!$product->isAvailable()){
                 $availableProducts->removeElement($product);
             }
         }
