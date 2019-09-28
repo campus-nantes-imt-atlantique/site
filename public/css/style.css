@@ -319,6 +319,10 @@ header {
     padding-left: 10px;
 }
 
+.spacer {
+    height: 50px;
+}
+
 /*                                                          BAR                                         */
 
 
@@ -455,6 +459,7 @@ footer .icons * {
     overflow: auto;
     width: 70vw;
     margin: auto;
+    padding-bottom: 40px;
 }
 .planningTable table {
     table-layout:fixed;
@@ -593,3 +598,4 @@ body .loginContainer {
     max-width: 400px;
     margin: 20px auto auto;
 }
+

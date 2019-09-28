@@ -31,30 +31,6 @@
                 {% endblock %}
             </div>
 
-            {% block javascripts %}
-                <script src="{{ asset('js/materialize.min.js') }}"></script>
-                <script src="{{ asset('js/aos.js') }}"></script>
-                <script>
-                    AOS.init({
-                        once: true,
-                    });
-
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var elems = document.querySelectorAll('.sidenav');
-                        var instances = M.Sidenav.init(elems);
-                    });
-                </script>
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148909415-1"></script>
-                <script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-
-                    gtag('config', 'UA-148909415-1');
-                </script>
-
-        {% endblock %}
         {% endblock %}
     </body>
 
@@ -73,5 +49,34 @@
                 <a href="{{ path('administration') }}" target="_blank">Administration</a>
             </div>
         </footer>
+    {% endblock %}
+
+
+
+    <script src="{{ asset('js/materialize.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script>
+        AOS.init({
+            once: true,
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148909415-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-148909415-1');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    {% block javascripts %}
+
     {% endblock %}
 </html>
