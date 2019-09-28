@@ -28,6 +28,16 @@ class Section
      */
     private $poles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Content", mappedBy="section")
+     */
+    private $contents;
+
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +84,37 @@ class Section
             // set the owning side to null (unless already changed)
             if ($pole->getSection() === $this) {
                 $pole->setSection(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Content[]
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setSection($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
+            // set the owning side to null (unless already changed)
+            if ($content->getSection() === $this) {
+                $content->setSection(null);
             }
         }
 

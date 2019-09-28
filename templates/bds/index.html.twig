@@ -15,7 +15,7 @@
     <div class="title">{{ 'bds.nav.information' | trans }}</div>
     <div class="margin-40"></div>
     <div class="container">
-        <p class="bdsDescription">
+        <p>
             {{ description  | nl2br }}
         </p>
         <div class="tinyDivider"></div>
@@ -23,7 +23,6 @@
     <div class="margin-40"></div>
     <div class="title">{{ 'members' | trans }}</div>
     <div class="margin-40"></div>
-
     <div class="container">
         {% for pole in poles %}
             <div class="subtitle" data-aos="fade-up">{{ pole.name }}</div>

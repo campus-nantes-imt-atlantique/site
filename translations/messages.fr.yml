@@ -51,9 +51,14 @@ bde:
     events: "Événements"
     make_demand: "Faire une demande"
     bar: "Le Traq'"
+bda:
+  bda_title: "Bureau des arts"
+  bda_description: "Bienvenue sur la page BDA"
+  nav:
+    information: "Informations sur le BDA"
 days:
   monday: "Lundi"
-  thuesday: "Mardi"
+  tuesday: "Mardi"
   wednesday: "Mercredi"
   thursday: "Jeudi"
   friday: "Vendredi"

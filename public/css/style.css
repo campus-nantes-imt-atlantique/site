@@ -508,6 +508,7 @@ body .loginContainer {
 .loginForms {
     margin-top: 45vh; /* poussé de la moitié de hauteur de viewport */
     transform: translateY(-50%);
+    margin-bottom: -50px;
 }
 
 .loginFormContainer .footer {

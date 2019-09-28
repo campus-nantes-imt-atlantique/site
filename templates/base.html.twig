@@ -8,6 +8,7 @@
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
             <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
@@ -43,7 +44,17 @@
                         var instances = M.Sidenav.init(elems);
                     });
                 </script>
-            {% endblock %}
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148909415-1"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'UA-148909415-1');
+                </script>
+
+        {% endblock %}
         {% endblock %}
     </body>
 
@@ -51,15 +62,15 @@
     {% block footer %}
         <footer class="margin-60">
             <div class="center icons">
-                <img src="{{ asset('img/facebook.png') }}" alt="">
-                <img src="{{ asset('img/instagram.png') }}" alt="">
-                <img src="{{ asset('img/twitter.png') }}" alt="">
+                <a href="https://www.facebook.com/IMTAtlantique/" target="_blank"><img src="{{ asset('img/facebook.png') }}" alt=""></a>
+                <a href="https://www.instagram.com/imt_atlantique" target="_blank"><img src="{{ asset('img/instagram.png') }}" alt=""></a>
+                <a href="https://twitter.com/IMTAtlantique" target="_blank"><img src="{{ asset('img/twitter.png') }}" alt=""></a>
             </div>
             <div class="center">
                 Copyright © 2019 | {{ 'copyright' | trans   }}
             </div>
             <div class="center">
-                <a href="{{ path('administration') }}">Administration</a>
+                <a href="{{ path('administration') }}" target="_blank">Administration</a>
             </div>
         </footer>
     {% endblock %}
