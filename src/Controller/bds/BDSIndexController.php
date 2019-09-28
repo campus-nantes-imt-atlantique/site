@@ -28,11 +28,13 @@ class BDSIndexController extends AbstractController
      */
     public function index(Request $request)
     {
+        $navDescription = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale());
         $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description","BDS", $request->getLocale());
         $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDS");
         return $this->render('bds/index.html.twig', [
             'controller_name' => 'BDSIndexController',
             "description" => $description,
+            "navigation_description" => $navDescription,
             "poles" => $poles
         ]);
     }
@@ -80,9 +82,9 @@ class BDSIndexController extends AbstractController
      *     "fr": "/bds/planning"
      * }, name="bds_planning")
      */
-    public function planning(DateUtils $dateUtils)
+    public function planning(DateUtils $dateUtils, TranslatorInterface $translator)
     {
-        $weekDays = array("Monday","Tuesday","Wednesday","Thurday","Friday","Saturday","Sunday");
+        $weekDays = array("days.monday","days.tuesday","days.wednesday","days.thursday","days.friday","days.saturday","days.sunday");
 
         $eveningPlanningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_START_DATE);
         $eveningPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_END_DATE);
@@ -96,8 +98,8 @@ class BDSIndexController extends AbstractController
         $sportsPerDaysDayPlanning = array();
 
         foreach ($weekDays as $weekDayName) {
-            $weekDayEveningPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName, BDSIndexController::EVENING_PLANNING_START_DATE,BDSIndexController::EVENING_PLANNING_END_DATE);
-            $weekDayDayPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($weekDayName, BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE);
+            $weekDayEveningPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::EVENING_PLANNING_START_DATE,BDSIndexController::EVENING_PLANNING_END_DATE);
+            $weekDayDayPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE);
             $sportsPerDaysEveningPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayEveningPlanning);
             $sportsPerDaysDayPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayDayPlanning);
         }

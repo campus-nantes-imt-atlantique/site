@@ -31,12 +31,11 @@ class Content
      */
     private $content_en;
 
-
     /**
-     * @ORM\OneToOne(targetEntity="Section")
-     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="contents")
      */
     private $section;
+
 
     public function getId(): ?int
     {
@@ -78,13 +77,15 @@ class Content
         return $this;
     }
 
-    public function getSection()
+    public function getSection(): ?Section
     {
         return $this->section;
     }
 
-    public function setSection($section): void
+    public function setSection(?Section $section): self
     {
         $this->section = $section;
+
+        return $this;
     }
 }

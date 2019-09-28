@@ -51,14 +51,21 @@ bde:
     events: "Events"
     make_demand: "Make a demand"
     bar: "Bar"
+bda:
+  bda_title: "Art office"
+  bda_description: "Welcome to the BDA section."
+  nav:
+    information: "Information about the art office"
 days:
   monday: "Monday"
-  thuesday: "Thuesday"
+  tuesday: "Tuesday"
   wednesday: "Wednesday"
   thursday: "Thursday"
   friday: "Friday"
   saturday: "Saturday"
   sunday: "Sunday"
+events:
+  no_events_to_come: "No events to come..."
 copyright: "Website developed by IMT Atlantique students"
 and: "and"
 members: "Members"

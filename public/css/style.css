@@ -144,7 +144,7 @@ body {
 }
 
 .photoCard {
-    width: 260px;
+    max-width: 260px;
     margin: auto;
 }
 
@@ -171,6 +171,9 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+.poleMember {
+    min-width: 260px;
 }
 
 .poleMembers > div {
@@ -505,6 +508,7 @@ body .loginContainer {
 .loginForms {
     margin-top: 45vh; /* poussé de la moitié de hauteur de viewport */
     transform: translateY(-50%);
+    margin-bottom: -50px;
 }
 
 .loginFormContainer .footer {
