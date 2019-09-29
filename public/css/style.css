@@ -454,6 +454,7 @@ footer .icons * {
 
 /*                                                          BDS                                          */
 
+
 .planningTable {
     padding: 0px;
     overflow: auto;
@@ -472,7 +473,7 @@ footer .icons * {
 }
 
 .planningTable .firstTd {
-    border-right: 1px solid rgba(0,0,0,0.2) !important;
+    /*border-right: 1px solid rgba(0,0,0,0.2) !important;*/
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -492,8 +493,8 @@ footer .icons * {
     background-color: #159BD7;
     padding-top: 2px;
     padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .sportReservationSportName {
@@ -509,6 +510,9 @@ footer .icons * {
 .bdsDescription {
     text-align: justify;
 }
+
+
+
 
 
 /*                                                          LOGIN                                          */

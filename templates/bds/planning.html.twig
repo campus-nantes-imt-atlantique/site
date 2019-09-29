@@ -24,20 +24,6 @@
                 {{ block('daily_planning', 'common/daily_planning.html.twig') }}
             {% endwith %}
         </div>
-        {#<div class="tinyDivider"></div>#}
-        {#<div class="title">{{ 'bds.nav.day_sports_planning' | trans }}</div>#}
-        {#<div class="margin-30"></div>#}
-        {#<div class="tiny-container">#}
-            {#{% with {#}
-                {#'sportsPerDays': sportsPerDaysDayPlanning,#}
-                {#'startDate': dayPlanningStartDate,#}
-                {#'endDate': dayPlanningEndDate,#}
-                {#'minutesNumber': dayPlanningMinutesNumber,#}
-                {#'minutesInterval': minutesInterval,#}
-                {#} %}#}
-                {#{{ block('daily_planning', 'common/daily_planning.html.twig') }}#}
-            {#{% endwith %}#}
-        {#</div>#}
     </div>
 {% endblock %}
 
@@ -45,25 +31,26 @@
 {% block javascripts %}
     <script>
         let stopAutoScrolling = false;
-        let stopScrollingTimer = false;
-        $('#planning').on('touchmove DOMMouseScroll mouseentered', function(event) {
-            scrollTimeout();
+        let stopScrollingTimer;
+        let scrollInterval;
+        $('#planning').on('touchmove DOMMouseScroll mousedown', function() {
+            stopScrollingTimer = true;
+            self.clearInterval(scrollInterval)
+            // deactivateAutoScrollWithTimeout();
         });
-        function scrollTimeout() {
-            stopAutoScrolling = true;
-            window.clearTimeout( stopScrollingTimer );
-            stopScrollingTimer = setTimeout(function() {
-                stopAutoScrolling = false;
-            }, 10000);
-        }
+        // function deactivateAutoScrollWithTimeout() {
+        //     stopAutoScrolling = true;
+        //     window.clearTimeout( stopScrollingTimer );
+        //     stopScrollingTimer = setTimeout(function() {
+        //         stopAutoScrolling = false;
+        //     }, 10000);
+        // }
         window.addEventListener("load", () => {
-            setTimeout(function () {
-                self.setInterval(() => {
-                    if(document.getElementById("planning").scrollLeft !== document.getElementById("planning").offsetWidth && !stopAutoScrolling) {
-                        document.getElementById("planning").scrollTo(document.getElementById("planning").scrollLeft+1, 0);
-                    }
-                }, 20);
-            }, 2000);
+            scrollInterval = self.setInterval(() => {
+                if(document.getElementById("planning").scrollLeft !== document.getElementById("planning").offsetWidth && !stopAutoScrolling) {
+                    document.getElementById("planning").scrollTo(document.getElementById("planning").scrollLeft+1, 0);
+                }
+            }, 20);
         })
     </script>
 {% endblock %}

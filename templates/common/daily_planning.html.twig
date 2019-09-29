@@ -1,58 +1,57 @@
 {% block daily_planning %}
 
    {% set minutesNumberInOneHour = 60 %}
-   {% set minutesNumberInOneHour = 60 %}
-
     <div id="planning" class="cardContainer planningTable">
-        <table border="1" width="100%">
-            <thead>
-            <tr>
-                <th class="firstTd"></th>
-                {% for j in 0..minutesNumber/minutesNumberInOneHour %}
-                    <th class="center" colspan="{{ minutesNumberInOneHour / minutesInterval }}">{{ startDate | date_modify("+#{j} hour") | date("H:i") }}</th>
-                {% endfor %}
-                <th colspan="2" ></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for day, sports in sportsPerDays %}
-                {% if sports|length > 0 %}
-                    {% for i in 0..sports|length-1 %}
-                        <tr class="{{  (i == 0 and sports | length > 1) ? "innerTr" : "" }}"  type="{{ day }}">
-                            {% if i == 0 %}
-                                <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center">{{ day | trans  }}</td>
-                            {% endif %}
-                            <td colspan="2" class="center"></td>
-                            {% set offsetJ = 0 %}
-                            {% set counter = 0 %}
-                            {% for j in 0..minutesNumber/minutesInterval %}
-                                {% if sports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
-                                    <td colspan="{{ sports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
-                                        <div class="sportReservation" style="background-color: {{ sports[i][counter].sport.color }}">
-                                            <div class="sportReservationSportName">
-                                                {{ sports[i][counter].sport.name }}
-                                            </div>
-                                            <div class="sportReservationTime">
-                                                {{ sports[i][counter].start | date("H:i") }} - {{sports[i][counter].end| date("H:i") }}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    {% set offsetJ = sports[i][counter] | minutesBlocNumber(minutesInterval) %}
-                                    {% if  (counter + 1) < (sports[i] | length) %}
-                                        {% set counter = counter + 1 %}
-                                    {% endif %}
-                                {% elseif offsetJ == 0 %}
-                                    <td class="center"></td>
-                                {% else %}
-                                    {% set offsetJ = offsetJ - 1 %}
-                                {% endif %}
-                            {% endfor %}
-                        </tr>
+            <table border="1" width="100%">
+                <thead>
+                <tr>
+                    <th class="firstTd zui-sticky-col"></th>
+                    {% for j in 0..minutesNumber/minutesNumberInOneHour %}
+                        <th class="center" colspan="{{ minutesNumberInOneHour / minutesInterval }}">{{ startDate | date_modify("+#{j} hour") | date("H:i") }}</th>
                     {% endfor %}
-                {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
+                    <th colspan="2" ></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for day, sports in sportsPerDays %}
+                    {% if sports|length > 0 %}
+                        {% for i in 0..sports|length-1 %}
+                            <tr class="{{  (i == 0 and sports | length > 1) ? "innerTr" : "" }}"  type="{{ day }}">
+                                {% if i == 0 %}
+                                    <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center zui-sticky-col">{{ day | trans  }}</td>
+                                {% endif %}
+                                <td colspan="2" class="center"></td>
+                                {% set offsetJ = 0 %}
+                                {% set counter = 0 %}
+                                {% for j in 0..minutesNumber/minutesInterval %}
+                                    {% if sports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
+                                        <td colspan="{{ sports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
+                                            <div class="sportReservation" style="background-color: {{ sports[i][counter].sport.color }}">
+                                                <div class="sportReservationSportName">
+                                                    {{ sports[i][counter].sport.name }}
+                                                </div>
+                                                <div class="sportReservationTime">
+                                                    {{ sports[i][counter].start | date("H:i") }} - {{sports[i][counter].end| date("H:i") }}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {% set offsetJ = sports[i][counter] | minutesBlocNumber(minutesInterval) %}
+                                        {% if  (counter + 1) < (sports[i] | length) %}
+                                            {% set counter = counter + 1 %}
+                                        {% endif %}
+                                    {% elseif offsetJ == 0 %}
+                                        <td class="center"></td>
+                                    {% else %}
+                                        {% set offsetJ = offsetJ - 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {% endblock %}

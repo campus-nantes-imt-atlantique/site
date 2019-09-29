@@ -90,29 +90,18 @@ class BDSIndexController extends AbstractController
         $eveningPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_END_DATE);
         $eveningPlanningMinutesNumber = $dateUtils->getMinutesInterval($eveningPlanningEnd,$eveningPlanningStart);
 
-        $dayPlanningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::DAY_PLANNING_START_DATE);
-        $dayPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::DAY_PLANNING_END_DATE);
-        $dayPlanningMinutesNumber = $dateUtils->getMinutesInterval($dayPlanningEnd,$dayPlanningStart);
-
         $sportsPerDaysEveningPlanning = array();
-        $sportsPerDaysDayPlanning = array();
 
         foreach ($weekDays as $weekDayName) {
             $weekDayEveningPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::EVENING_PLANNING_START_DATE,BDSIndexController::EVENING_PLANNING_END_DATE);
-            $weekDayDayPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE);
             $sportsPerDaysEveningPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayEveningPlanning);
-            $sportsPerDaysDayPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayDayPlanning);
         }
         return $this->render('bds/planning.html.twig', [
             'controller_name' => 'BDSIndexController',
             'sportsPerDaysEveningPlanning' => $sportsPerDaysEveningPlanning,
-            'sportsPerDaysDayPlanning' => $sportsPerDaysDayPlanning,
             'eveningPlanningMinutesNumber' => $eveningPlanningMinutesNumber,
-            'dayPlanningMinutesNumber' => $dayPlanningMinutesNumber,
             'eveningPlanningStartDate'  => $eveningPlanningStart,
             'eveningPlanningEndDate' => $eveningPlanningEnd,
-            'dayPlanningStartDate'  => $dayPlanningStart,
-            'dayPlanningEndDate' => $dayPlanningEnd,
             'minutesInterval' => 15
         ]);
     }
@@ -126,25 +115,21 @@ class BDSIndexController extends AbstractController
     public function sortPlanningWithoutConflicts($sports): array
     {
         $sportsResult = array();
-        $shift = 0;
-        foreach ($sports as $sport) {
-            if (count($sportsResult) == $shift) {
-                $sportsResult[$shift] = array();
-                array_push($sportsResult[$shift], $sport);
-                continue;
-            }
-            $sportAlreadyPushed = false;
-            for ($i = 0; $i < $shift; $i++) {
-                if ($sport->getStart() >= $sportsResult[$i][count($sportsResult[$i]) - 1]->getEnd()) {
-                    array_push($sportsResult[$i], $sport);
-                    $sportAlreadyPushed = true;
-                    break;
+        if (count($sports) > 0 ) {
+            $sportsResult = array(array(array_shift($sports)));
+            foreach ($sports as $sport) {
+                $rowsNumber = count($sportsResult);
+                $createNewRow = true;
+                for ($i = 0; $i < $rowsNumber; $i++) {
+                    if ($sport->getStart() >= $sportsResult[$i][count($sportsResult[$i]) - 1]->getEnd()) {
+                        array_push($sportsResult[$i], $sport);
+                        $createNewRow = false;
+                        break;
+                    }
                 }
-            }
-            if (!$sportAlreadyPushed) {
-                $shift++;
-                $sportsResult[$shift] = array();
-                array_push($sportsResult[$shift], $sport);
+                if ($createNewRow) {
+                    array_push($sportsResult, array($sport));
+                }
             }
         }
         return $sportsResult;
