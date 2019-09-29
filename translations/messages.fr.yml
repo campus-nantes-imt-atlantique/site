@@ -8,7 +8,10 @@ nav:
 index:
   school_website: "Site de l'école"
   contact_us: "Nous contacter"
+<<<<<<< HEAD
   campus: "Le campus"
+=======
+>>>>>>> contact-2
   section:
     title: "Les différentes sections présentes sur le site"
     consult_page: "Consulter la page"
@@ -29,6 +32,10 @@ index:
     description: "Vous retrouverez sur ce site des informations ainsi que des fonctionnalités permettant de faciliter la vie sur le campus."
 login:
   connectionToYourAccount: "Connexion à votre compte"
+campus :
+  campus : "Informations sur le campus"
+  sponsors : "Les sponsors"
+  vie : "Les astuces du campus"
 bds:
   bds_title: "Bureau des sports"
   bds_description: "Dans cette section du site, vous pouvez obtenir des informations sur le sport sur le campus, réserver du matériel, réserver\n le gymnase, faire des demandes au BDS etc."
