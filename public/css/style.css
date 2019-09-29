@@ -422,10 +422,16 @@ header {
 
 .siteSection {
     width: 200px;
-    min-height: 230px;
+    height: 250px;
     margin: auto;
+    position: relative;
 }
 
+.siteSectionButton {
+    position: absolute;
+    bottom : 15px;
+    left: 18px;
+}
 
 body {
     margin: 0;
