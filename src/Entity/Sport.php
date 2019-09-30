@@ -23,21 +23,17 @@ class Sport
      */
     private $name;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Sport")
-     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
-     */
-    private $sameLineSport;
-
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $color;
 
     /**
      * @ORM\OneToMany(targetEntity="Leader", mappedBy="sport")
      */
     private $leaders;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SportLocation", inversedBy="sports")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $location;
 
     public function __construct()
     {
@@ -80,27 +76,6 @@ class Sport
         return $this->name;
     }
 
-    public function getSameLineSport()
-    {
-        return $this->sameLineSport;
-    }
-
-    public function setSameLineSport($sameLineSport): void
-    {
-        $this->sameLineSport = $sameLineSport;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): self
-    {
-        $this->color = $color;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Leader[]
@@ -137,4 +112,17 @@ class Sport
 
         return $this;
     }
+
+    public function getLocation(): ?SportLocation
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?SportLocation $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
 }

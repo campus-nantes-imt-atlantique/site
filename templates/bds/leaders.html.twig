@@ -14,20 +14,18 @@
         <div class="title">{{ 'bds.nav.leaders' | trans }}</div>
         <div class="margin-60"></div>
         <div class="container">
-            {% for sport in sports %}
-                <div class="subtitle" data-aos="fade-up">{{ sport.name }}</div>
-                <div class="margin-20"></div>
-                <div class="row" data-aos="fade-up">
-                    {% for leader in sport.leaders %}
-                        <div class="col {{ sport.leaders | length == 2 ? 's6' : 's6 offset-s3' }} center">
-                            {% with {'img_src':  asset(leaders_path  ~ '/' ~  leader.image),'title' : leader, 'description' :  ''} %}
-                                {{ block('photo_card', 'common/photo_card.html.twig') }}
-                            {% endwith %}
-                        </div>
+            <div class="cardContainer leaderTable">
+                <table>
+                    {% for sport in sports %}
+                        <tr>
+                            <td>{{ sport.name }}</td>
+                            {% for leader in sport.leaders %}
+                                <td>{{ leader }}</td>
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </div>
-                <div class="margin-60"></div>
-            {% endfor %}
+                </table>
+            </div>
         </div>
 
     </div>

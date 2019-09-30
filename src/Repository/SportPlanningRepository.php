@@ -24,8 +24,23 @@ class SportPlanningRepository extends ServiceEntityRepository
         $englishDay = ucwords($englishDay);
         return $this->createQueryBuilder('s')
             ->join("s.day","d")
+            ->join("s.sport","sport")
             ->andWhere('lower(d.name_en) = lower(:day)')
             ->setParameter('day', $englishDay)
+            ->andWhere('s.start BETWEEN :start AND :end')
+            ->andWhere('s.end BETWEEN :start AND :end')
+            ->orderBy('s.start', 'asc')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByPeriod($start,$end)
+    {
+        return $this->createQueryBuilder('s')
+            ->join("s.sport","sport")
             ->andWhere('s.start BETWEEN :start AND :end')
             ->andWhere('s.end BETWEEN :start AND :end')
             ->orderBy('s.start', 'asc')

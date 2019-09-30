@@ -6,11 +6,12 @@ easy_admin:
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
-            list:
-                fields: ['name','sameLineSport','leaders','color']
         SportPlanning:
             class: App\Entity\SportPlanning
             label: "Planning des sports"
+        SportLocation:
+            class: App\Entity\SportLocation
+            label: "Lieux des sports"
         Leader:
             class: App\Entity\Leader
             label: "Responsables des sports"
@@ -26,7 +27,7 @@ easy_admin:
                     - { property: 'lastName' }
                     - { property: 'sport' }
                     - { property: 'sport' }
-                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image' }
         Sections:
             class: App\Entity\Section
             label: "Bureaux"
@@ -108,10 +109,9 @@ easy_admin:
             - label: 'BDE'
               children: ['BarProduct', 'TypeProductBar']
             - label: 'BDS'
-              children: ['Sports', 'SportPlanning', 'Leader']
+              children: ['Sports', 'SportPlanning' ,'SportLocation', 'Leader']
 #            - label: 'BDA'
 #              children: ['YourEntity']
-            - Sections
             - Content
             - Event
             - Poles

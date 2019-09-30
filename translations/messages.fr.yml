@@ -36,7 +36,8 @@ campus :
 bds:
   bds_title: "Bureau des sports"
   bds_description: "Dans cette section du site, vous pouvez obtenir des informations sur le sport sur le campus, réserver du matériel, réserver\n le gymnase, faire des demandes au BDS etc."
-  sports:
+  sports_during_day: "Sports en journée"
+  ports:
     football: "Football"
     tennis: "Tennis"
   nav:

@@ -7,6 +7,7 @@ use App\Entity\Content;
 use App\Entity\Member;
 use App\Entity\Pole;
 use App\Entity\Sport;
+use App\Entity\SportLocation;
 use App\Entity\SportPlanning;
 use App\Repository\SportPlanningRepository;
 use App\Repository\SportRepository;
@@ -47,34 +48,16 @@ class BDSIndexController extends AbstractController
      */
     public function leaders(TranslatorInterface $translator)
     {
-        $allSports = $this->getDoctrine()->getRepository(Sport::class)->findAll();
-        $sports = array();
-        foreach ($allSports as $sport) {
-            if ($sport->getSameLineSport() != null) {
-                $mergedLeaders = new ArrayCollection(
-                    array_merge($sport->getLeaders()->toArray(), $sport->getSameLineSport()->getLeaders()->toArray())
-                );
-                $newSportName = $sport->getName() . " " . $translator->trans('and') . " " . $sport->getSameLineSport()->getName();
-                if ($sports[$sport->getSameLineSport()->getName()] != null) {
-                    unset($sports[$sport->getSameLineSport()->getName()]);
-                }
-                $sport->setLeaders($mergedLeaders);
-                $sport->setName($newSportName);
-                $sports[$newSportName] = $sport;
-            } else {
-                $sports[$sport->getName()] = $sport;
-            }
-        }
         return $this->render('bds/leaders.html.twig', [
             'controller_name' => 'BDSIndexController',
-            'sports' => $sports
+            'sports' => $this->getDoctrine()->getRepository(Sport::class)->findAll()
         ]);
     }
 
-    public const EVENING_PLANNING_START_DATE = '08:00:00';
+    public const EVENING_PLANNING_START_DATE = '16:00:00';
     public const EVENING_PLANNING_END_DATE = '23:59:59';
     public const DAY_PLANNING_START_DATE = '08:00:00';
-    public const DAY_PLANNING_END_DATE = '16:00:00';
+    public const DAY_PLANNING_END_DATE = '18:00:00';
 
     /**
      * @Route({
@@ -102,6 +85,8 @@ class BDSIndexController extends AbstractController
             'eveningPlanningMinutesNumber' => $eveningPlanningMinutesNumber,
             'eveningPlanningStartDate'  => $eveningPlanningStart,
             'eveningPlanningEndDate' => $eveningPlanningEnd,
+            'sportLocations' => $this->getDoctrine()->getRepository(SportLocation::class)->findAll(),
+            'sportsDuringDay' => $this->getDoctrine()->getRepository(SportPlanning::class)->findByPeriod(BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE),
             'minutesInterval' => 15
         ]);
     }

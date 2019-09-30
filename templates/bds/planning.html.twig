@@ -10,10 +10,21 @@
 {% block content %}
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
     <div class="section-content"  data-aos="fade-up">
+
+
         <div class="tinyDivider"></div>
         <div class="title">{{ 'bds.nav.sports_planning' | trans }}</div>
         <div class="margin-30"></div>
         <div class="tiny-container">
+            <div class="tiny-container center">
+                {% for sportLocation in sportLocations %}
+                    <div class="tag" style="background-color: {{ sportLocation.color }}">
+                        {{ sportLocation.name  | capitalize }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="margin-20"></div>
+
             {% with {
                 'sportsPerDays': sportsPerDaysEveningPlanning,
                 'startDate': eveningPlanningStartDate,
@@ -23,7 +34,24 @@
                 } %}
                 {{ block('daily_planning', 'common/daily_planning.html.twig') }}
             {% endwith %}
+
+            <div class="margin-30"></div>
+            <div class="title">{{ 'bds.sports_during_day' | trans }}</div>
+            <div class="margin-30"></div>
+
+            <div class="planningCard cardContainer center">
+                <table>
+                    {% for sportPlanning in sportsDuringDay %}
+                        <tr>
+                            <td class="center">{{ sportPlanning.sport.name  | capitalize }}</td>
+                            <td class="center">{{ sportPlanning.day | capitalize }} {{ sportPlanning.start | date("H:i")}} - {{ sportPlanning.end  | date("H:i") }}</td>
+                            <td class="center"><div class="tag" style="background-color: {{ sportPlanning.sport.location.color }}">{{ sportPlanning.sport.location | capitalize }}</div></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
+
     </div>
 {% endblock %}
 
