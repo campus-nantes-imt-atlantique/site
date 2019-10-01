@@ -10,13 +10,11 @@
 {% block content %}
     {{ block('bds_nav','bds/bds_nav.html.twig') }}
     <div class="section-content"  data-aos="fade-up">
-
-
         <div class="tinyDivider"></div>
         <div class="title">{{ 'bds.nav.sports_planning' | trans }}</div>
         <div class="margin-30"></div>
         <div class="tiny-container">
-            <div class="tiny-container center">
+            <div class="center">
                 {% for sportLocation in sportLocations %}
                     <div class="tag" style="background-color: {{ sportLocation.color }}">
                         {{ sportLocation.name  | capitalize }}
@@ -39,7 +37,7 @@
             <div class="title">{{ 'bds.sports_during_day' | trans }}</div>
             <div class="margin-30"></div>
 
-            <div class="planningCard cardContainer center">
+            <div class="cardContainer center">
                 <table>
                     {% for sportPlanning in sportsDuringDay %}
                         <tr>

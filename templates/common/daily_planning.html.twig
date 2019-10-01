@@ -16,7 +16,7 @@
                 {% for day, sports in sportsPerDays %}
                     {% if sports|length > 0 %}
                         {% for i in 0..sports|length-1 %}
-                            <tr class="{{  (i == 0 and sports | length > 1) ? "innerTr" : "" }}"  type="{{ day }}">
+                            <tr class="{{  (i != sports | length - 1 ) ? "innerTr" : "" }}"  type="{{ day }}">
                                 {% if i == 0 %}
                                     <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center zui-sticky-col">{{ day | trans  }}</td>
                                 {% endif %}
@@ -35,7 +35,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        {% set offsetJ = sports[i][counter] | minutesBlocNumber(minutesInterval) %}
+                                        {% set offsetJ = sports[i][counter] | minutesBlocNumber(minutesInterval) - 1 %}
                                         {% if  (counter + 1) < (sports[i] | length) %}
                                             {% set counter = counter + 1 %}
                                         {% endif %}
@@ -52,6 +52,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
 {% endblock %}

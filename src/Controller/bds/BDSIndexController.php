@@ -54,7 +54,7 @@ class BDSIndexController extends AbstractController
         ]);
     }
 
-    public const EVENING_PLANNING_START_DATE = '16:00:00';
+    public const EVENING_PLANNING_START_DATE = '17:00:00';
     public const EVENING_PLANNING_END_DATE = '23:59:59';
     public const DAY_PLANNING_START_DATE = '08:00:00';
     public const DAY_PLANNING_END_DATE = '18:00:00';
