@@ -58,6 +58,7 @@ bda:
   bda_description: "Welcome to the BDA section."
   nav:
     information: "Information about the art office"
+    clubs: "Clubs list"
 days:
   monday: "Monday"
   tuesday: "Tuesday"

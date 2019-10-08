@@ -26,7 +26,7 @@
                                 {% for j in 0..minutesNumber/minutesInterval %}
                                     {% if sports[i][counter].start|toMinutesSince(startDate) == j*minutesInterval %}
                                         <td colspan="{{ sports[i][counter] | minutesBlocNumber(minutesInterval) }}" class="center">
-                                            <div class="sportReservation" style="background-color: {{ sports[i][counter].sport.location.color }}">
+                                            <div class="sportReservation" style="background-color: {{ sports[i][counter].location.color }}">
                                                 <div class="sportReservationSportName">
                                                     {{ sports[i][counter].sport.name }}
                                                 </div>

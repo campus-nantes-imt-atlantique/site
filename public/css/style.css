@@ -460,15 +460,15 @@ footer .icons * {
 
 /*                                                          BDS                                          */
 
-.leaderTable {
+.cardTable {
     margin: auto;
-    max-width: 600px;
+    display: inline-block;
     padding: 20px;
 }
-.leaderTable tr {
+.cardTable tr {
     /*border: none;*/
 }
-.leaderTable td {
+.cardTable td {
     width: auto;
 }
 
@@ -646,7 +646,9 @@ body .loginContainer {
     min-width:100px;
 }
 
-
+p {
+    text-align: justify;
+}
 
 @media only screen and (max-width: 993px) {
     .planningTable {

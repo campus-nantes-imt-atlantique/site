@@ -6,6 +6,9 @@ easy_admin:
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
+        Clubs:
+            class: App\Entity\Club
+            label: "Clubs de l'école"
         SportPlanning:
             class: App\Entity\SportPlanning
             label: "Planning des sports"
@@ -14,19 +17,16 @@ easy_admin:
             label: "Lieux des sports"
         Leader:
             class: App\Entity\Leader
-            label: "Responsables des sports"
+            label: "Responsables"
             list:
                 fields:
                     - { property: 'image', type: 'image', base_path: '%app.path.leaders%' }
                     - { property: 'firstName' }
                     - { property: 'lastName' }
-                    - { property: 'sport' }
             form:
                 fields:
                     - { property: 'firstName' }
                     - { property: 'lastName' }
-                    - { property: 'sport' }
-                    - { property: 'sport' }
                     - { property: 'imageFile', type: 'vich_image' }
         Sections:
             class: App\Entity\Section
@@ -109,10 +109,11 @@ easy_admin:
             - label: 'BDE'
               children: ['BarProduct', 'TypeProductBar']
             - label: 'BDS'
-              children: ['Sports', 'SportPlanning' ,'SportLocation', 'Leader']
-#            - label: 'BDA'
-#              children: ['YourEntity']
+              children: ['Sports', 'SportPlanning' ,'SportLocation']
+            - label: 'BDA'
+              children: ['Clubs']
             - Content
+            - Leader
             - Event
             - Poles
             - Member

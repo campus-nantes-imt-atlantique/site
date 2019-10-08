@@ -63,6 +63,7 @@ bda:
   bda_description: "Bienvenue sur la page BDA"
   nav:
     information: "Informations sur le BDA"
+    clubs: "Liste des clubs"
 days:
   monday: "Lundi"
   tuesday: "Mardi"

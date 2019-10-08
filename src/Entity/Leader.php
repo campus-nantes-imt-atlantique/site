@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -49,11 +51,11 @@ class Leader
      */
     private $updatedAt;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sport", inversedBy="leaders")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sport;
+
+    public function __construct()
+    {
+        $this->sportLeaders = new ArrayCollection();
+    }
 
 
     public function setImageFile(File $image = null)
@@ -113,22 +115,9 @@ class Leader
         return $this;
     }
 
-    public function getSport(): ?Sport
-    {
-        return $this->sport;
-    }
-
-    public function setSport(?Sport $sport): self
-    {
-        $this->sport = $sport;
-
-        return $this;
-    }
-
     public function __toString()
     {
         return "$this->firstName $this->lastName";
     }
-
 
 }

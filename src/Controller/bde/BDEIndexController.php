@@ -25,7 +25,7 @@ class BDEIndexController extends AbstractController
         return $this->render('bde/index.html.twig', [
             'controller_name' => 'BDEIndexController',
             "description" => $description,
-            "navigation_description" => $navDescription,
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale()),
             "poles" => $poles
         ]);
     }
@@ -42,6 +42,7 @@ class BDEIndexController extends AbstractController
         return $this->render('bde/bar.html.twig', [
             'controller_name' => 'BDEIndexController',
             "lang" => $request->getLocale(),
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale()),
             "product_types" => $producttypes
         ]);
     }
@@ -57,6 +58,7 @@ class BDEIndexController extends AbstractController
         $events = $this->getDoctrine()->getRepository(Event::class)->findEventsToComeBySectionName("BDE");
         return $this->render('bde/events.html.twig', [
             'controller_name' => 'BDEIndexController',
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale()),
             "lang" => $request->getLocale(),
             "events" => $events
         ]);
@@ -68,9 +70,10 @@ class BDEIndexController extends AbstractController
      *     "fr": "/bde/planning"
      * }, name="bde_planning")
      */
-    public function planning()
+    public function planning(Request $request)
     {
         return $this->render('bde/planning.html.twig', [
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale()),
             'controller_name' => 'BDEIndexController',
         ]);
     }

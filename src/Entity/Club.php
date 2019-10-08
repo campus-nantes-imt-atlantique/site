@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SportRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ClubRepository")
  */
-class Sport
+class Club
 {
     /**
      * @ORM\Id()
@@ -23,32 +23,14 @@ class Sport
      */
     private $name;
 
-
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Leader")
      */
     private $leaders;
 
-
     public function __construct()
     {
         $this->leaders = new ArrayCollection();
-        $this->sportLeaders = new ArrayCollection();
-    }
-
-    /**
-     * Sport constructor.
-     * @param $name
-     * @param $leaders
-     * @param $sameLineSport
-     */
-    public static function withValues($name, $leaders, $sameLineSport)
-    {
-        $instance = new self();
-        $instance->name = $name;
-        $instance->leaders = $leaders;
-        $instance->sameLineSport = $sameLineSport;
-        return $instance;
     }
 
     public function getId(): ?int
@@ -68,11 +50,6 @@ class Sport
         return $this;
     }
 
-    public function __toString() {
-        return $this->name;
-    }
-
-
     /**
      * @return Collection|Leader[]
      */
@@ -81,16 +58,10 @@ class Sport
         return $this->leaders;
     }
 
-    public function setLeaders(?Collection $leaders)
-    {
-        $this->leaders = $leaders;
-    }
-
     public function addLeader(Leader $leader): self
     {
         if (!$this->leaders->contains($leader)) {
             $this->leaders[] = $leader;
-            $leader->setSport($this);
         }
 
         return $this;
@@ -100,13 +71,8 @@ class Sport
     {
         if ($this->leaders->contains($leader)) {
             $this->leaders->removeElement($leader);
-            // set the owning side to null (unless already changed)
-            if ($leader->getSport() === $this) {
-                $leader->setSport(null);
-            }
         }
 
         return $this;
     }
-
 }

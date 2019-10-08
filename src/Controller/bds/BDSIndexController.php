@@ -29,13 +29,12 @@ class BDSIndexController extends AbstractController
      */
     public function index(Request $request)
     {
-        $navDescription = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale());
         $description = $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("description","BDS", $request->getLocale());
         $poles = $this->getDoctrine()->getRepository(Pole::class)->findBySectionName("BDS");
         return $this->render('bds/index.html.twig', [
             'controller_name' => 'BDSIndexController',
             "description" => $description,
-            "navigation_description" => $navDescription,
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
             "poles" => $poles
         ]);
     }
@@ -46,18 +45,17 @@ class BDSIndexController extends AbstractController
      *     "fr": "/bds/responsables"
      * }, name="bds_leaders")
      */
-    public function leaders(TranslatorInterface $translator)
+    public function leaders(Request $request)
     {
         return $this->render('bds/leaders.html.twig', [
             'controller_name' => 'BDSIndexController',
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
             'sports' => $this->getDoctrine()->getRepository(Sport::class)->findAll()
         ]);
     }
 
-    public const EVENING_PLANNING_START_DATE = '17:00:00';
-    public const EVENING_PLANNING_END_DATE = '23:59:59';
-    public const DAY_PLANNING_START_DATE = '08:00:00';
-    public const DAY_PLANNING_END_DATE = '18:00:00';
+    public const PLANNING_START_DATE = '00:00:00';
+    public const PLANNING_END_DATE = '23:59:59';
 
     /**
      * @Route({
@@ -65,28 +63,31 @@ class BDSIndexController extends AbstractController
      *     "fr": "/bds/planning"
      * }, name="bds_planning")
      */
-    public function planning(DateUtils $dateUtils, TranslatorInterface $translator)
+    public function planning(DateUtils $dateUtils, TranslatorInterface $translator,Request $request)
     {
         $weekDays = array("days.monday","days.tuesday","days.wednesday","days.thursday","days.friday","days.saturday","days.sunday");
 
-        $eveningPlanningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_START_DATE);
-        $eveningPlanningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::EVENING_PLANNING_END_DATE);
-        $eveningPlanningMinutesNumber = $dateUtils->getMinutesInterval($eveningPlanningEnd,$eveningPlanningStart);
+//        $planningStart = DateTime::createFromFormat("H:i:s",BDSIndexController::PLANNING_START_DATE);
+//        $planningEnd = DateTime::createFromFormat("H:i:s",BDSIndexController::PLANNING_END_DATE);
+        $planningStart = $this->getDoctrine()->getRepository(SportPlanning::class)->findMinHour();
+        $planningEnd = $this->getDoctrine()->getRepository(SportPlanning::class)->findMaxHour();
+        $planningMinutesNumber = $dateUtils->getMinutesInterval($planningEnd,$planningStart);
 
-        $sportsPerDaysEveningPlanning = array();
+        $sportsPerDaysPlanning = array();
 
         foreach ($weekDays as $weekDayName) {
-            $weekDayEveningPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::EVENING_PLANNING_START_DATE,BDSIndexController::EVENING_PLANNING_END_DATE);
-            $sportsPerDaysEveningPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayEveningPlanning);
+            $weekDayPlanning = $this->getDoctrine()->getRepository(SportPlanning::class)->findByEnglishDay($translator->trans($weekDayName,array(),null,'en'), BDSIndexController::PLANNING_START_DATE,BDSIndexController::PLANNING_END_DATE);
+            $sportsPerDaysPlanning[$weekDayName] = $this->sortPlanningWithoutConflicts($weekDayPlanning);
         }
         return $this->render('bds/planning.html.twig', [
             'controller_name' => 'BDSIndexController',
-            'sportsPerDaysEveningPlanning' => $sportsPerDaysEveningPlanning,
-            'eveningPlanningMinutesNumber' => $eveningPlanningMinutesNumber,
-            'eveningPlanningStartDate'  => $eveningPlanningStart,
-            'eveningPlanningEndDate' => $eveningPlanningEnd,
+            'sportsPerDaysPlanning' => $sportsPerDaysPlanning,
+            'planningMinutesNumber' => $planningMinutesNumber,
+            'planningStartDate'  => $planningStart,
+            'planningEndDate' => $planningEnd,
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
             'sportLocations' => $this->getDoctrine()->getRepository(SportLocation::class)->findAll(),
-            'sportsDuringDay' => $this->getDoctrine()->getRepository(SportPlanning::class)->findByPeriod(BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE),
+//            'sportsDuringDay' => $this->getDoctrine()->getRepository(SportPlanning::class)->findByPeriod(BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE),
             'minutesInterval' => 15
         ]);
     }

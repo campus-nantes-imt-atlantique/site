@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Content;
+use App\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +17,7 @@ class IndexController extends AbstractController
     {
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
+            'events' => $this->getDoctrine()->getRepository(Event::class)->findAll(),
             'bds_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDS", $request->getLocale()),
             'bde_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDE", $request->getLocale()),
             'bda_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDA", $request->getLocale()),

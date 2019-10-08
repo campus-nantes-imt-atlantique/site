@@ -38,6 +38,12 @@ class SportPlanning
      */
     private $day;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SportLocation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $location;
+
 
     public function getId(): ?int
     {
@@ -89,4 +95,16 @@ class SportPlanning
         return $this;
     }
 
+
+    public function getLocation(): ?SportLocation
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?SportLocation $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
 }

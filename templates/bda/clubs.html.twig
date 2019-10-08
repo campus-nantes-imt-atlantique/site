@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BDS{% endblock %}
+{% block title %}BDA{% endblock %}
 
 {% block header %}
-    <div class="navTitle margin-30">{{ 'bds.bds_title' | trans | nl2br }}<br /></div>
+    <div class="navTitle margin-30">{{ 'bda.bda_title' | trans | nl2br }}<br /></div>
     <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
 {% endblock %}
 
 {% block content %}
-    {{ block('bds_nav','bds/bds_nav.html.twig') }}
+    {{ block('bda_nav','bda/bda_nav.html.twig') }}
     <div class="section-content center">
         <div class="tinyDivider"></div>
-        <div class="title">{{ 'bds.nav.leaders' | trans }}</div>
+        <div class="title">{{ 'bda.nav.clubs' | trans }}</div>
         <div class="margin-60"></div>
         <div class="container">
             <div class="cardContainer cardTable">
                 <table>
-                    {% for sport in sports %}
+                    {% for club in clubs %}
                         <tr>
-                            <td>{{ sport.name }}</td>
-                            {% for leader in sport.leaders %}
+                            <td>{{ club.name }}</td>
+                            {% for leader in club.leaders %}
                                 <td>{{ leader }}</td>
                             {% endfor %}
                         </tr>

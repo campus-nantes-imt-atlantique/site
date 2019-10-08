@@ -1,10 +1,10 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
+#    url: '%env(MAILER_URL)%'
     transport: gmail
     auth_mode: login
-    port: 465
+    port: 587
     host: smtp.gmail.com
     username: campus.imt.atlantique@gmail.com
     password: fQFHEJHsw7L2
-    spool: { type: 'memory' }
+#    spool: { type: 'memory' }
 
