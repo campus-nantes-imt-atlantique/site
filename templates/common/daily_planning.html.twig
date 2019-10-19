@@ -5,7 +5,7 @@
             <table border="1" width="100%">
                 <thead>
                 <tr>
-                    <th class="firstTd zui-sticky-col"></th>
+                    <th class="firstTd"></th>
                     {% for j in 0..minutesNumber/minutesNumberInOneHour %}
                         <th class="center" colspan="{{ minutesNumberInOneHour / minutesInterval }}">{{ startDate | date_modify("+#{j} hour") | date("H:i") }}</th>
                     {% endfor %}
@@ -18,7 +18,7 @@
                         {% for i in 0..sports|length-1 %}
                             <tr class="{{  (i != sports | length - 1 ) ? "innerTr" : "" }}"  type="{{ day }}">
                                 {% if i == 0 %}
-                                    <td rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center zui-sticky-col">{{ day | trans  }}</td>
+                                    <td style="height: calc(77px * {{ sports | length }}); padding-top: calc(77px * {{ ( sports | length ) / 2 }} - 1em);" rowspan="{{ sports | length > 0 ? sports |length : 1 }}" class="firstTd center">{{ day | trans  }}</td>
                                 {% endif %}
                                 <td colspan="2" class="center"></td>
                                 {% set offsetJ = 0 %}

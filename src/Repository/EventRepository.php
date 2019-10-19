@@ -42,7 +42,7 @@ class EventRepository extends ServiceEntityRepository
             ->andWhere('s.name = :sectionName')
             ->setParameter('sectionName', $sectionName)
             ->andWhere('DATE_DIFF( e.date , CURRENT_DATE()) > 0')
-            ->orderBy('e.date', 'ASC')
+            ->orderBy('e.date', 'DESC')
             ->getQuery()
             ->getResult()
             ;

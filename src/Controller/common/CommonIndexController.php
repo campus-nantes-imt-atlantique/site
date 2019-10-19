@@ -44,22 +44,6 @@ class CommonIndexController extends AbstractController
                 } else {
                     $this->get('session')->getFlashBag()->add('success','Le message a bien été envoyé');
                 }
-
-                $messageconfirmation = (new \Swift_Message())
-                    ->setSubject('Confirmation de réception au sujet de ' ." ". $enquiry->getSubject())
-                    ->setFrom($enquiry->getEmail())
-                    ->setTo($enquiry->getEmail())
-                    ->setBody('Votre demande a bien été envoyée, nous vous joindrons le plus vite possible. \n We received your question, we will respond you the sooner possible');
-
-                $sent = $mailerconfirmation->send($messageconfirmation,$errors);
-                if (!$sent)
-                {
-                    print_r($errors);
-                    $this->get('session')->getFlashBag()->add('error','Une erreur est survenue lors de l\'envoi');
-                }
-
-            } else {
-
             }
         }
         return $this->render('common/contact.html.twig',  array(

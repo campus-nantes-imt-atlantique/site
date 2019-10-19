@@ -9,48 +9,50 @@
     <a target="_blank" href="https://www.imt-atlantique.fr/{{ app.request.locale }}"><div data-aos="fade-down" class="roundedWhiteButton headerButton  margin-20">{{ 'index.school_website' | trans }}</div></a>
 {% endblock %}
 
+{% block before_content %}
+
+
+{% endblock %}
+
 {% block content %}
+
+
     <div class="container">
 
 
         <div class="title">{{ 'events_to_come' | trans }}</div>
-        <div class="margin-20"></div>
 
-        <div class="container">
+        <div class="">
             {% if events|length == 0 %}
                 <div class="tinyDivider"></div>
-                <div class="margin-20"></div>
+                <div class="margin-60"></div>
                 <p class="subtitle">
                     {{ 'events.no_events_to_come' | trans }}
                 </p>
-                <div class="margin-20"></div>
+                <div class="margin-60"></div>
             {% else %}
-                {% for event in events %}
-                    <div class="tinyDivider"></div>
-                    <div class="margin-20"></div>
-                    <div class="blockCards" data-aos="fade-up">
-                        <div class="cardContainer largeCard center">
-
+                <div class="main-carousel">
+                    {% for event in events %}
+                        <div class="cardContainer largeCard carousel-cell">
                             {% with {'img_src':  asset(events_path ~ '/' ~  event.image),'title' : event.getName(app.request.locale), 'description':event.getDescription(app.request.locale), 'subtitle1':event.getDayMonth(app.request.locale), 'subtitle2':event.getSchedule(app.request.locale) } %}
                                 {{ block('large_card', 'common/large_card.html.twig') }}
                             {% endwith %}
                         </div>
-                    </div>
-                    <div class="margin-20"></div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+
             {% endif %}
             <div class="margin-40"></div>
         </div>
 
         <div class="margin-40"></div>
-        <div class="tinyDivider"></div>
         <div class="title margin-20">{% trans %}index.section.title{% endtrans %}</div>
 
         <div class="row margin-40">
             <div class="col s12 m6 l3 center margin-10">
-                <div class="cardContainer center siteSection" data-aos="fade-right">
+                <div class="cardContainer center siteSection">
                     <div class="title padding-20">{{ 'index.section.bde.title' | trans }}</div>
-                    <div class="margin-20">
+                    <div class="padding-10 margin-20">
                         {{ bde_feature  | nl2br }}
                     </div>
                     <a href="{{ path('bde_index') }}"><div class="roundedGreenButton siteSectionButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
@@ -58,9 +60,9 @@
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
-                <div class="cardContainer center siteSection"  data-aos="fade-up">
+                <div class="cardContainer center siteSection" >
                     <div class="title padding-20">{{ 'index.section.bda.title' | trans }}</div>
-                    <div class="margin-20">
+                    <div class="padding-10 margin-20">
                         {{ bda_feature  | nl2br }}
                     </div>
                     <a href="{{ path('bda_index') }}"><div class="roundedBlueButton siteSectionButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
@@ -68,9 +70,9 @@
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
-                <div class="cardContainer center siteSection"  data-aos="fade-up">
+                <div class="cardContainer center siteSection">
                     <div class="title padding-20">{{ 'index.section.bds.title' | trans }}</div>
-                    <div class="margin-20">
+                    <div class="padding-10 margin-20">
                         {{ bds_feature  | nl2br }}
                     </div>
                     <a href="{{ path('bds_index') }}"><div class="roundedGreenButton siteSectionButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
@@ -78,9 +80,9 @@
                 </div>
             </div>
             <div class="col s12 m6 l3 center margin-10">
-                <div class="cardContainer center siteSection"  data-aos="fade-left">
+                <div class="cardContainer center siteSection">
                     <div class="title padding-20">{{ 'index.section.je.title' | trans }}</div>
-                    <div class="margin-20">
+                    <div class="padding-10 margin-20">
                         {{ je_feature | nl2br  }}
                     </div>
                     <a href="{{ path('je_index') }}"><div class="roundedBlueButton siteSectionButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>

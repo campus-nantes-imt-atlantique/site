@@ -3,6 +3,11 @@ easy_admin:
         Content:
             class: App\Entity\Content
             label: "Divers"
+            list:
+                fields:
+                    - { property: 'contentKey' }
+                    - { property: 'section' }
+                    - { property: 'contentFr' }
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
@@ -45,7 +50,7 @@ easy_admin:
                     - { property: 'firstName' }
                     - { property: 'lastName' }
                     - { property: 'pole' }
-                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false } }
         Poles:
             class: App\Entity\Pole
             label: "Les pôles"
@@ -70,7 +75,7 @@ easy_admin:
                     - { property: 'description_en' }
                     - { property: 'date' }
                     - { property: 'section' }
-                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false } }
 
         TypeProductBar:
             class: App\Entity\BarProductType

@@ -4,6 +4,7 @@ namespace App\Controller\bda;
 
 use App\Entity\Club;
 use App\Entity\Content;
+use App\Entity\Event;
 use App\Entity\Pole;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,22 @@ class BDAIndexController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route({
+     *     "en": "/bda/events",
+     *     "fr": "/bda/evenements"
+     * }, name="bda_events")
+     */
+    public function events(Request $request)
+    {
+        $events = $this->getDoctrine()->getRepository(Event::class)->findEventsToComeBySectionName("BDA");
+        return $this->render('bda/events.html.twig', [
+            'controller_name' => 'BDAIndexController',
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDA", $request->getLocale()),
+            "lang" => $request->getLocale(),
+            "events" => $events
+        ]);
+    }
 
     /**
      * @Route({

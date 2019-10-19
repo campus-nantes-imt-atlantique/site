@@ -8,7 +8,7 @@
                 {{ subtitle1 }}<br/>{{ subtitle2 }}
             </div>
             <div class="largeCardDescription">
-                {{ description }}
+                {{ description | transform_links | raw }}
             </div>
         </div>
 {% endblock %}

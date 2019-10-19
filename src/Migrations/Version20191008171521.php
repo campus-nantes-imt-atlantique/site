@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191004152935 extends AbstractMigration
+final class Version20191008171521 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -31,11 +31,13 @@ final class Version20191004152935 extends AbstractMigration
         $this->addSql('ALTER TABLE club_leader ADD CONSTRAINT FK_D02C565D73154ED4 FOREIGN KEY (leader_id) REFERENCES leader (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE leader DROP FOREIGN KEY FK_F5E3EAD7AC78BCF8');
         $this->addSql('DROP INDEX IDX_F5E3EAD7AC78BCF8 ON leader');
+        $this->addSql('INSERT INTO sport_leader (sport_id, leader_id) select sport_id, id from leader');
         $this->addSql('ALTER TABLE leader DROP sport_id');
         $this->addSql('ALTER TABLE sport DROP FOREIGN KEY FK_1A85EFD264D218E');
         $this->addSql('DROP INDEX IDX_1A85EFD264D218E ON sport');
         $this->addSql('ALTER TABLE sport DROP location_id');
         $this->addSql('ALTER TABLE sport_planning ADD location_id INT NOT NULL');
+        $this->addSql('UPDATE sport_planning set location_id = 1 where 1=1');
         $this->addSql('ALTER TABLE sport_planning ADD CONSTRAINT FK_E23B404C64D218E FOREIGN KEY (location_id) REFERENCES sport_location (id)');
         $this->addSql('CREATE INDEX IDX_E23B404C64D218E ON sport_planning (location_id)');
     }

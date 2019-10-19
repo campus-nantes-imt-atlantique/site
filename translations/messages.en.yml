@@ -42,6 +42,7 @@ bds:
     day_sports_planning: "Sport planning during the day"
     evening_sports_planning: "Sport planning in the evening"
     gymnasium_booking: "Gymnasium booking"
+    events: "Events"
     stuff_booking: "Stuff booking"
     make_demand: "Make a demand"
 bde:
@@ -58,6 +59,7 @@ bda:
   bda_description: "Welcome to the BDA section."
   nav:
     information: "Information about the art office"
+    events: "Events"
     clubs: "Clubs list"
 days:
   monday: "Monday"

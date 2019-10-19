@@ -19,6 +19,18 @@ class SportRepository extends ServiceEntityRepository
         parent::__construct($registry, Sport::class);
     }
 
+
+    public function findAllWithLeaders() {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.leaders','l')
+            ->groupBy('s.id')
+            ->having('count(l.id) >= 1')
+            ->orderBy('s.name','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Sport[] Returns an array of Sport objects
     //  */

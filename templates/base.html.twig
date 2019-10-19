@@ -8,6 +8,7 @@
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+            <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon-32x32.png') }}" />
             <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
         {% endblock %}
@@ -24,6 +25,11 @@
             </header>
 
             {{ block('mobile_nav','index/mobile_nav.html.twig') }}
+
+
+            {% block before_content %}
+
+            {% endblock %}
 
             <div class="content">
                 {% block content %}
@@ -75,7 +81,17 @@
         gtag('config', 'UA-148909415-1');
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.main-carousel').flickity({
+                // options
+                cellAlign: 'left',
+                contain: true,
+                autoPlay: 4000,
+            });
+        });
+    </script>
     {% block javascripts %}
 
     {% endblock %}

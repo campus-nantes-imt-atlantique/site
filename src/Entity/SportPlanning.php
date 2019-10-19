@@ -28,7 +28,7 @@ class SportPlanning
 
     /**
      * One SportPlanning has One Sport.
-     * @ORM\OneToOne(targetEntity="Sport")
+     * @ORM\ManyToOne(targetEntity="Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
     private $sport;

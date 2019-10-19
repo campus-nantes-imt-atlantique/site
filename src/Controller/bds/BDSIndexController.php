@@ -4,6 +4,7 @@ namespace App\Controller\bds;
 
 use App\DataFixtures\SportPlanningFixture;
 use App\Entity\Content;
+use App\Entity\Event;
 use App\Entity\Member;
 use App\Entity\Pole;
 use App\Entity\Sport;
@@ -50,7 +51,7 @@ class BDSIndexController extends AbstractController
         return $this->render('bds/leaders.html.twig', [
             'controller_name' => 'BDSIndexController',
             "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
-            'sports' => $this->getDoctrine()->getRepository(Sport::class)->findAll()
+            'sports' => $this->getDoctrine()->getRepository(Sport::class)->findAllWithLeaders()
         ]);
     }
 
@@ -85,6 +86,7 @@ class BDSIndexController extends AbstractController
             'planningMinutesNumber' => $planningMinutesNumber,
             'planningStartDate'  => $planningStart,
             'planningEndDate' => $planningEnd,
+            'planning_information' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("planning_information","BDS", $request->getLocale()),
             "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
             'sportLocations' => $this->getDoctrine()->getRepository(SportLocation::class)->findAll(),
 //            'sportsDuringDay' => $this->getDoctrine()->getRepository(SportPlanning::class)->findByPeriod(BDSIndexController::DAY_PLANNING_START_DATE,BDSIndexController::DAY_PLANNING_END_DATE),
@@ -119,6 +121,23 @@ class BDSIndexController extends AbstractController
             }
         }
         return $sportsResult;
+    }
+
+    /**
+     * @Route({
+     *     "en": "/bds/events",
+     *     "fr": "/bds/evenements"
+     * }, name="bds_events")
+     */
+    public function events(Request $request)
+    {
+        $events = $this->getDoctrine()->getRepository(Event::class)->findEventsToComeBySectionName("BDS");
+        return $this->render('bds/events.html.twig', [
+            'controller_name' => 'BDSIndexController',
+            "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDS", $request->getLocale()),
+            "lang" => $request->getLocale(),
+            "events" => $events
+        ]);
     }
 
 

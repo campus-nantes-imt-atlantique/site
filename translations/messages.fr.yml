@@ -42,6 +42,7 @@ bds:
     tennis: "Tennis"
   nav:
     information: "Informations sur le BDS"
+    events: "Événements"
     leaders: "Responsables des sports"
     sports_planning: "Planning des sports"
     evening_sports_planning: "Planning des sports en soirée"
@@ -63,6 +64,7 @@ bda:
   bda_description: "Bienvenue sur la page BDA"
   nav:
     information: "Informations sur le BDA"
+    events: "Événements"
     clubs: "Liste des clubs"
 days:
   monday: "Lundi"

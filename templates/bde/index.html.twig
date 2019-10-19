@@ -16,7 +16,7 @@
     <div class="margin-40"></div>
     <div class="container">
         <p>
-            {{ description  | nl2br }}
+            {{ description   | raw  }}
         </p>
         <div class="tinyDivider"></div>
     </div>
@@ -31,7 +31,7 @@
             <div class="poleMembers" data-aos="fade-up">
                 {% for member in pole.members %}
                     <div class="poleMember">
-                        {% with {'img_src': asset(members_path ~ '/' ~  member.image),'title' : member.firstName ~ ' ' ~ member.lastName, 'description':'' } %}
+                        {% with {'img_src': asset(members_path  ~ '/' ~  member.image |url_encode),'title' : member.firstName ~ ' ' ~ member.lastName, 'description':'' } %}
                             {{ block('photo_card', 'common/photo_card.html.twig') }}
                         {% endwith %}
                     </div>

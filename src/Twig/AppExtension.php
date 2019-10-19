@@ -13,6 +13,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('minutesBlocNumber', [$this, 'minutesBlocNumber']),
             new TwigFilter('toMinutesSince', [$this, 'toMinutesSince']),
             new TwigFilter('toMinutes', [$this, 'toMinutes']),
+            new TwigFilter('transform_links', [$this, 'transformLinks']),
         ];
     }
 
@@ -31,5 +32,9 @@ class AppExtension extends AbstractExtension
     {
         $dateUtils = new DateUtils();
         return $dateUtils->getMinutes($dateTime) ;
+    }
+    public function transformLinks($text)
+    {
+        return preg_replace('~(http|ftp)s?://[a-z0-9.-]+\\.[a-z]{2,3}(/\\S*)?~i',"<a href='$0' target='_blank'>$0</a>",$text);
     }
 }

@@ -17,7 +17,7 @@ class IndexController extends AbstractController
     {
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
-            'events' => $this->getDoctrine()->getRepository(Event::class)->findAll(),
+            'events' => $this->getDoctrine()->getRepository(Event::class)->findEventsToCome(),
             'bds_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDS", $request->getLocale()),
             'bde_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDE", $request->getLocale()),
             'bda_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDA", $request->getLocale()),

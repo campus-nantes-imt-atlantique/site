@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}bds{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'bds.bds_title' | trans | nl2br }}<br /></div>
+    <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    {{ block('bds_nav','bds/bds_nav.html.twig') }}
+    <div class="section-content">
+        <div class="title">{{ 'events_to_come' | trans }}</div>
+        <div class="margin-20"></div>
+
+        <div class="container">
+            {% if events|length == 0 %}
+                <div class="tinyDivider"></div>
+                    <div class="margin-20"></div>
+                    <p class="subtitle">
+                        {{ 'events.no_events_to_come' | trans }}
+                    </p>
+                    <div class="margin-20"></div>
+            {% else %}
+                {% for event in events %}
+                    <div class="tinyDivider"></div>
+                    <div class="margin-20"></div>
+                    <div class="blockCards" data-aos="fade-up">
+                        <div class="cardContainer largeCard center">
+
+                                {% with {'img_src':  asset(events_path ~ '/' ~  event.image),'title' : event.getName(lang), 'description':event.getDescription(lang) , 'subtitle1':event.getDayMonth(lang), 'subtitle2':event.getSchedule(lang) } %}
+                                    {{ block('large_card', 'common/large_card.html.twig') }}
+                                {% endwith %}
+                        </div>
+                    </div>
+                    <div class="margin-20"></div>
+                {% endfor %}
+            {% endif %}
+            <div class="margin-40"></div>
+        </div>
+
+    </div>
+{% endblock %}

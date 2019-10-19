@@ -18,7 +18,7 @@
                 <table>
                     {% for sport in sports %}
                         <tr>
-                            <td>{{ sport.name }}</td>
+                            <td style="font-weight: bold; ">{{ sport.name }}</td>
                             {% for leader in sport.leaders %}
                                 <td>{{ leader }}</td>
                             {% endfor %}

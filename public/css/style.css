@@ -47,6 +47,12 @@ body {
     text-align: center;
     font-size: 1.3em;
 }
+
+.h1 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.3em;
+}
 .subtitle {
     font-weight: 600;
     text-align: center;
@@ -378,7 +384,7 @@ header {
     padding: 0;
     display: flex;
     width: 100%;
-    height: 297px;
+    height: 320px;
 }
 
 .containerTextLargeCard {
@@ -389,8 +395,8 @@ header {
 }
 
 .largeCardImg {
-    height:297px;
-    width:210px;
+    height: 320px;
+    width: 40%;
     border-radius: 10px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -423,6 +429,7 @@ header {
 .siteSection {
     width: 200px;
     height: 250px;
+    padding: 13px;
     margin: auto;
     position: relative;
 }
@@ -466,7 +473,8 @@ footer .icons * {
     padding: 20px;
 }
 .cardTable tr {
-    /*border: none;*/
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.12) !important;
 }
 .cardTable td {
     width: auto;
@@ -490,16 +498,19 @@ footer .icons * {
 
 .planningTable table {
     table-layout:fixed;
+
 }
 
 .planningTable td {
     height: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .planningTable .firstTd {
-    /*border-right: 1px solid rgba(0,0,0,0.2) !important;*/
+    border-right: 1px solid rgba(0,0,0,0.2) !important;
+    z-index: 1;
+    position: fixed;
+    background-color: white;
+    min-height: 70px;
     padding-left: 10px;
     padding-right: 10px;
     width: 80px !important;
@@ -508,6 +519,10 @@ footer .icons * {
 .planningTable th {
     width: 150px !important;
     height: 70px;
+}
+
+tr {
+    position: relative;
 }
 
 .planningTable .innerTr {
@@ -649,6 +664,16 @@ body .loginContainer {
 p {
     text-align: justify;
 }
+
+
+.carousel-cell {
+    margin:50px;
+}
+
+.main-carousel {
+
+}
+
 
 @media only screen and (max-width: 993px) {
     .planningTable {
