@@ -74,12 +74,10 @@
             window.clearTimeout( stopScrollingTimer );
             stopScrollingTimer = setTimeout(function() {
                 stopAutoScrolling = false;
-                console.log('restart')
             }, 4000);
         }
         window.addEventListener("load", () => {
             scrollInterval = self.setInterval(() => {
-                console.log("ici");
                 if(document.getElementById("planning").scrollLeft !== document.getElementById("planning").offsetWidth + 150 && !stopAutoScrolling) {
                     document.getElementById("planning").scrollTo(document.getElementById("planning").scrollLeft+1, 0);
                 }
