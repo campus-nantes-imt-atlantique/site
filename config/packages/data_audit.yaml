@@ -1,2 +1,2 @@
 data_dog_audit:
-    blame_impersonator: true
+    blame_impersonator: false

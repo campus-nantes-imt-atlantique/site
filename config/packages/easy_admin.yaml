@@ -11,6 +11,32 @@ easy_admin:
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
+        AuditLogs:
+            class: DataDog\AuditBundle\Entity\AuditLog
+            label: "AuditLogs"
+            disabled_actions: ['new']
+            show:
+                actions: ['-delete','-edit']
+                fields:
+                    - { property: 'source' }
+                    - { property: 'action' }
+                    - { property: 'tbl' }
+                    - { property: 'diff', type: 'text' }
+            list:
+                actions: ['search','-delete','-edit','show']
+                fields:
+                    - { property: 'source' }
+                    - { property: 'action' }
+                    - { property: 'tbl' }
+                    - { property: 'diff' }
+        AuditAssociations:
+            class: DataDog\AuditBundle\Entity\Association
+            label: "AuditAssociations"
+            disabled_actions: ['new']
+            show:
+                actions: ['-delete','-edit']
+            list:
+                actions: ['search','-delete','-edit','show']
         Clubs:
             class: App\Entity\Club
             label: "Clubs de l'école"
@@ -117,6 +143,8 @@ easy_admin:
               children: ['Sports', 'SportPlanning' ,'SportLocation']
             - label: 'BDA'
               children: ['Clubs']
+            - label: 'Audits'
+              children: ['AuditLogs','AuditAssociations']
             - Content
             - Leader
             - Event
