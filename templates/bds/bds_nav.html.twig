@@ -5,5 +5,8 @@
         <a href="{{ path('bds_leaders') }}">{{ 'bds.nav.leaders' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bds_events') }}">{{ 'bds.nav.events' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bds_planning') }}">{{ 'bds.nav.sports_planning' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        {% for page in sectionBds.pages %}
+            <a href="{{ path('dynamicPage', {sectionName: sectionBds.name, id: page.id}) }}">{{ page.title }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        {% endfor %}
     </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}bds{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ page.title  | nl2br }}<br /></div>
+    <div class="navDescription margin-30">{{ page.description | nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    {{ block(section.name | lower ~ '_nav',section.name | lower ~'/' ~ section.name | lower ~ '_nav.html.twig') }}
+    <div class="section-content" style="padding: 0px 30px">
+        {{ page.content | raw }}
+    </div>
+{% endblock %}

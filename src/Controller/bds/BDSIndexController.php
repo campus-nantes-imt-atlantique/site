@@ -7,6 +7,7 @@ use App\Entity\Content;
 use App\Entity\Event;
 use App\Entity\Member;
 use App\Entity\Pole;
+use App\Entity\Section;
 use App\Entity\Sport;
 use App\Entity\SportLocation;
 use App\Entity\SportPlanning;

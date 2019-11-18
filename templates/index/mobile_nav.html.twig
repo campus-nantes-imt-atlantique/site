@@ -9,17 +9,26 @@
         <li><a class="waves-effect" href="{{ path('bde_index') }}">{{ 'bde.nav.information' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bde_events') }}">{{ 'bde.nav.events' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bde_bar') }}">{{ 'bde.nav.bar' | trans }}</a></li>
+        {% for page in sectionBde.pages %}
+            <li><a class="waves-effect" href="{{ path('dynamicPage', {sectionName: sectionBde.name, id: page.id}) }}">{{ page.title }}</a></li>
+        {% endfor %}
         <li><div class="divider"></div></li>
         <li><a class="subheader">BDS</a></li>
         <li><a class="waves-effect" href="{{ path('bds_index') }}">{{ 'bds.nav.information' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bds_leaders') }}">{{ 'bds.nav.leaders' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bds_events') }}">{{ 'bds.nav.events' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bds_planning') }}">{{ 'bds.nav.sports_planning' | trans }}</a></li>
+        {% for page in sectionBds.pages %}
+            <li><a class="waves-effect" href="{{ path('dynamicPage', {sectionName: sectionBds.name, id: page.id}) }}">{{ page.title }}</a></li>
+        {% endfor %}
         <li><div class="divider"></div></li>
         <li><a class="subheader">BDA</a></li>
         <li><a class="waves-effect" href="{{ path('bda_index') }}">{{ 'bda.nav.information' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bda_clubs') }}">{{ 'bda.nav.clubs' | trans }}</a></li>
         <li><a class="waves-effect" href="{{ path('bda_events') }}">{{ 'bda.nav.events' | trans }}</a></li>
+        {% for page in sectionBda.pages %}
+            <li><a class="waves-effect" href="{{ path('dynamicPage', {sectionName: sectionBda.name, id: page.id}) }}">{{ page.title }}</a></li>
+        {% endfor %}
         <li><div class="divider"></div></li>
         <li><a class="subheader">JE</a></li>
         <li><div class="divider"></div></li>
