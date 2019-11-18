@@ -73,6 +73,9 @@ body {
     box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
 }
 
+#flexcontainer {
+    display : flex;
+}
 .roundedGreenButton, .roundedBlueButton, .roundedWhiteButton, .roundedBorderedWhiteButton, .roundedBorderedBlackButton{
     display: inline-block;
     cursor: pointer;
