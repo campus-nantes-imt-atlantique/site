@@ -48,11 +48,24 @@ body {
     font-size: 1.3em;
 }
 
-.h1 {
+h1 {
     font-weight: 800;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1em;
 }
+
+h2 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.2em !important;
+}
+
+h3 {
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.1em;
+}
+
 .subtitle {
     font-weight: 600;
     text-align: center;
@@ -73,6 +86,9 @@ body {
     box-shadow: 0px 0px 45px 0 rgba(0,0,0,0.1);
 }
 
+#flexcontainer {
+    display : flex;
+}
 .roundedGreenButton, .roundedBlueButton, .roundedWhiteButton, .roundedBorderedWhiteButton, .roundedBorderedBlackButton{
     display: inline-block;
     cursor: pointer;

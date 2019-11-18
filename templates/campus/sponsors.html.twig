@@ -3,16 +3,40 @@
 {% block title %}Campus{% endblock %}
 
 {% block header %}
-<div class="navTitle margin-30"> Le Campus de Nantes </div>
+    <div class="navTitle margin-30">{{ 'campus.campus' | trans | nl2br }}<br/></div>
+    <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
 {% endblock %}
 
 {% block content %}
-    <div class=" cardContainer section_nav" >
-       <div class="section_nav_title">Navigation</div>
-        <a href="{{ path('sponsors') }}">{{ 'campus.sponsors' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
-        <a href="{{ path('vie') }}">{{ 'campus.vie' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+
+
+    <div class="section-content">
+        <div class="title">{{ 'campus.sponsors' | trans }}</div>
+        <div class="margin-20"></div>
+
+        <div class="container">
+
+                    <div class="tinyDivider"></div>
+                    <div class="margin-20"></div>
+                    <div class="blockCards" data-aos="fade-up">
+                        {% for sponsor in sponsors %}
+                        <div class="cardContainer smallCard center">
+                            {% with {'img_src':  asset(sponsors_path ~ '/' ~  sponsor.image),
+                                'title' : sponsor.getName(lang),
+                                'subtitle':sponsor.getOffice(lang),
+                                'description':sponsor.getOffer(lang),
+                                'imageWidth': 200} %}
+                                {{ block('small_card', 'common/small_card.html.twig') }}
+                            {% endwith %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="margin-20"></div>
+
+
+            <div class="margin-40"></div>
+        </div>
+
     </div>
-
 {% endblock %}
-
 

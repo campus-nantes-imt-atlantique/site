@@ -11,6 +11,18 @@ easy_admin:
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
+        Pages:
+            class: App\Entity\Page
+            label: "Pages dynamiques"
+        Images:
+            class: App\Entity\Image
+            label: "Images du site"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
         AuditLogs:
             class: DataDog\AuditBundle\Entity\AuditLog
             label: "AuditLogs"
@@ -83,6 +95,7 @@ easy_admin:
         User:
             class: App\Entity\User
             label: "Utilisateurs"
+
         Event:
             class: App\Entity\Event
             label: "Événements"
@@ -102,6 +115,25 @@ easy_admin:
                     - { property: 'date' }
                     - { property: 'section' }
                     - { property: 'imageFile', type: 'vich_image', type_options: { required: false } }
+
+        Sponsor:
+            class: App\Entity\Sponsor
+            label: "Sponsors"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.sponsors%' }
+                    - { property: 'name' }
+                    - { property: 'office' }
+                    - { property: 'offer' }
+            show:
+                fields:
+                    - { property: 'imageFile', type: 'image', base_path: '%app.path.sponsors%' }
+            form:
+                fields:
+                    - { property: 'name' }
+                    - { property: 'office' }
+                    - { property: 'offer' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
 
         TypeProductBar:
             class: App\Entity\BarProductType
@@ -146,8 +178,11 @@ easy_admin:
             - label: 'Audits'
               children: ['AuditLogs','AuditAssociations']
             - Content
+            - Pages
+            - Images
             - Leader
             - Event
+            - Sponsor
             - Poles
             - Member
             - { label: 'Administration' }
