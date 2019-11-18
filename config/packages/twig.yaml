@@ -7,3 +7,5 @@ twig:
       members_path: '%app.path.members%'
       bar_products_path: '%app.path.bar_products%'
       events_path: '%app.path.events%'
+      images_path: '%app.path.images%'
+

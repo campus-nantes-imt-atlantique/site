@@ -11,6 +11,18 @@ easy_admin:
         Sports:
             class: App\Entity\Sport
             label: "Sports de l'école"
+        Pages:
+            class: App\Entity\Page
+            label: "Pages dynamiques"
+        Images:
+            class: App\Entity\Image
+            label: "Images du site"
+            list:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.images%' }
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
         AuditLogs:
             class: DataDog\AuditBundle\Entity\AuditLog
             label: "AuditLogs"
@@ -146,6 +158,8 @@ easy_admin:
             - label: 'Audits'
               children: ['AuditLogs','AuditAssociations']
             - Content
+            - Pages
+            - Images
             - Leader
             - Event
             - Poles

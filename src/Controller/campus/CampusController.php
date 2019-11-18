@@ -22,7 +22,6 @@ class CampusController extends AbstractController
      */
     public function sponsors () {
         return $this->render('campus/sponsors.html.twig');
-
     }
 
     /**

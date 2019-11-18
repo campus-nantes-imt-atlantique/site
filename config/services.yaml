@@ -9,6 +9,7 @@ parameters:
     app.path.events: '/img/events'
     app.path.bar_products: '/img/bar_products'
     app.path.members: '/img/members'
+    app.path.images: '/img/images'
 
 services:
     # default configuration for services in *this* file
