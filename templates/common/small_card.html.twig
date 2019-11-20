@@ -1,5 +1,5 @@
 {% block small_card %}
-        <div class="smallCardImg" style="background-image: url({{ img_src }});" alt=""></div>
+        <div class="smallCardImg" style="background-image: url({{ img_src }}); width: {{ imageWidth|default(100) }}px" alt=""></div>
         <div class="containerTextSmallCard">
             <div class="smallCardTitle">
                 {{ title }}

@@ -7,6 +7,7 @@ use App\Entity\Member;
 use App\Entity\Pole;
 use App\Entity\Event;
 use App\Entity\BarProductType;
+use App\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,7 +61,7 @@ class BDEIndexController extends AbstractController
             'controller_name' => 'BDEIndexController',
             "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDE", $request->getLocale()),
             "lang" => $request->getLocale(),
-            "events" => $events
+            "events" => $events,
         ]);
     }
 

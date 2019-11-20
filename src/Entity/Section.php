@@ -33,9 +33,15 @@ class Section
      */
     private $contents;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="section")
+     */
+    private $pages;
+
     public function __construct()
     {
         $this->contents = new ArrayCollection();
+        $this->pages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,6 +121,37 @@ class Section
             // set the owning side to null (unless already changed)
             if ($content->getSection() === $this) {
                 $content->setSection(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Page[]
+     */
+    public function getPages(): Collection
+    {
+        return $this->pages;
+    }
+
+    public function addPage(Page $page): self
+    {
+        if (!$this->pages->contains($page)) {
+            $this->pages[] = $page;
+            $page->setSection($this);
+        }
+
+        return $this;
+    }
+
+    public function removePage(Page $page): self
+    {
+        if ($this->pages->contains($page)) {
+            $this->pages->removeElement($page);
+            // set the owning side to null (unless already changed)
+            if ($page->getSection() === $this) {
+                $page->setSection(null);
             }
         }
 

@@ -34,7 +34,7 @@
                 <div class="main-carousel">
                     {% for event in events %}
                         <div class="cardContainer largeCard carousel-cell">
-                            {% with {'img_src':  asset(events_path ~ '/' ~  event.image),'title' : event.getName(app.request.locale), 'description':event.getDescription(app.request.locale), 'subtitle1':event.getDayMonth(app.request.locale), 'subtitle2':event.getSchedule(app.request.locale) } %}
+                            {% with {'img_src':  asset(events_path ~ '/' ~  event.image | url_encode),'title' : event.getName(app.request.locale), 'description':event.getDescription(app.request.locale), 'subtitle1':event.getDayMonth(app.request.locale), 'subtitle2':event.getSchedule(app.request.locale) } %}
                                 {{ block('large_card', 'common/large_card.html.twig') }}
                             {% endwith %}
                         </div>

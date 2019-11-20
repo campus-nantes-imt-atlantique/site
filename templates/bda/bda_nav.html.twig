@@ -4,5 +4,8 @@
         <a href="{{ path('bda_index') }}">{{ 'bda.nav.information' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bda_clubs') }}">{{ 'bda.nav.clubs' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
         <a href="{{ path('bda_events') }}">{{ 'bda.nav.events' | trans }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        {% for page in sectionBda.pages %}
+            <a href="{{ path('dynamicPage', {sectionName: sectionBda.name, id: page.id}) }}">{{ page.title }}</a><img src="{{ asset('img/expand.png') }}" width="8" alt="">
+        {% endfor %}
     </div>
 {% endblock %}

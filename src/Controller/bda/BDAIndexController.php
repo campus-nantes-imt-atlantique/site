@@ -6,6 +6,7 @@ use App\Entity\Club;
 use App\Entity\Content;
 use App\Entity\Event;
 use App\Entity\Pole;
+use App\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,7 +57,7 @@ class BDAIndexController extends AbstractController
         return $this->render('bda/clubs.html.twig', [
             'controller_name' => 'BDAIndexController',
             "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","BDA", $request->getLocale()),
-            'clubs' => $this->getDoctrine()->getRepository(Club::class)->findAll()
+            'clubs' => $this->getDoctrine()->getRepository(Club::class)->findAll(),
         ]);
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Controller\common;
 
+use App\Entity\Page;
+use App\Entity\Section;
 use Swift_SmtpTransport;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,6 +50,16 @@ class CommonIndexController extends AbstractController
         }
         return $this->render('common/contact.html.twig',  array(
             'form'   => $form->createView()
+        ));
+    }
+    /**
+     * @Route("{sectionName}/{id}", name="dynamicPage")
+     */
+    public function dynamicPage(string $sectionName, Page $page)
+    {
+        return $this->render('common/dynamic_page.html.twig',  array(
+            'page'   => $page,
+            'section' => $this->getDoctrine()->getRepository(Section::class)->findByName($sectionName),
         ));
     }
 }
