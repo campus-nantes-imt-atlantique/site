@@ -20,9 +20,10 @@ class Sponsor
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $office;
+    private $section;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -86,14 +87,14 @@ class Sponsor
         return $this->id;
     }
 
-    public function getOffice(): ?string
+    public function getSection(): ?Section
     {
-        return $this->office;
+        return $this->section;
     }
 
-    public function setOffice(string $office): self
+    public function setSection(?Section $section): self
     {
-        $this->office = $office;
+        $this->section = $section;
 
         return $this;
     }
