@@ -21,7 +21,7 @@
                     <div class="blockCards" data-aos="fade-up">
                         {% for sponsor in sponsors %}
                         <div class="cardContainer smallCard center">
-                            {% with {'img_src':  asset(sponsors_path ~ '/' ~  sponsor.image),
+                            {% with {'img_src':  asset(sponsors_path ~ '/' ~  sponsor.image | url_encode),
                                 'title' : sponsor.getName(lang),
                                 'subtitle':sponsor.getOffice(lang),
                                 'description':sponsor.getOffer(lang),
