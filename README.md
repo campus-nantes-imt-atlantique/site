@@ -1,32 +1,82 @@
 
+
 # Site Campus
+
+## Description du projet 
+
+Ce projet vise à créer un site internet permettant de faciliter la vie des étudiants sur le campus de Nantes. Le site web est développé et maintenu par des étudiants bénovolement. La version actuelle est disponible à l'addresse :  https://campus-imtatlantique.fr/. 
+
+## Fonctionnalités réalisées 
+
+* Partie bureau des étudiants 
+	* Informations diverses du le BDE.
+	* Évènements à venir organisés par le BDE. 
+	* Les produits disponibles au trak'. 
+* Partie bureau des arts 
+	* Informations diverses du le BDA.
+	* Liste des clubs du BDA. 
+	* Évènements à venir organisés par le BDA.  
+* Partie bureau des sports 
+	* Informations diverses du le BDS.
+	* Responsables des sports à l'IMT. 
+	* Évènements à venir organisés par le BDS. 
+	* Planning des sports à l'IMT. 
+* Interface d'administration du site disponible à l'addresse https://campus-imtatlantique.fr/admin. 
+
+ 
+## Fonctionnalités en cours de réalisation 
+
+* Partie JE
+
+## Fonctionnalités à réaliser 
+
+* Commun
+	* Changement de langue du site. Le site est déjà globalement traduit en Anglais mais il n'est pas possible de changer de langue depuis l'interface.  
+	* Boutique permettant de commander par exemple les pulls de promo. 
+* Partie BDA
+	* Réservation des livres. 
+* Partie BDS 
+	*  Interface permettant de voir les disponibilités du gymnase et de pouvoir le réserver. ( A voir niveau faisabilité : Compte, personnes extérieures ). 
 
 ## Installation du projet 
 
 Avec composer.phar ou composer si installé sur votre pc pour installer les dépendances 
 
-`composer.phar install`
+```bash
+composer.phar install
+```
 
-Créer la base de données 
+Créer la base de données
 
-`php bin/console doctrine:database:drop --force`
+```bash
+php bin/console doctrine:database:drop --force
+```
 
-`php bin/console doctrine:database:create`
+
+```bash
+php bin/console doctrine:database:create
+```
 
 Création du schema
-`php bin/console doctrine:schema:create`
+```bash
+php bin/console doctrine:schema:create
+```
 
 Charger les données dans la base (les fixtures)
 
-`php bin/console doctrine:fixtures:load` - Entrer yes
+
+```bash
+php bin/console doctrine:fixtures:load
+``` 
+- Entrer yes
 
 (Vous pouvez aussi utiliser le script database.sh du projet pour résumer ces commandes.)
 
-Lancer le serveur
+### Lancer le serveur
 
 `php bin/console server:run`
 
-Lancer son serveur avec un accès réseau depuis un téléphone par exemple 
+### Lancer son serveur avec un accès réseau depuis un téléphone par exemple 
 
 `php bin/console server:run 0.0.0.0`
 
@@ -34,16 +84,19 @@ Penser à bien avoir un serveur mysql de lancé avec Wamp ou docker.
 
 Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7`
 
-## Bundles utilisés
+## Bundles symfony utilisés
  
 EasyAdminBundle : Permet de créer une interface d'administration des entitiés doctrine pour permettre aux administrateurs non développeurs du site de mettre à jour les données du site depuis la page http://localhost:8000/admin (Ou en cliquant dans le lien du footer). 
 [Documentation EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html).
 Comme indiqué dans la documentation, pour modifier les paramètres du Bundle ou ajouter vos entités il faut se diriger dans config/packages/easy_admin.yaml
 
-login:    `admin`
+login:    `admin`<br />
 password: `admin`
 
 FOSUserBundle : Permet de gérer la création d'utilisateur, la connexion, l'inscription etc. ([Documentation FOSUserBundle](https://symfony.com/doc/current/bundles/FOSUserBundle/index.html)).
+
+DataDogAuditBundle: Permet de stocker en base de données toutes les actions efféctuées sur la base de donnée du site web et de les visualiser sur l'interface admin. 
+
 
 ## Astuces 
 
@@ -79,3 +132,21 @@ Ensuite, un autre développeur va consulter votre pull request sur github et va 
 Vous n'avez pas le droit de push en master ni en develop. Le seul moyen d'ajouter une fonctionnalité au site est de créer une feature avec git flow, de push sa feature sur 
 github, de faire une pull request et qu'un autre développeur face une review sur votre pull request pour accepter ou non de merge la feature en develop. 
 
+## Déploiement en production 
+
+L'application est hébergée chez infomaniak. Vous pouvez avoir accès au code de la production en vous connectant en SSH. Idéalement, une seule personne est responsable de la mise en production du site. Un script de déploiement automatisé est présent dans le code de l'application (deploy.sh). Pour obtenir l'accès à l'hebergeur, merci de contacter l'ancien responsable : 
+
+Liste des résponsables : 
+
+- 2019 - 2020 : A définir 
+- 2018 - 2019 : Mathis DELAUNAY (delaunaymathis@yahoo.fr). 
+
+### Financement de l'hebergement 
+
+L'hébergement est financé par les différents bureaux de l'école : Le BDE, le BDA, le BDS ainsi que la JE. 
+
+| Description | Prix |
+| ----------- | ----------- |
+| Hébergement du site | 69,00 € |
+| Nom de domaine | 5,40 € | 
+| Total | 74,40 € |
