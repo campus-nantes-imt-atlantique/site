@@ -21,6 +21,8 @@ Ce projet vise à créer un site internet permettant de faciliter la vie des ét
 	* Responsables des sports à l'IMT. 
 	* Évènements à venir organisés par le BDS. 
 	* Planning des sports à l'IMT. 
+* Partie formulaire de contact. (envoyé à l'addresse campus.imt.atlantique@gmail.com
+* Partie liste des sponsors des bureaux de l'imt. 
 * Interface d'administration du site disponible à l'addresse https://campus-imtatlantique.fr/admin. 
 
  
@@ -136,11 +138,6 @@ github, de faire une pull request et qu'un autre développeur face une review su
 
 L'application est hébergée chez infomaniak. Vous pouvez avoir accès au code de la production en vous connectant en SSH. Idéalement, une seule personne est responsable de la mise en production du site. Un script de déploiement automatisé est présent dans le code de l'application (deploy.sh). Pour obtenir l'accès à l'hébergeur, merci de contacter l'ancien responsable : 
 
-Liste des résponsables : 
-
-- 2019 - 2020 : A définir 
-- 2018 - 2019 : Mathis DELAUNAY (delaunaymathis@yahoo.fr). 
-
 ### Financement de l'hebergement 
 
 L'hébergement est financé par les différents bureaux de l'école : Le BDE, le BDA, le BDS ainsi que la JE. 
@@ -150,5 +147,25 @@ L'hébergement est financé par les différents bureaux de l'école : Le BDE, le
 | Hébergement du site | 69,00 € |
 | Nom de domaine | 5,40 € | 
 | Total | 74,40 € / an|
+
+## Contributeurs du projet 
+
+
+Liste des résponsables : 
+
+### 2019 - 2020
+
+A définir 
+
+### 2018 - 2019
+
+Responsable : Mathis DELAUNAY : delaunaymathis@yahoo.fr (Partie BDS et BDA). 
+
+Équipe : 
+
+- Raphaël Hamon ( Partie BDE ).
+- Caroline De Pourtales ( Contact & sponsors ).
+- Oussama Chaib. ( Partie JE ).
+	
 
 
