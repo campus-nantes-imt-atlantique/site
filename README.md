@@ -151,7 +151,7 @@ L'hébergement est financé par les différents bureaux de l'école : Le BDE, le
 ## Contributeurs du projet 
 
 
-Liste des résponsables : 
+### Liste des résponsables 
 
 ### 2019 - 2020
 
