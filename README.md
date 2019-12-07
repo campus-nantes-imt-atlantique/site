@@ -134,7 +134,7 @@ github, de faire une pull request et qu'un autre développeur face une review su
 
 ## Déploiement en production 
 
-L'application est hébergée chez infomaniak. Vous pouvez avoir accès au code de la production en vous connectant en SSH. Idéalement, une seule personne est responsable de la mise en production du site. Un script de déploiement automatisé est présent dans le code de l'application (deploy.sh). Pour obtenir l'accès à l'hebergeur, merci de contacter l'ancien responsable : 
+L'application est hébergée chez infomaniak. Vous pouvez avoir accès au code de la production en vous connectant en SSH. Idéalement, une seule personne est responsable de la mise en production du site. Un script de déploiement automatisé est présent dans le code de l'application (deploy.sh). Pour obtenir l'accès à l'hébergeur, merci de contacter l'ancien responsable : 
 
 Liste des résponsables : 
 
@@ -149,4 +149,6 @@ L'hébergement est financé par les différents bureaux de l'école : Le BDE, le
 | ----------- | ----------- |
 | Hébergement du site | 69,00 € |
 | Nom de domaine | 5,40 € | 
-| Total | 74,40 € |
+| Total | 74,40 € / an|
+
+
