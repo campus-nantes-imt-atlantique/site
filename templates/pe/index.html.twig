@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PE{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="{{ preload(asset('css/pe/main.css'), { as: "style"}) }}">
+{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'pe.pe_title' | trans | nl2br }}<br/></div>
+    <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    <div class="section-content" data-aos="fade-up">
+
+    <div class="journal">
+        <div class="journal-logo"><img src="{{ asset('img/pe/logoPE.jpg') }}"></div>
+
+        <a class="journal-category" href="{{ path('pe_list') }}">{{ 'pe.pe_list' | trans }}<i>{{ 'pe.pe_fr_only' | trans }}</i></a>
+        <a class="journal-category" href="{{ asset('pdf/pe/chartePE.pdf') }}">{{ 'pe.pe_charter' | trans }}<i>{{ 'pe.pe_fr_only' | trans }}</i></a>
+        <a class="journal-category" href="mailto:poulpe.enchaine@gmail.com">{{ 'pe.pe_contact' | trans }}</a>
+        <hr class="journal-hr">
+        <h4 class="journal-footer">{{ 'pe.pe_footer' | trans }}</h4>
+    </div>
+    <div class="margin-40"></div>
+{% endblock %}

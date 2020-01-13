@@ -22,6 +22,7 @@ class IndexController extends AbstractController
             'bde_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDE", $request->getLocale()),
             'bda_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","BDA", $request->getLocale()),
             'je_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","JE", $request->getLocale()),
+            'pe_feature' => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("section_feature","PE", $request->getLocale()),
         ]);
     }
 }

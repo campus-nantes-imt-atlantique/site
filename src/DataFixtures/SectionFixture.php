@@ -13,6 +13,7 @@ class SectionFixture extends Fixture
     public const BDS_SECTION_REFERENCE = 'bds-section';
     public const BDA_SECTION_REFERENCE = 'bda-section';
     public const JE_SECTION_REFERENCE = 'je-section';
+    public const PE_SECTION_REFERENCE = 'pe-section';
 
     public function load(ObjectManager $manager)
     {
@@ -35,6 +36,11 @@ class SectionFixture extends Fixture
         $jeSection->setName("JE");
         $manager->persist($jeSection);
         $this->addReference(self::JE_SECTION_REFERENCE, $jeSection);
+
+        $peSection = new Section();
+        $peSection->setName("PE");
+        $manager->persist($peSection);
+        $this->addReference(self::PE_SECTION_REFERENCE, $peSection);
 
         $manager->flush();
     }

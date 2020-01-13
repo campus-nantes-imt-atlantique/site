@@ -1,0 +1,74 @@
+
+
+.journal {
+    margin: 4% 25%;
+    border-style: solid;
+    background: rgb(255,255,255);
+}
+
+.journal-hr {
+    border-top: 10px solid #b2b2b2;
+}
+.journal-logo {
+    margin: 6%;
+
+}
+.journal-image>img, .journal-logo>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.journal-logo>img {
+    border-radius: 3em;
+    transition: all .2s ease-in-out;
+}
+
+.journal-logo>img:hover {
+    transform: scale(1.1);
+}
+
+.journal-category {
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: #004e64;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
+.journal-category:hover {
+    text-decoration:underline;
+}
+
+.journal-footer {
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+/* Liste des journaux */
+
+.journal-list {
+    margin: 4% 15%;
+}
+
+
+@media (max-width: 768px) {
+    .journal {
+        margin: 4% 4%;
+    }
+}
+
+.journal-edition {
+    width: 30%;
+    margin: 2% 8%;
+    display: inline-block;
+    transition: all .2s ease-in-out;
+}
+
+.journal-edition:hover {
+    text-decoration:underline;
+    transform: scale(1.1);
+}

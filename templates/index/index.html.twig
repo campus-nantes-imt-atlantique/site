@@ -90,6 +90,16 @@
                 </div>
             </div>
         </div>
+        <div class="col s12 m6 l3 center margin-10">
+            <div class="cardContainer center siteSection">
+                <div class="title padding-20">{{ 'index.section.pe.title' | trans }}</div>
+                <div class="padding-10 margin-20">
+                    {{ pe_feature | nl2br  }}
+                </div>
+                <a href="{{ path('pe_index') }}"><div class="roundedBlueButton siteSectionButton center margin-20">{{ 'index.section.consult_page' | trans }}</div></a>
+                <div class="margin-20"></div>
+            </div>
+        </div>
 
     </div>
 {% endblock %}
