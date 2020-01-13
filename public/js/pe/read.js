@@ -12,7 +12,17 @@ let pdfDoc = null,
     scale,
     portrait,
     flipbookInitialised = false,
-    flipbookScale = 0.95;
+    flipbookScale = 0.95,
+	soundBlob;
+
+// On charge le son dans un blob afin de ne le télécharger qu'une seule fois
+fetch("/mp3/page_flip.mp3")
+	.then(function(response) {return response.blob()})
+	.then(function(blob) {
+		soundBlob=URL.createObjectURL(blob);
+		// On force une requête
+		new Audio(soundBlob);
+	});
 
 function addPage(num_page, chain=false) {
 	// Le hide permet de cacher le canvas tant qu'il n'est pas dans le flipbook
@@ -59,6 +69,11 @@ function initFlipbook() {
 	// On retire la zone de chargement
 	$(".loader-body").fadeOut(500, function() { $(this).remove() });
   	flipbook.fadeIn(500);
+  	// On ajoute la lecture d'un son une fois une page tournée
+	flipbook.bind("turning", function(event, page, view) {
+		let audio = new Audio(soundBlob);
+		audio.play();
+	});
 }
 
 function updateFlipbook() {
