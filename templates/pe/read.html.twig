@@ -5,7 +5,7 @@
         <title>Le Poulpe Enchaîné n°{{ journal.edition }}</title>
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon-32x32.png') }}">
-        <!-- Speeds up load time --->
+        <!-- Speeds up load time -->
         <link rel="preload" href="{{ pe_file }}/{{ journal.file }}" crossorigin="anonymous" as="fetch">
 
         <link rel="stylesheet" type="text/css" href="{{ preload("/css/pe/read.css", {as: "style"}) }}">

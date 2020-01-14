@@ -27,7 +27,6 @@ class Journal
     private $edition;
 
     /**
-    /**
      * @ORM\Column(type="string", length=255)
      * @var string
      */
@@ -137,6 +136,11 @@ class Journal
     public function updateDate()
     {
         $this->updatedAt = new DateTime("now");
+    }
+
+    public function __toString()
+    {
+        return strval($this->edition);
     }
 
 }

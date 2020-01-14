@@ -2,7 +2,6 @@ version: '2'
 services:
   mysql:
     container_name: flask_mysql
-    driver: 'pdo_mysql'
     restart: always
     image: mysql:5.7
     environment:
