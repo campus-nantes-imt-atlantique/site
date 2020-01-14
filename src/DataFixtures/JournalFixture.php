@@ -22,6 +22,7 @@ class JournalFixture extends Fixture
         $journal1->setEdition(1);
 	    $journal1->setImage("1.jpg");
 	    $journal1->setFile("1.pdf");
+        $journal1->updateDate();
         $manager->persist($journal1);
         $this->addReference(self::EDITION_1, $journal1);
 
@@ -29,6 +30,7 @@ class JournalFixture extends Fixture
         $journal2->setEdition(2);
         $journal2->setImage("2.jpg");
         $journal2->setFile("2.pdf");
+        $journal2->updateDate();
         $manager->persist($journal2);
         $this->addReference(self::EDITION_2, $journal2);
 
@@ -36,12 +38,15 @@ class JournalFixture extends Fixture
         $journal3->setEdition(3);
         $journal3->setImage("3.jpg");
         $journal3->setFile("3.pdf");
+        $journal3->updateDate();
         $manager->persist($journal3);
         $this->addReference(self::EDITION_3, $journal3);
+
         $journal4 = new Journal();
         $journal4->setEdition(4);
         $journal4->setImage("4.jpg");
         $journal4->setFile("4.pdf");
+        $journal4->updateDate();
         $manager->persist($journal4);
         $this->addReference(self::EDITION_4, $journal4);
 
@@ -49,6 +54,7 @@ class JournalFixture extends Fixture
         $journal5->setEdition(5);
         $journal5->setImage("5.jpg");
         $journal5->setFile("5.pdf");
+        $journal5->updateDate();
         $manager->persist($journal5);
         $this->addReference(self::EDITION_5, $journal5);
 
@@ -56,6 +62,7 @@ class JournalFixture extends Fixture
         $journal6->setEdition(6);
         $journal6->setImage("6.jpg");
         $journal6->setFile("6.pdf");
+        $journal6->updateDate();
         $manager->persist($journal6);
         $this->addReference(self::EDITION_6, $journal6);
 

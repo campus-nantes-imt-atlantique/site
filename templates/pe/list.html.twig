@@ -22,7 +22,7 @@
                     <div class="journal-image">
                         <a class="journal-image" href="{{ path('pe_read', {edition: journal.edition}) }}" target="_blank">
                             {% if journal.image is defined %}
-                                <img class="img-fluid" src="/img/pe/cover/{{ journal.image }}">
+                                <img class="img-fluid" src="{{ pe_image }}/{{ journal.image }}">
                             {% else %}
                                 <img class="img-fluid" src="/img/pe/default_cover.jpg">
                             {% endif %}
