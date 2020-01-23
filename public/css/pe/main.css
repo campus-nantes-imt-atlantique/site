@@ -36,7 +36,7 @@
     text-align: center;
     color: #004e64;
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 .journal-category:hover {
@@ -45,6 +45,7 @@
 
 .journal-footer {
     margin-left: 2%;
+    font-size: 1.75em;
     font-weight: bold;
 }
 
