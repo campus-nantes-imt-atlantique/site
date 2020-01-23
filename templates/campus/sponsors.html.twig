@@ -26,7 +26,6 @@
                                 'subtitle':sponsor.getSection(lang),
                                 'description':sponsor.getOffer(lang),
                                 'imageWidth': 200} %}
-                            {% with {'img_src':  asset(sponsors_path ~ '/' ~  sponsor.name),'title' : sponsor.getName(lang),'subtitle':sponsor.getSection(lang), 'description':sponsor.getOffer(lang)} %}
                                 {{ block('small_card', 'common/small_card.html.twig') }}
                             {% endwith %}
                         </div>

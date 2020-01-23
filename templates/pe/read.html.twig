@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Le Poulpe Enchaîné n°{{ journal.edition }}</title>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon-32x32.png') }}">
+        <!-- Speeds up load time -->
+        <link rel="preload" href="{{ pe_file }}/{{ journal.file }}" crossorigin="anonymous" as="fetch">
+
+        <link rel="stylesheet" type="text/css" href="{{ preload("/css/pe/read.css", {as: "style"}) }}">
+    </head>
+    <body>
+    <div class="loader-body"><div class="loader"></div></div>
+    <div id="flipbook" url="{{ pe_file }}/{{ journal.file }}"></div>
+    </body>
+    <script type="text/javascript" src="{{ preload(asset('https://mozilla.github.io/pdf.js/build/pdf.js'), {as: "script", crossorigin:"anonymous"}) }}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ preload(asset('https://code.jquery.com/jquery-3.4.1.min.js'), {as: "script", crossorigin:"anonymous"}) }}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ preload(asset("/js/pe/turn.js"), {as: "script"}) }}"></script>
+    <script type="text/javascript" src="{{ preload(asset("/js/pe/read.js"), {as: "script"}) }}"></script>
+
+</html>

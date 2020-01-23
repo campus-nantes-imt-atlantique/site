@@ -25,6 +25,11 @@ class Sport
 
 
     /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $color;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Leader")
      */
     private $leaders;
@@ -72,6 +77,18 @@ class Sport
         return $this->name;
     }
 
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
 
     /**
      * @return Collection|Leader[]

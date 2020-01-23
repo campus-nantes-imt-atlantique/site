@@ -163,6 +163,23 @@ easy_admin:
                     - { property: 'type' }
                     - { property: 'isAvailable' }
                     - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+        Journal:
+            class: App\Entity\Journal
+            label: "Journal"
+            list:
+                fields:
+                    - { property: 'edition'}
+                    - { property: 'image', type: 'image', base_path: '%app.path.pe_image%' }
+                    - { property: 'file', type: 'file', base_path: '%app.path.pe_file%' }
+            show:
+                fields:
+                     - { property: 'imageFile', type: 'image', base_path: '%app.path.pe_image%' }
+                     - { property: 'fileFile', type: 'file', base_path: '%app.path.pe_file%' }
+            form:
+                fields:
+                    - { property: 'edition', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'fileFile', type: 'vich_file', type_options: { required: true } }
 
     site_name: 'Administration du site IMT Campus Nantes'
     design:
@@ -175,6 +192,8 @@ easy_admin:
               children: ['Sports', 'SportPlanning' ,'SportLocation']
             - label: 'BDA'
               children: ['Clubs']
+            - label: 'PE'
+              children: ['Journal']
             - label: 'Audits'
               children: ['AuditLogs','AuditAssociations']
             - Content

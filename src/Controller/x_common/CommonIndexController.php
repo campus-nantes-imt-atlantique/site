@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controller\common;
+// The prepending 'x' allows Symfony to load this controller after all the other ones. Hacky fix for the route 'dynamicPage' which is non-functional to prevent it gaining priority over JE and PE routes
+namespace App\Controller\x_common;
 
 use App\Entity\Page;
 use App\Entity\Section;

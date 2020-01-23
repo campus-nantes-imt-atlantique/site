@@ -3,6 +3,7 @@ nav:
   bds: "Sport office"
   bda: "Art office"
   je: "Junior business"
+  pe: "Poulpe Enchaîné"
   contact: "Contact"
 index:
   school_website: "School website"
@@ -23,6 +24,9 @@ index:
     je:
       title: "The JE"
       description: "Information,\nproject information\n...."
+    pe:
+      title: "The PE"
+      description: "Nantes campus' monthly newspaper"
   nav:
     title1: "Welcome to the Nantes campus\nof IMT ATlantique website"
     description: "On the website, you will find some convenient information, and some useful tools for facilitating student's life"
@@ -61,6 +65,17 @@ bda:
     information: "Information about the art office"
     events: "Events"
     clubs: "Clubs list"
+pe:
+  pe_title: "The Poulpe Enchaîné"
+  pe_list: "List of newspapers"
+  pe_charter: "Charter"
+  pe_contact: "Contact us"
+  pe_footer: "Nantes campus' monthly newspaper"
+  pe_return: "Return to index"
+  pe_fr_only: " (French only)"
+  nav:
+    index: "Index"
+    list: "List of newspapers"
 days:
   monday: "Monday"
   tuesday: "Tuesday"

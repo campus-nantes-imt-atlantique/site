@@ -32,6 +32,7 @@ class DynamicPageSubscriber implements EventSubscriberInterface
         $this->twig->addGlobal( 'sectionBde', $this->em->getRepository(Section::class)->findByName("BDE") );
         $this->twig->addGlobal( 'sectionBds', $this->em->getRepository(Section::class)->findByName("BDS") );
         $this->twig->addGlobal( 'sectionBda', $this->em->getRepository(Section::class)->findByName("BDA") );
+        $this->twig->addGlobal( 'sectionPe', $this->em->getRepository(Section::class)->findByName("PE") );
     }
 
     public static function getSubscribedEvents()

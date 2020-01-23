@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PE{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="{{ preload(asset('css/pe/main.css'), { as: "style"}) }}">
+{% endblock %}
+
+{% block header %}
+    <div class="navTitle margin-30">{{ 'pe.pe_title' | trans | nl2br }}<br/></div>
+    <div class="navDescription margin-30">{{ navigation_description | nl2br }}</div>
+{% endblock %}
+
+{% block content %}
+    <div class="section-content" data-aos="fade-up">
+
+    <div class="journal journal-list">
+        <a class="journal-category" href="{{ path('pe_list') }}">{{ 'pe.pe_list' | trans }}</a>
+        {% for journal in journaux %}
+            {% if journal.file is defined and journal.file is not same as('') %}
+                <div class="journal-edition">
+                    <div class="journal-image">
+                        <a class="journal-image" href="{{ path('pe_read', {edition: journal.edition}) }}" target="_blank">
+                            {% if journal.image is defined %}
+                                <img class="img-fluid" src="{{ pe_image }}/{{ journal.image }}">
+                            {% else %}
+                                <img class="img-fluid" src="/img/pe/default_cover.jpg">
+                            {% endif %}
+                            <a class="journal-category" href="{{ path('pe_read', {edition: journal.edition}) }}" target="_blank">n°{{ journal.edition }}</a>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <a class="journal-category" href="{{ path('pe_index') }}">{{ 'pe.pe_return' | trans }}</a>
+    </div>
+    <div class="margin-40"></div>
+{% endblock %}
