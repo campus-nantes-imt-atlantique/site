@@ -12,4 +12,4 @@ La documentation complète est disponible dans la section wiki du projet github:
 
 ## Installation 
 
-[Installation du projet] (https://github.com/campus-nantes-imt-atlantique/site/wiki/Installation-du-projet)
+[Installation du projet](https://github.com/campus-nantes-imt-atlantique/site/wiki/Installation-du-projet)
