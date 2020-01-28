@@ -10,4 +10,6 @@ Ce projet vise à créer un site internet permettant de faciliter la vie des ét
 
 La documentation complète est disponible dans la section wiki du projet github: [Wiki](https://github.com/campus-nantes-imt-atlantique/site/wiki). 
 
+## Installation 
 
+[Installation du projet] (https://github.com/campus-nantes-imt-atlantique/site/wiki/Installation-du-projet)
