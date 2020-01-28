@@ -40,20 +40,33 @@ Ce projet vise à créer un site internet permettant de faciliter la vie des ét
 * Partie BDS 
 	*  Interface permettant de voir les disponibilités du gymnase et de pouvoir le réserver. ( A voir niveau faisabilité : Compte, personnes extérieures ). 
 
-## Installation du projet 
-
-Avec composer.phar ou composer si installé sur votre pc pour installer les dépendances 
+## Installation du projet  
 
 ```bash
-composer.phar install
+git clone https://github.com/campus-nantes-imt-atlantique/site
+```
+
+```bash
+cd site
+```
+
+Avec composer.phar ou composer si installé sur votre pc pour installer les dépendances
+
+```bash
+./composer.phar install          (OU : composer install )
 ```
 
 Créer la base de données
 
+Penser à bien avoir un serveur mysql de lancé avec Wamp/Mamp ou docker.
+
+Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7`
+
+Si vous devez changer les credentials de la base de données c'est dans le fichier .env
+
 ```bash
 php bin/console doctrine:database:drop --force
 ```
-
 
 ```bash
 php bin/console doctrine:database:create
@@ -65,7 +78,6 @@ php bin/console doctrine:schema:create
 ```
 
 Charger les données dans la base (les fixtures)
-
 
 ```bash
 php bin/console doctrine:fixtures:load
@@ -82,20 +94,18 @@ php bin/console doctrine:fixtures:load
 
 `php bin/console server:run 0.0.0.0`
 
-Penser à bien avoir un serveur mysql de lancé avec Wamp ou docker.
-
-Commande docker : `docker run -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:5.7`
-
 ## Bundles symfony utilisés
  
 EasyAdminBundle : Permet de créer une interface d'administration des entitiés doctrine pour permettre aux administrateurs non développeurs du site de mettre à jour les données du site depuis la page http://localhost:8000/admin (Ou en cliquant dans le lien du footer). 
 [Documentation EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html).
-Comme indiqué dans la documentation, pour modifier les paramètres du Bundle ou ajouter vos entités il faut se diriger dans config/packages/easy_admin.yaml
+Comme indiqué dans la documentation, pour modifier les paramètres du Bundle ou ajouter vos entités il faut se diriger dans ```config/packages/easy_admin.yaml```
 
 login:    `admin`<br />
 password: `admin`
 
 FOSUserBundle : Permet de gérer la création d'utilisateur, la connexion, l'inscription etc. ([Documentation FOSUserBundle](https://symfony.com/doc/current/bundles/FOSUserBundle/index.html)).
+
+Vich\UploaderBundle: Permet l'upload de fichier sur la plateforme avec le stockage des informations du fichier en base de données.
 
 DataDogAuditBundle: Permet de stocker en base de données toutes les actions efféctuées sur la base de donnée du site web et de les visualiser sur l'interface admin. 
 
