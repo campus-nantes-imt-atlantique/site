@@ -17,7 +17,7 @@
     <div class="journal journal-list">
         <a class="journal-category" href="{{ path('pe_list') }}">{{ 'pe.pe_list' | trans }}</a>
         {% for journal in journaux %}
-            {% if journal.file is defined and journal.file is not same as('') %}
+            {% if journal.pdf is defined and journal.pdf is not same as('') %}
                 <div class="journal-edition">
                     <div class="journal-image">
                         <a class="journal-image" href="{{ path('pe_read', {edition: journal.edition}) }}" target="_blank">

@@ -6,13 +6,13 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon-32x32.png') }}">
         <!-- Speeds up load time -->
-        <link rel="preload" href="{{ pe_file }}/{{ journal.file }}" crossorigin="anonymous" as="fetch">
+        <link rel="preload" href="{{ pe_pdfs }}/{{ journal.pdf }}" crossorigin="anonymous" as="fetch">
 
         <link rel="stylesheet" type="text/css" href="{{ preload("/css/pe/read.css", {as: "style"}) }}">
     </head>
     <body>
     <div class="loader-body"><div class="loader"></div></div>
-    <div id="flipbook" url="{{ pe_file }}/{{ journal.file }}"></div>
+    <div id="flipbook" url="{{ pe_pdfs }}/{{ journal.pdf }}"></div>
     </body>
     <script type="text/javascript" src="{{ preload(asset('https://mozilla.github.io/pdf.js/build/pdf.js'), {as: "script", crossorigin:"anonymous"}) }}" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ preload(asset('https://code.jquery.com/jquery-3.4.1.min.js'), {as: "script", crossorigin:"anonymous"}) }}" crossorigin="anonymous"></script>

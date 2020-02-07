@@ -49,7 +49,7 @@ class PEIndexController extends AbstractController
     public function read(Request $request, int $edition)
     {
         $journal = $this->getDoctrine()->getRepository(Journal::class)->findOneBy(['edition' => $edition]);
-        if (!is_null($journal) and !is_null($journal->getFile()) and $journal->getFile() != '') {
+        if (!is_null($journal) and !is_null($journal->getPdf()) and $journal->getPdf() != '') {
             return $this->render('pe/read.html.twig', [
                 'controller_name' => 'PEIndexController',
                 "navigation_description" => $this->getDoctrine()->getRepository(Content::class)->findContentByKeyAndLang("navigation_description","PE", $request->getLocale()),
