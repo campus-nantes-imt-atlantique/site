@@ -170,16 +170,16 @@ easy_admin:
                 fields:
                     - { property: 'edition'}
                     - { property: 'image', type: 'image', base_path: '%app.path.pe_image%' }
-                    - { property: 'file', type: 'file', base_path: '%app.path.pe_file%' }
+                    - { property: 'pdf', type: 'file', base_path: '%app.path.pe_pdfs%' }
             show:
                 fields:
                      - { property: 'imageFile', type: 'image', base_path: '%app.path.pe_image%' }
-                     - { property: 'fileFile', type: 'file', base_path: '%app.path.pe_file%' }
+                     - { property: 'pdfFile', type: 'file', base_path: '%app.path.pe_pdfs%' }
             form:
                 fields:
                     - { property: 'edition', type_options: { required: true } }
                     - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
-                    - { property: 'fileFile', type: 'vich_file', type_options: { required: true } }
+                    - { property: 'pdfFile', type: 'vich_file', type_options: { required: true } }
 
     site_name: 'Administration du site IMT Campus Nantes'
     design:
