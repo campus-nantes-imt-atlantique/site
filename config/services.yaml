@@ -12,12 +12,12 @@ parameters:
     app.path.members: '/img/members'
     app.path.images: '/img/images'
     app.path.pe_image: '/img/pe/cover'
-    app.path.pe_file: '/pdf/pe/journal'
+    app.path.pe_pdfs: '/pdf/pe/journal'
 
 twig:
     globals:
         pe_image: '%app.path.pe_image%'
-        pe_file: '%app.path.pe_file%'
+        pe_pdfs: '%app.path.pe_pdfs%'
 
 services:
     # default configuration for services in *this* file

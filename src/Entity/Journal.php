@@ -34,23 +34,22 @@ class Journal
 
     /**
      * @Vich\UploadableField(mapping="pe_images", fileNameProperty="image")
-     * @Assert\NotBlank
      * @var File
      */
     private $imageFile;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $file;
 
     /**
-     * @Vich\UploadableField(mapping="pe_files", fileNameProperty="file")
-     * @Assert\NotBlank
-     * @Assert\File(maxSize = "20M")
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $pdf;
+
+    /**
+     * @Vich\UploadableField(mapping="pe_pdfs", fileNameProperty="pdf")
      * @var File
      */
-    private $fileFile;
+    private $pdfFile;
 
     /**
      * @ORM\Column(type="datetime")
@@ -86,6 +85,7 @@ class Journal
             // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new DateTime('now');
         }
+        return $this;
     }
 
     public function getImageFile()
@@ -96,6 +96,7 @@ class Journal
     public function setImage($image)
     {
         $this->image = $image;
+        return $this;
     }
 
     public function getImage()
@@ -103,34 +104,34 @@ class Journal
         return $this->image;
     }
 
-    public function setFileFile(File $file = null)
+    public function setPdfFile(File $pdf = null)
     {
-        $this->fileFile = $file;
+        $this->pdfFile = $pdf;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
-        if ($file) {
+        if ($pdf) {
             // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new DateTime('now');
         }
-    }
-
-    public function getFileFile()
-    {
-        return $this->fileFile;
-    }
-
-    public function getFile(): ?string
-    {
-        return $this->file;
-    }
-
-    public function setFile(string $file): self
-    {
-        $this->file = $file;
-
         return $this;
+    }
+
+    public function getPdfFile()
+    {
+        return $this->pdfFile;
+    }
+
+    public function setPdf($pdf)
+    {
+        $this->pdf = $pdf;
+        return $this;
+    }
+
+    public function getPdf()
+    {
+        return $this->pdf;
     }
 
     public function updateDate()
